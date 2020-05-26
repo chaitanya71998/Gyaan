@@ -1,0 +1,232 @@
+AllDomainScreenPage:
+Components              Functionality                           Element
+Header
+
+SideBar
+
+AppScreen
+
+*-------------------------------------------------------------------------------------------------------------------*
+Component:Header
+
+Components              Description                           Element                   Time
+Logo                    image of company                       Img                         10min
+
+SearchInput             on enter any text                       Input                       15min
+                        should show that related                         
+                        post there
+
+methods: 
+Name                        Description
+onSearchTextInput       should change the searchText observable and this should be sent to backend for related posts
+
+onClickWritePost        should navitgate to createNewPost
+
+onClickProfilePhoto     should navigate to userProfile
+
+setProfileType          should set profiletype in the store 
+                        (user/admin/domainExpert)
+
+componentDidmount       call showLatestHappenings
+
+props:  
+Name                            Type
+profileObj                      obj
+
+onSearchTextInput               function
+
+onClickWritePost                function
+
+onClickProfilePhoto             function
+
+setProfileType                  function
+
+showLatestHappenings            function
+
+
+*-------------------------------------------------------------------------------------------------------------------*
+
+SideBar:
+methods:
+Name                            Description
+allDomains                      this changes the app screen and loads post in screen
+
+
+
+
+
+Component     
+                 Functionality                           Element                  Time
+
+AllDomains                      onClick should show latest              Button
+                                feed related to all the domains 
+                                that user follow in the feed 
+                                Components
+  
+
+props:
+Name                            Description                         Type
+showLatestHappenings            should show posts of user           function
+                                or latest posts of his Domain  
+
+
+*----------------------------------------------------------------------------*
+
+
+
+Component:                      Description                             Element         time
+UserFollowingDomainsList        should show list of domains             
+                                user Follow in this component
+
+porps:                      type
+followingDomainsList            object
+
+methods:
+
+onClickfollowingDomains         this makes to expand the following domain and  user/admin/expert following Domains
+
+onClickAllfollowingDomains      changes the app screen and loads total Domains user follows
+
+
+*----------------------------------------------------------------------------*
+
+
+
+Components:
+AllDomainsExceptFollowing       should show list of DomainsScreen       Button
+                                expcept those user Follow
+methods:
+Name                             Description
+
+onClickOtherDomains             expands the otherDomains and shows 3 Domains with and also see all
+
+onClickAllOtherDomain           changes the app screen and loads total Domains user didn't follow
+
+
+props:
+otherDomainsList                obj
+
+*----------------------------------------------------------------------------*
+UserPosts                       should show the text and number         Button
+                                of posts user poseted till date and
+                                time and on click should show those 
+                                posts in feed DomainsScreen
+
+methods:
+onClickPostHeading              Nothing showLatestHappenings
+props:
+numberOfPosts                    number
+
+
+
+*----------------------------------------------------------------------------*
+
+
+
+PostsUnderReview                should show the number posts that       Button
+                                are under review and on click the posts 
+                                and their request details  on screen  
+
+porps:
+numberOfPostsUnderReview
+
+*----------------------------------------------------------------------------*
+
+
+DomainExpertPostsApproval       Domain should see the no of posts he     Button
+                                has to approve 
+
+props:
+numberOfTobeReviewed
+*----------------------------------------------------------------------------*
+
+
+DomainFollowRequest             Domain Expert should see the no of       Button
+                                user request 
+                                to accept 
+porps:
+numberOfPendingRequests
+
+*----------------------------------------------------------------------------*
+
+TrendingDomains                 should show the top trending Domains    Button
+                                till Date 
+
+methods:
+onClickTrendingDomains          should expandTrending Domains and show 3 Domains
+
+onClickAllTrendingDomains       should show all trending domains
+
+porps:
+trendingDomainsList
+*----------------------------------------------------------------------------*
+
+Body:
+
+component:
+postCard
+ 
+methods:
+onClickPost                      should navigate to that post
+seeAllComments                   getotherComments
+props:
+postobj                          Data related to that post
+
+*----------------------------------------------------------------------------*
+
+PostRelatedData                 shows the post details(
+                                title author
+                                image if any, description, 
+                                important informations,
+                                imageCredit,
+                                postData,
+                                files,
+                                links,
+                                comments
+                                )
+
+LessComments                    shows less comments and 
+                                input that take a comments
+                                and post
+                                and reactions and 
+PostAuthor                      card type giving data
+                                of an author
+PostReactions                   this card will show how many
+                                reactions,comments,an min 3 profiles
+                                who liked the post
+
+PostRelatedPosts                cards that show trending card posts
+                                
+
+
+
+*------------------------------------*
+ListOfDomains                   accepts a list of domain name and show    button>list of                                         
+                                them and on click particular domain          buttons
+                                should go to that particular domain
+                                also should show sample 3 and see all
+                                and onclick see change the feed screen
+                                to following domains
+
+ListUnfollowingOfDomains        shows few unfollowing domains                button>list of buttons
+                                with side button that shows follow
+                                and see All button. onClick 
+                                see all the feed should show the all domains
+
+
+ListofTopTrending               on click TrendingDomains here few top trending
+                                domains and see All button. onClick               Buttons
+                                see all the feed should show the all domains
+
+
+QuestionTypePostInFeed         component has post related to question and   
+                                answers that he has got
+
+
+
+
+TopicRelatedPostInFeed          component has post related to new topic that 
+                                user learnt or want share information
+
+ 
+*-----------------------------*

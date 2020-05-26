@@ -1,0 +1,340 @@
+@font-face {
+    font-family: HKGrotesk;
+    src: local(HKGrotesk-Regular),
+      url(/path/to/HKGrotesk-Regular.woff2) format("woff2"),
+      url(/path/to/HKGrotesk-Regular.woff) format("woff"),
+      url(/path/to/HKGrotesk-Regular.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: HKGrotesk;
+    src: local(HKGrotesk-Medium),
+      url(/path/to/HKGrotesk-Medium.woff2) format("woff2"),
+      url(/path/to/HKGrotesk-Medium.woff) format("woff"),
+      url(/path/to/HKGrotesk-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: HKGrotesk;
+    src: local(HKGrotesk-SemiBold),
+      url(/path/to/HKGrotesk-SemiBold.woff2) format("woff2"),
+      url(/path/to/HKGrotesk-SemiBold.woff) format("woff"),
+      url(/path/to/HKGrotesk-SemiBold.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: HKGrotesk;
+    src: local(HKGrotesk-Bold),
+      url(/path/to/HKGrotesk-Bold.woff2) format("woff2"),
+      url(/path/to/HKGrotesk-Bold.woff) format("woff"),
+      url(/path/to/HKGrotesk-Bold.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: Roboto;
+    src: local(Roboto-Regular),
+      url(/path/to/Roboto-Regular.woff2) format("woff2"),
+      url(/path/to/Roboto-Regular.woff) format("woff"),
+      url(/path/to/Roboto-Regular.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: Rubik;
+    src: local(Rubik-Regular),
+      url(/path/to/Rubik-Regular.woff2) format("woff2"),
+      url(/path/to/Rubik-Regular.woff) format("woff"),
+      url(/path/to/Rubik-Regular.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: Rubik;
+    src: local(Rubik-Medium),
+      url(/path/to/Rubik-Medium.woff2) format("woff2"),
+      url(/path/to/Rubik-Medium.woff) format("woff"),
+      url(/path/to/Rubik-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  .Typo32DarkBlueGreyRubikRegular {
+    font-family: Rubik;
+    font-size: 32px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typos24DarkBlueGreyHKGroteskMedium {
+    font-family: HKGrotesk;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo24DarkBlueGrayHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo20DarkBlueGreyHKGroteskBold {
+    font-family: HKGrotesk;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo20DarkBlueGreyHKGroteskSemiBold {
+    font-family: HKGrotesk;
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo18171f46HKGrotesk-Medium {
+    font-family: HKGrotesk;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo18DarkBlueGreyRobotoRegular {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo18BrightBlueRobotoRegular {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--bright-blue);
+  }
+  .Typo16DarkBlueGreyHKGroteskMedium {
+    font-family: HKGrotesk;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo14WhiteHKGroteskSemiBold {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--white);
+  }
+  .Typo14DarkBlueGreyHKGroteskSemiBold {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo14WhiteRubikMedium {
+    font-family: Rubik;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--white);
+  }
+  .Text-Style {
+    font-family: Rubik;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--white);
+  }
+  .Typo14TurquoiseBlueHKGrotesk-Regular {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--turquoise-blue);
+  }
+  .Typo14SteelHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--steel);
+  }
+  .Typo14Steel60HKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--steel-60);
+  }
+  .Typo14DarkBlueGreyHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #171f46;
+  }
+  .Typo14BlackHKGroteskRegula {
+    font-family: HKGrotesk;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--black);
+  }
+  .Typo12SteelHKGrotesk {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.12px;
+    color: var(--steel);
+  }
+  .Typo12Steel60HKGroteskSemiBold {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.12px;
+    color: var(--steel-60);
+  }
+  .Typo12DarkBlueGreyHKGroteskSemiBold {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.12px;
+    color: #171f46;
+  }
+  .Typo12steelHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--steel);
+  }
+  .Typo12Steel60HKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.12px;
+    color: var(--steel-60);
+  }
+  .Typo12NeonRedHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--neon-red);
+  }
+  .Typo10WhiteHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(--white);
+  }
+  .Typo10Steel60HKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(--steel-60);
+  }
+  .Typo10DarkBlueGreyHKGroteskRegular {
+    font-family: HKGrotesk;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #171f46;
+  }

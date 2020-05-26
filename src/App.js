@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
 
+
 import "./App.css";
+import { SignInForm } from "./authentication/components/SignInForm/SignInForm";
 
 const App = () => {
   return (
@@ -12,6 +14,9 @@ const App = () => {
       <Switch>
         <Route exact path="/page-1">
           <Page1 />
+        </Route>
+        <Route exact path="/Sign-Form">
+          <SignInForm />
         </Route>
         <Route path="/">
           <HomePage />
