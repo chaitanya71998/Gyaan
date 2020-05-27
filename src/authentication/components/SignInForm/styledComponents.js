@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import tw from "tailwind.macro";
 import { colors } from "../../../style_guide/themes/Colors";
 
-const {bright_blue} = colors;
+const {bright_blue,white,ice_blue} = colors;
 
 export const SignInButton = styled.button`
   width: 320px;
@@ -11,8 +11,14 @@ export const SignInButton = styled.button`
   background-color:${bright_blue};
   margin-top:32px;
   margin-bottom:32px;
+  color:${white};
   `; 
-export const Div =styled.div``;
+export const Div =styled.div`
+  width: 536px;
+  border-radius: 8px;
+  background-color: ${white};
+${tw`flex flex-col border justify-center  items-center`}
+`;
 
 export const Warning = styled.p`
 ${tw`text-red-800 text-xs`}
@@ -29,4 +35,5 @@ ${tw`flex flex-col justify-center  `}
 `;
 
 export const SignInBlock = styled.div`
-${tw`flex flex-col justify-center  items-center`} `;
+${tw`flex h-screen justify-center items-center`}
+background-color: ${ice_blue}`;

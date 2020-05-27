@@ -1,26 +1,24 @@
-import { action,observable } from "mobx";
-import { textSpanIntersectsWithTextSpan } from "typescript";
+import { observable,action } from 'mobx';
+import { API_INITIAL } from '@ib/api-constants';
+import { bindPromiseWithOnSuccess } from '@ib/mobx-promise';
+
+import { setAccessToken, clearUserSession, } from '../../../utils/StorageUtils';
+
 
 class AuthSignInStore {
-    @observable username
-    @observable password
-    constructor(){
-        this.init();
-    }
-    @action.bound
-    init(){
-        this.password="";
-        this.username = "";
-    }
+    @observable getUserSignInAPIStatus 
+    @observable getUserSignInAPIError 
+    @observable token
+    
     constructor(authService){
         this.authAPIService = authService;
-        this.init()
-        
+        this.init()     
     }
+
     @action.bound
     userSignIn(){
-            
-        const usersPromise = this.authAPIService.signInAPI();
+         console.log("api")   
+        const usersPromise = this.authAPIService.getUserAPI(loginEndPoint);
         return bindPromiseWithOnSuccess(usersPromise)
         .to(this.setGetUserSignInAPIStatus,this.setUserSignInAPIResponse)
         .catch(this.setGetUserSignInAPIError);
@@ -28,8 +26,7 @@ class AuthSignInStore {
     }
     @action.bound
     setUserSignInAPIResponse(response){
-        this.token = response[0]['access_token'];
-        setAccessToken(this.token)
+        console.log(response);
     }
     @action.bound
     setGetUserSignInAPIError(error){

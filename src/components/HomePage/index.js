@@ -1,28 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../logo.svg";
+import React from 'react';
+import {Redirect , Link} from 'react-router-dom';
+import { paths } from "../../constants/paths";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Link to="/page-1">Page 1</Link>
-        <Link to="/Sign-Form">SignINForm</Link>
-      </header>
-    </div>
-  );
+const {signInForm} = paths
+
+ class  Home extends React.Component{
+ 
+  render(){
+    
+    return (
+      <div>
+      <nav>
+          <ul>
+            <li>
+              <Link to ={signInForm} >SignIn Page</Link>
+            </li>
+          </ul>
+        </nav>
+        </div>
+    )
 }
-
-export default App;
+}
+export default Home;

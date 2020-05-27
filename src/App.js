@@ -1,29 +1,37 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import HomePage from "./components/HomePage";
-import Page1 from "./components/Page1";
-
+import { HashRouter , Switch, Route } from "react-router-dom";
+import {observer,Provider} from 'mobx-react';
 
 import "./App.css";
+import stores from './stores/index';
+import { SignInRoute } from "./authentication/routes/SignInRoute";
+import HomePage from "./components/HomePage";
+import { paths } from "./constants/paths";
 import { SignInForm } from "./authentication/components/SignInForm/SignInForm";
 
-const App = () => {
-  return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <Switch>
-        <Route exact path="/page-1">
-          <Page1 />
-        </Route>
-        <Route exact path="/Sign-Form">
-          <SignInForm />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
 
-export default App;
+const {signInForm} = paths
+@observer   
+class App extends React.Component{ 
+  render(){
+    
+  return (
+    <Provider {...stores}>
+    <HashRouter>
+       <Switch>
+          <Route path={signInForm}>
+            <SignInRoute/>
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+
+        </Switch>
+    </HashRouter>
+    </Provider>
+  );
+  
+}
+}
+export  default App;
+        

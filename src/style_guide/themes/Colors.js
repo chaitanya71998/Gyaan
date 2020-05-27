@@ -24,5 +24,6 @@ export const colors=
         "dark_blue_grey" : " #171f46",
         "bright_blue" : " #0b69ff",
         "steel" : " #7e858e",
+        "ice_blue":"#f1f7ff"
       
 }

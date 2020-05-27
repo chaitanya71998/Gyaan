@@ -2,11 +2,11 @@ import React,{ Component } from "react";
 import { observer,inject } from "mobx-react";
 import { Redirect } from "react-router-dom";
 import { observable } from "mobx";
-import { getAccessToken } from "../../../../utils/StorageUtils"
+import { getAccessToken } from "../../../utils/StorageUtils"
 
 import  strings  from "../../i18n/strings.json";
-import {SignInForm} from "../../components/SignInForm";
-import {paths} from "../../constants/paths";
+import { SignInForm } from "../../components/SignInForm";
+import {paths} from "../../../constants/paths";
 
 const {incorrectMessage} = strings;
 const {homeScreen} = paths;
@@ -25,6 +25,7 @@ class SignInRoute extends Component{
         this.username ='';
         this.password='';
         this.errorMessage='';
+        this.hasToken = false;
     } 
 
     gotoHomeScreen(){
@@ -32,21 +33,22 @@ class SignInRoute extends Component{
               <Redirect
               to={
                 {
-                  pathname:homeScreen,
+                  pathname:"/home-screen",
                 }
               }/>)
       }
     
     handleSignIn=async()=>{
    
-        await this.props.authSignInStore.userSignIn();
+        /*await this.props.authSignInStore.userSignIn();
         if(getAccessToken()){
             this.hasToken=true;    
         }
         else{
             this.hasToken=false;
             this.errorMessage=incorrectMessage;
-        }  
+        } */
+        console.log("signInClicked"); 
     }
     handleSubmit=(event)=>{
         event.preventDefault();
@@ -56,9 +58,12 @@ class SignInRoute extends Component{
     handlePasswordChange=(event)=>{
         this.emptyErrorMessage();
         this.password=event.target.value
+        console.log(event.target.value)
     }
     handleusernameChange=(event)=>{
-        this.username = event.target.value
+        this.emptyErrorMessage();
+        this.username = event.target.value;
+        console.log(event.target.value)
     }
     
     getAPIStatus=()=>{
@@ -72,20 +77,19 @@ class SignInRoute extends Component{
     }
 
     render(){
-        
+        console.log(this.hasToken)
         if(this.hasToken){
             return(this.gotoProductsPage())
         }
-        return <SignInForm
+        return( <SignInForm
             username={this.username}
-            password={this.password}
-            errorMessage={this.errorMessage}
             handleusernameChange={this.handleusernameChange}
-            handlePasswordChange={this.handlePasswordChange}
-            handleSubmit = {this.handleSubmit}
-            apiStatus={this.getAPIStatus()}
-           />
-    }   
+            password = {this.password}
+            handlePasswordChange = {this.handlePasswordChange}
+            errorMessage = {this.errorMessage}
+            handleSubmit={this.handleSubmit}
+            />
+       )}
 }
 
 export { SignInRoute };
