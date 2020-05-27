@@ -1,6 +1,4 @@
-import styled from "./node_modules/@emotion/styled";
-
-
+import styled from '@emotion/styled';
 export const Input = styled.input`
     width: 320px;
     height: 40px;

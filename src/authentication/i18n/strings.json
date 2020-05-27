@@ -1,9 +1,10 @@
 {
-    "signUpLabel":"Hi There please sign,up",
+    "signInLabel":"Hi There please sign,up",
     "username":"USER NAME",
     "password":"PASSWORD",
     "dontHaveAnAccount":"Don't have an account?",
     "signUp":"signUp",
     "loginIn":"LOGIN",
-    "errorMessage":"invalid username or password"
+    "errorMessage":"invalid username or password",
+    "logo":"logo"
 }

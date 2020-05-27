@@ -1,4 +1,4 @@
-import React,{ Component } from "./node_modules/react";
+import React,{ Component } from "react";
 import { Input } from "./styledComponents";
 
 class InputElement extends Component{
