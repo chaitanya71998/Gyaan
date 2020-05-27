@@ -1,10 +1,13 @@
 {
-    "signInLabel":"Hi There please sign,up",
-    "username":"USER NAME",
-    "password":"PASSWORD",
+    "iBhubs":"iBhubs",
+    "hiThere":"Hi there,",
+    "pleaseSignUp":" please sign up",
+    "usernameLabel":"USER NAME",
+    "passwordLabel":"PASSWORD",
     "dontHaveAnAccount":"Don't have an account?",
     "signUp":"signUp",
     "loginIn":"LOGIN",
     "errorMessage":"invalid username or password",
-    "logo":"logo"
+    "logo":"logo",
+    "incorrectMessage":"username or password incorrect"
 }
