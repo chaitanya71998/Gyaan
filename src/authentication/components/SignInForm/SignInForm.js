@@ -9,7 +9,7 @@ import { Typo32DarkBlueGreyRubikRegular, Typo12NeonRedHKGroteskRegular, Typo12St
 import { SignInButton, SignUpText, Div,SignUpLink,Form, SignInBlock } from "./styledComponents";
 import { ImageElement } from "../../../components/common/ImageElement";
 
-const inputElementCustomStyles={margin:"24px 0px 8px 0px"}
+
 const {
     iBhubs,
     hiThere,
@@ -51,7 +51,6 @@ class SignInForm extends Component{
                         type={"text"}  
                         value={username} 
                         onChange={handleusernameChange} 
-                        style={inputElementCustomStyles}  
                         isCorrect={isNotCorrectUser}/>
                     
                     <Typo12NeonRedHKGroteskRegular>{errorMessage}</Typo12NeonRedHKGroteskRegular>
@@ -60,8 +59,7 @@ class SignInForm extends Component{
                     <InputElement  
                         type={"password"} 
                         value={password}
-                        onChange={handlePasswordChange}
-                        style={inputElementCustomStyles}/>
+                        onChange={handlePasswordChange}/>
                     <SignInButton type={"button"} onClick={handleSubmit} >{loginIn}</SignInButton>
                 </Form>
                 <SignUpText>{dontHaveAnAccount}<SignUpLink >{signUp}</SignUpLink></SignUpText>
