@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
+import tw from "tailwind.macro";
+
 import { colors } from "../themes/Colors";
-const {dark_blue_grey,steel,neon_red} =colors;
+
+const {dark_blue_grey,steel,steel_60,neon_red,bright_blue,white} =colors;
+
 export const Typo32DarkBlueGreyRubikRegular = styled.p`
 width: 214px;
 height: 80px;
@@ -47,6 +51,7 @@ export const Typo16BrightBlueHKGroteskBold =styled.span`
     color: ${bright_blue};
   `;
 export const Typo16DarkBlueGreyHKGroteskRegular = styled.span`
+${tw`mx-2`}
   font-family: HKGrotesk;
   font-size: 16px;
   font-weight: normal;
@@ -64,9 +69,9 @@ export const Typo14Steel60HKGroteskRegular = styled.span`
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${steel60};
+  color: ${steel_60};
   `;
-export const Typo14SteelHKGroteskRegular = styled.span`
+export const Typo14SteelHKGroteskRegular = styled.p`
 font-family: HKGrotesk;
   font-size: 14px;
   font-stretch: normal;
@@ -74,7 +79,9 @@ font-family: HKGrotesk;
   line-height: 1.71;
   letter-spacing: normal;
   font-weight: 600;
-  color: ${steel}`;
+  color: ${steel};
+  margin:0px;
+  padding:0px;`;
   
 export const Typo14WhiteHKGroteskSemiBold = styled.p`
 font-family: HKGrotesk;
@@ -105,7 +112,7 @@ font-style: normal;
 line-height: 1.71;
 letter-spacing: normal;
 color:${dark_blue_grey};`;
-export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.span`
+export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.p`
 font-family: HKGrotesk;
   font-size: 14px;
   font-weight: 600;
@@ -114,6 +121,8 @@ font-family: HKGrotesk;
   line-height: 1.71;
   letter-spacing: normal;
   color: ${dark_blue_grey};
+  margin:0px;
+  padding:0px;
 `; 
 export const Typo12NeonRedHKGroteskRegular=styled.label`
 font-family: HKGrotesk;
@@ -148,7 +157,7 @@ export const Typo12BrightBlueRubikRegular =styled.span`
     letter-spacing: normal;
     color: ${bright_blue};
   `;
-export const Typo12DarkBlueGreyHKGroteskRegular= styled.span `
+export const Typo12DarkBlueGreyHKGroteskRegular= styled.p `
   font-family: HKGrotesk;
   font-size: 12px;
   font-weight: normal;

@@ -1,8 +1,8 @@
 import { authSignInStore } from "../authentication/stores";
-
+import {dashboardStore}  from "../Dashboard/stores";
 
 export default {
-authSignInStore,
+authSignInStore,dashboardStore
 }
 /*
 

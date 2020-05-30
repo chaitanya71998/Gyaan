@@ -7,10 +7,12 @@ import stores from './stores/index';
 import { SignInRoute } from "./authentication/routes/SignInRoute";
 import HomePage from "./components/HomePage";
 import { paths } from "./constants/paths";
-import { SignInForm } from "./authentication/components/SignInForm/SignInForm";
+import { DashboardRoute } from "./Dashboard/routes/DashboardRoute";
 
 
-const {signInForm} = paths
+const {signInForm,dashboard} = paths
+
+
 @observer   
 class App extends React.Component{ 
   render(){
@@ -22,6 +24,10 @@ class App extends React.Component{
           <Route path={signInForm}>
             <SignInRoute/>
           </Route>
+          <Route path={dashboard}>
+            <DashboardRoute/>
+          </Route>
+          
           <Route path="/">
             <HomePage />
           </Route>

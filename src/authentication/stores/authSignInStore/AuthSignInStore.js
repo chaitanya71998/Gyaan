@@ -16,9 +16,10 @@ class AuthSignInStore {
     }
 
     @action.bound
-    userSignIn(){
+    userSignIn(obj){
          console.log("api")   
-        const usersPromise = this.authAPIService.getUserAPI(loginEndPoint);
+         
+        const usersPromise = this.authAPIService.getUserAPI(obj);
         return bindPromiseWithOnSuccess(usersPromise)
         .to(this.setGetUserSignInAPIStatus,this.setUserSignInAPIResponse)
         .catch(this.setGetUserSignInAPIError);
@@ -30,6 +31,7 @@ class AuthSignInStore {
     }
     @action.bound
     setGetUserSignInAPIError(error){
+        console.log(error)
         this.getUserSignInAPIError=error;
     }
     @action.bound

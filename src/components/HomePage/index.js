@@ -15,6 +15,9 @@ const {signInForm} = paths
             <li>
               <Link to ={signInForm} >SignIn Page</Link>
             </li>
+            <li>
+              <Link to ="/homeScreen" >Dashboard</Link>
+            </li>
           </ul>
         </nav>
         </div>

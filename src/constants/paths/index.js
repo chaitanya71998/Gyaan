@@ -1,4 +1,4 @@
 export const paths={
-    "homeScreen":"/homeScreen",
-    "signInForm":"/SignIn-Form"
+    "signInForm":"/SignIn-Form",
+    "dashboard" :"/homeScreen"
 }

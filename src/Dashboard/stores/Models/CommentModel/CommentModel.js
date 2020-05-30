@@ -1,0 +1,58 @@
+import {action,computed, observable } from "mobx";
+
+class CommentModel {
+    id;
+    user;
+    userId;
+    userName
+    userProfilePic;
+    commentedAt;
+    commentedBy;
+    @observable replies;
+    @observable repliesCount;
+    @observable isUserReacted;
+    @observable showAllReplies;
+
+    constructor(obj){
+        this.commentData = obj;
+        this.id = obj.comment_id;
+        this.user = obj.commented_by;
+        this.userId = obj.commented_by.user_id;
+        this.userName =obj.commented_by.name;
+        this.userProfilePic = obj.commented_by.profile_pic;
+        this.commentedAt = obj.commented_at;
+        this.commentedContent = obj.comment_content ;
+        this.isUserReacted=obj.is_user_reacted;
+        this.repliesCount = obj.replies_count;
+        this.reactionsCount = obj.reactions_count;
+        this.replies = new Map();
+        this.setReplies();
+        this.showAllReplies=false;
+    }
+    
+    @action.bound
+    setReplies(){
+        this.commentData.replies.forEach(reply=>{
+            this.replies.set(reply.reply_id,reply)})
+    }
+    
+    @action.bound
+    onClickReaction(){
+        this.isUserReacted=!this.isUserReacted;
+        /**API call for reaction set */
+    }
+
+    @action.bound
+    onClickShowAll(){
+        this.showAllReplies=!this.showAllReplies;
+    }
+    @computed get repliesForComments(){
+        if(this.showAllReplies){
+            return [...this.replies];
+        }
+        return [...this.replies][0];
+    }
+    
+} 
+
+export { CommentModel }

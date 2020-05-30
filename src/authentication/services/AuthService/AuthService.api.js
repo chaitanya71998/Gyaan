@@ -7,13 +7,13 @@ class AuthService{
     api
     constructor(){
         this.api = create({
-            baseURL: 'loaclhost:8080/Gyaan/',
+            baseURL: '127.0.0.1:8080/api/gyaan/',
         })
     }
-    getUserAPI(endpoint,requestObject){
+    getUserAPI(requestObject){
         return networkCallWithApisauce(
             this.api,
-            endpoint,
+            "login/v1/",
             requestObject,
             apiMethods.get
             );

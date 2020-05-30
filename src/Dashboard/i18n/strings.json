@@ -1,4 +1,7 @@
 {
+     "comapanyName":"iBhubs",
      "logo":"logo",
-     "profile":"Profile pic"
+     "profile":"Profilepic",
+     "writePost":"write post",
+     "followingDomainsString":"Following Domains"
 }

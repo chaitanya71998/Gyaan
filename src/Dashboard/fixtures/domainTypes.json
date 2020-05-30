@@ -1,0 +1,98 @@
+{
+
+    "following_domains": [
+  
+      {
+  
+        "domain_name": "UI",
+  
+        "domain_id": 1
+  
+      },
+      {
+  
+        "domain_name": "Mech",
+  
+        "domain_id": 0
+  
+      },
+      {
+  
+        "domain_name": "Animation",
+  
+        "domain_id": 2
+  
+      },
+      {
+  
+        "domain_name": "Video Editing",
+  
+        "domain_id": 3
+  
+      },
+      {
+  
+        "domain_name": "java",
+  
+        "domain_id": 0
+  
+      }
+  
+    ],
+  
+    "remaining_domains": [
+  
+      {
+  
+        "domain_name": "Geology",
+  
+        "domain_id": 0,
+  
+        "follow_requested": "string"
+  
+      },
+      {
+  
+        "domain_name": "Maths",
+  
+        "domain_id": 0,
+  
+        "follow_requested": "string"
+  
+      }
+      ,
+      {
+  
+        "domain_name": "Social",
+  
+        "domain_id": 0,
+  
+        "follow_requested": "string"
+  
+      }
+      ,
+      {
+  
+        "domain_name": "Economics",
+  
+        "domain_id": 0,
+  
+        "follow_requested": "string"
+  
+      }
+      ,
+      {
+  
+        "domain_name": "Geography",
+  
+        "domain_id": 0,
+  
+        "follow_requested": "string"
+  
+      }
+  
+    ]
+  
+  }
+  
+  

@@ -2,7 +2,7 @@ import React,{ Component } from "react"
 import { observer } from "mobx-react";
 import { FiHeart } from "react-icons/fi";
 
-import { ImageElement} from "../ImageElement";
+import { ImageElement} from "../../../components/common/ImageElement";
 
 import { Div, Header ,Footer,ReactionAndComments } from "./styledComponents";
 import { Typo14DarkBlueGreyHKGroteskSemiBold,Typo12BrightBlueRubikRegular, Typo14SteelHKGroteskRegular,Typo24DarkBlueGreyHKGroteskBold } from "../../../style_guide/Typos";

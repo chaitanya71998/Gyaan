@@ -1,36 +1,19 @@
 import React,{ Component } from "react"
-import { observer } from "mobx-react";
-import { observable } from "mobx";
-import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
+import { observer,inject } from "mobx-react";
+import { Div,Button} from "./styledComponents"
+import { DomainTypeButton } from "../../common/commonStyledComponents";
 
 
+@inject("dashboardStore")
 @observer
 class AllDomains extends Component{
-    @observable tooglestatus;
-    @observable domainsList;
-    constructor(props){
-        super(props);
-        tooglestatus=false;
-        this.domainsList=[];
-    }
-
-    displayDomains=()=>{
-        const {domainsList} = this.props;
-        const limit =3;
-        const limiteddomainsList=domainsList.slice(0,limit);
-        return limiteddomainsList.map(eachDomain=>{
-            return <li>{eachDomain.domain_name}</li>
-        })
-    }
-render(){
-    const {togglestatus, onToogle}
-    return(
-        <div>
-            <p onClick={onToogle}>{domainName} <span>{togglestatus?<IoIosArrowDown/>:<IoIosArrowUp/>}</span></p>
-            {togglestatus?<></>:this.displayDomains()}
-        </div>
-    )
-}
+  render(){
+    const {dashboardStore} = this.props;
+    const {getPosts } = dashboardStore
+      return (
+          <Div><DomainTypeButton onClick={getPosts}>All Domains</DomainTypeButton></Div>
+      )
+  }
 }
 
 export { AllDomains }

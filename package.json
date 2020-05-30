@@ -21,6 +21,7 @@
       "postcss-cli": "^7.1.0",
       "react": "^16.13.0",
       "react-dom": "^16.13.0",
+      "react-icons": "3.10.0",
       "react-router-dom": "^5.1.2",
       "react-scripts": "3.4.0",
       "tailwind.macro": "^1.0.0-alpha.10",
@@ -75,6 +76,6 @@
       "customize-cra": "0.9.1",
       "jest-environment-jsdom-sixteen": "1.0.3",
       "react-app-rewired": "2.1.5",
-      "tailwindcss": "^1.2.0"
+      "tailwindcss": "1.4.6"
    }
 }

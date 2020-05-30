@@ -4,12 +4,7 @@ import { Redirect } from "react-router-dom";
 import { observable } from "mobx";
 import { getAccessToken } from "../../../utils/StorageUtils"
 
-import  strings  from "../../i18n/strings.json";
 import { SignInForm } from "../../components/SignInForm";
-import {paths} from "../../../constants/paths";
-
-const {incorrectMessage} = strings;
-const {homeScreen} = paths;
 
 
 @inject("authSignInStore")
@@ -20,12 +15,12 @@ class SignInRoute extends Component{
     @observable errorMessage;
     @observable hasToken;
     
+    
     constructor(props){
         super(props)
         this.username ='';
         this.password='';
         this.errorMessage='';
-        this.hasToken = false;
     } 
 
     gotoHomeScreen(){
@@ -40,56 +35,71 @@ class SignInRoute extends Component{
     
     handleSignIn=async()=>{
    
-        /*await this.props.authSignInStore.userSignIn();
+        const userCredenditals = {
+            username:this.username,
+            password:this.password
+        }
+        await this.props.authSignInStore.userSignIn(userCredenditals);
         if(getAccessToken()){
             this.hasToken=true;    
         }
         else{
             this.hasToken=false;
-            this.errorMessage=incorrectMessage;
-        } */
-        console.log("signInClicked"); 
+            this.errorMessage='incorrect username/password'
+        }  
     }
     handleSubmit=(event)=>{
         event.preventDefault();
+        this.handleErrorMessage()
         this.username='';
         this.password='';
     }
     handlePasswordChange=(event)=>{
         this.emptyErrorMessage();
         this.password=event.target.value
-        console.log(event.target.value)
     }
     handleusernameChange=(event)=>{
         this.emptyErrorMessage();
-        this.username = event.target.value;
-        console.log(event.target.value)
+        this.username = event.target.value
     }
-    
-    getAPIStatus=()=>{
-        const {
-            authStore: { getUserSignInAPIStatus }
-          } = this.props;
-          return getUserSignInAPIStatus
+    handleErrorMessage=()=>{
+      
+        if(this.username!=='' && this.password!==''){
+            this.handleSignIn();    
+        }
+        else if(this.username==='' && this.password==='')
+        {
+            this.errorMessage='Please enter username';
+        }
+        else if(this.username!==''&& this.password==='')
+        {
+            this.errorMessage = 'Please enter Password';
+        }
+        else if(this.username===''&& this.password!=='') {
+            this.errorMessage = 'Please enter username';
+        }
+        else {
+            this.emptyErrorMessage();
+        }
     }
     emptyErrorMessage=()=>{
         this.errorMessage='';
     }
 
     render(){
-        console.log(this.hasToken)
+        
         if(this.hasToken){
-            return(this.gotoProductsPage())
+            return(this.gotoHomeScreen())
         }
-        return( <SignInForm
+        return <SignInForm
             username={this.username}
+            password={this.password}
+            errorMessage={this.errorMessage}
             handleusernameChange={this.handleusernameChange}
-            password = {this.password}
-            handlePasswordChange = {this.handlePasswordChange}
-            errorMessage = {this.errorMessage}
-            handleSubmit={this.handleSubmit}
-            />
-       )}
+            handlePasswordChange={this.handlePasswordChange}
+            handleSubmit = {this.handleSubmit}
+           />
+    }   
 }
 
 export { SignInRoute };

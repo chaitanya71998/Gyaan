@@ -8,8 +8,7 @@ return class extends Component{
         super(props)
         this.state={toggleStatus:false};
     }
-    onToggle=(event)=>{
-        
+    onToggle=(event)=>{ 
        this.setState({
         toggleStatus :  this.state.toggleStatus?false:true,
        })

@@ -1,3 +1,2 @@
 import styled from "@emotion/styled";
-
-export const Div = styled.div``;
+import tw from "tailwind.macro";
