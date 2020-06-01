@@ -1,5 +1,6 @@
 import React,{ Component } from "react";
-import { Button } from "./styledComponents";
+import { Button,SecondaryButtonElement } from "./styledComponents";
+import { Type14NeonRedHKGroteskSemiBold } from "../../style_guide/Typos";
 
 class ButtonElement extends Component{
     render(){
@@ -10,3 +11,11 @@ class ButtonElement extends Component{
     }
 }
 export { ButtonElement }
+
+export function SecondaryButtonElement(props){
+    return (<SecondaryButton>
+        <Type14NeonRedHKGroteskSemiBold>
+            {props.text}
+        </Type14NeonRedHKGroteskSemiBold>
+    </SecondaryButton>)
+}

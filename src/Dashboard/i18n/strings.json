@@ -7,6 +7,8 @@
      "enterComment" :"Enter comment",
      "seeAllComments":"See all comments",
      "seeLessComments":"See less comments",
-     "noComments" :"No comments yet "
+     "noComments" :"No comments yet ",
+     "domainExperts" :"Domain Experts",
+     "leave":"Leave"
 
 }

@@ -1,0 +1,57 @@
+{
+    "domain_name": "UI/UX Deigners",
+
+    "description": "UX design refers to the term “user experience design”, while UI stands for “user interface design”. Both elements are crucial to a product and work closely together. But despite their professional relationship, the roles themselves are quite different, referring to very different aspects of the product development process and the design discipline. ",
+  
+    "domain_experts": [
+  
+      {
+  
+        "user_id": 0,
+  
+        "name": "string",
+  
+        "profile_pic": "string"
+  
+      }
+  
+    ],
+  
+    "pending_for_review_count": 0,
+  
+    "pending_for_review": [
+  
+      {
+  
+        "domain_id": 0,
+  
+        "domain_name": "string",
+  
+        "count": 0
+  
+      }
+  
+    ],
+  
+    "members": 245,
+  
+    "total_posts_count": 656,
+  
+    "stars_count": 243,
+  
+    "total_requests_count": 1,
+  
+    "requests": [
+  
+      {
+  
+        "user_id": 0,
+  
+        "name": "string"
+  
+      }
+  
+    ],
+  
+    "is_user_following": true
+  }

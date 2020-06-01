@@ -3,7 +3,7 @@ import tw from "tailwind.macro";
 
 import { colors } from "../themes/Colors";
 
-const {dark_blue_grey,greenish_teal,purplish_blue,yellow_orange,steel,steel_60,neon_red,bright_blue,white} =colors;
+const {dark_blue_grey,neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_60,neon_red,bright_blue,white} =colors;
 
 export const Typo32DarkBlueGreyRubikRegular = styled.p`
 width: 214px;
@@ -40,6 +40,17 @@ letter-spacing: normal;
 color: ${dark_blue_grey};
 `;
 
+export const Typo18WhiteHKGroteskRegular = styled.span`
+font-family: HKGrotesk;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: ${white};`;
+
+ 
 export const Typo16BrightBlueHKGroteskBold =styled.span`
     font-family: HKGrotesk;
     font-size: 12px;
@@ -72,6 +83,17 @@ ${tw`mx-2`}
   letter-spacing: normal;
   color: ${steel_60};
   `;
+
+  export const Type14NeonRedHKGroteskSemiBold = styled.span`
+  font-family: HKGrotesk;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: ${neon_red};`;
+
 export const Typo14SteelHKGroteskRegular = styled.p`
 font-family: HKGrotesk;
   font-size: 14px;

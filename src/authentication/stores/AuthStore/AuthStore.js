@@ -28,12 +28,12 @@ class AuthSignInStore {
         console.log(response);
     }
     @action.bound
-    setGetUserSignInAPIError(error){
+    setUserSignInAPIError(error){
         console.log(error)
         this.getUserSignInAPIError=error;
     }
     @action.bound
-    setGetUserSignInAPIStatus(apiStatus){
+    setUserSignInAPIStatus(apiStatus){
         this.getUserSignInAPIStatus=apiStatus;
     }
     @action.bound
