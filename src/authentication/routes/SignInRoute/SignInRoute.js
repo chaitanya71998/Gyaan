@@ -2,7 +2,7 @@ import React,{ Component } from "react";
 import { observer,inject } from "mobx-react";
 import { Redirect } from "react-router-dom";
 import { observable } from "mobx";
-import { getAccessToken } from "../../../utils/StorageUtils"
+import { getAccessToken } from "../../../Common/utils/StorageUtils"
 
 import { SignInForm } from "../../components/SignInForm";
 

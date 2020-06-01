@@ -1,9 +1,8 @@
 import React, { Component } from "react"
 import { observer, inject } from "mobx-react";
 import { Div } from "./styledComponents";
-import { Posts } from "../../components/CommonComponents/Posts/Posts";
+import { Posts } from "../../common/Posts";
 
-@inject("dashboardStore")
 @observer
 class PostsRoute extends Component{
 render(){

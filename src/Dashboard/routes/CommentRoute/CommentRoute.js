@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { observer } from "mobx-react";
 import { Div } from "./styledComponents";
-import { Comment } from "../../components/CommonComponents/Comment";
+import { Comment } from "../../common/Comment";
 import { AiFillCodeSandboxCircle } from "react-icons/ai";
 
 
@@ -9,7 +9,6 @@ import { AiFillCodeSandboxCircle } from "react-icons/ai";
 class CommentRoute extends Component{
 render(){
     const {commentData,isAnswerToPost}=this.props;
-    console.log(commentData);
    
 const {
 userName,

@@ -1,81 +1,140 @@
 import React,{ Component } from "react"
 import { observer } from "mobx-react";
-import { FiHeart } from "react-icons/fi";
+import { AiOutlineReload } from "react-icons/ai";
+import { observable } from "mobx";
 
-import { ImageElement} from "../../../components/common/ImageElement";
+import { ImageElement} from "../../../Common/components/ImageElement";
+import { Typo12BrightBlueRubikRegular,Typo24DarkBlueGreyHKGroteskBold, Typo12DarkBlueGreyHKGrosteskSemiBold } from "../../../Common/style_guide/Typos";
 
-import { Div, Header ,Footer,ReactionAndComments } from "./styledComponents";
-import { Typo14DarkBlueGreyHKGroteskSemiBold,Typo12BrightBlueRubikRegular, Typo14SteelHKGroteskRegular,Typo24DarkBlueGreyHKGroteskBold } from "../../../style_guide/Typos";
-import { Comments } from "../Comments";
+import strings from "../../i18n/strings.json";
+import { CommentRoute } from "../../routes/CommentRoute";
 
+
+import { PostHeader } from "../PostHeader";
+import { EnterComment } from "../EnterComment";
+
+import { Div, SeeAllComments, PostTitle,PostDetails,PostComments,Tags, Footer} from "./styledComponents";
+import { ReactionsAndComments } from "../ReactionsAndComments";
+
+const { seeAllComments,noComments, seeLessComments } = strings;
+const reloadIconSize = 12;
 
 @observer
 class Posts extends Component{
+    @observable isToShowAllComments;
+    constructor(props){
+        super(props);
+        this.isToShowAllComments = false
+    }
+
+    onClickShowAllComments=(event)=>{
+        this.isToShowAllComments= !this.isToShowAllComments;
+    }
 
     tagsToPost=()=>{
     const {tags}  = this.props;
     if(tags.length)
     {
-    return(
-        <Div className="flex">
-        {tags.map(eachTag=>{
+        return(
+        <Div>
+        {tags.map(tag=>{
             return(
-            <Div>
+            <Tags key={tag}>
                 <ImageElement
                 src="https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/bcbd3c61-3d01-44df-9fa3-24bc8e8872b4.svg"
                 alt="tag"/>
-                <Typo12BrightBlueRubikRegular>eachTag.tag_name</Typo12BrightBlueRubikRegular>
-            </Div>
+                <Typo12BrightBlueRubikRegular>{tag}</Typo12BrightBlueRubikRegular>
+            </Tags>
             )
         })}</Div>)
     }
     return <Div></Div>
 }
-loadComments=()=>{
-    const {comments} = this.props;
-    if(comments.length)
-    {
-    return comments.map(eachComment=><CommentsRoute key={eachComment.comment_id} id={eachComment.comment_id} data={eachComment} />)
+    displayComments=()=>{
+        const { comments } = this.props;
+       if(comments.length>0) return(
+            <PostComments>
+                {this.displayAnswer()}
+                {this.loadCommentsList()}
+                <SeeAllComments onClick={this.onClickShowAllComments}><Typo12DarkBlueGreyHKGrosteskSemiBold>{this.isToShowAllComments?seeLessComments:seeAllComments}</Typo12DarkBlueGreyHKGrosteskSemiBold><AiOutlineReload size={reloadIconSize}/></SeeAllComments>
+            </PostComments>
+        )
+          return(
+            <>
+                <Typo12DarkBlueGreyHKGrosteskSemiBold children={noComments}/>
+            </>)
     }
-    return<b>No Comments</b>
-}
-render(){
-    const {
-        imageSrc,
-        authorName,
-        postDateAndTime,
-        DomainName,
-        postTitle,
-        tags,
-        hasReacted,
-        reactions,
-        comments,
-    } = this.props;
+    displayAnswer=()=>{
+        const {
+            didPostHasAnswer,
+            answer,
+        }=this.props;
+        if(didPostHasAnswer){
+        return <CommentRoute
+            key={answer.id} isAnswerToPost={didPostHasAnswer} commentData={answer} id={answer.id}
+            />
+        }
+        else{
+            return <></>
+        } 
+    }
 
-    return(
-        <Div>
-        <Div>
-            <Header>
-                <Div>
-                <ImageElement
-                    src={imageSrc}
-                    alt={authorName[0]}/>
-               <AuthorAndPostTime>
-               <Typo14DarkBlueGreyHKGroteskSemiBold>
-                    {authorName} .
-                </Typo14DarkBlueGreyHKGroteskSemiBold>
-                <Typo14SteelHKGroteskRegular>
-                    . {postDateAndTime}
-                </Typo14SteelHKGroteskRegular>
-               </AuthorAndPostTime>
-               </Div>
-               <Div>
-               <Typo14DarkBlueGreyHKGroteskSemiBold>
-                   {DomainName}
-               </Typo14DarkBlueGreyHKGroteskSemiBold>
-               </Div>
-            </Header>
-            <Typo24DarkBlueGreyHKGroteskBold>{postTitle} </Typo24DarkBlueGreyHKGroteskBold>
+    loadCommentsList=()=>{
+        const {
+            commentsLimitToShow,
+            comments
+        }=this.props;
+        console.log(comments.length,this.isToShowAllComments)
+        const numberLimit = this.isToShowAllComments?comments.length:commentsLimitToShow;
+        const commentsList=comments.map(comment=>{
+            return <CommentRoute key={comment.id} isAnswerToPost={false} id={comment.id} commentData={comment}/>
+        })
+        return commentsList.slice(0,numberLimit);
+    }
+    render(){
+        const {
+            postId,
+            profilePic,
+            userName,
+            dateAndTime,
+            domainName,
+            title,
+            tags,
+            reactionsCount,
+            isUserReacted,
+            comments
+        } = this.props;
+        return(
+            <Div>
+                <PostDetails>
+                        <PostHeader 
+                            profilePic={profilePic}
+                            userName={userName}
+                            dateAndTime={dateAndTime}
+                            domainName={domainName}
+                            />
+                        <PostTitle>
+                            <Typo24DarkBlueGreyHKGroteskBold>{title} </Typo24DarkBlueGreyHKGroteskBold>
+                        </PostTitle>
+                        <Footer hasTags={tags.length>0?true:false}>
+                            {this.tagsToPost()}
+                       <ReactionsAndComments
+                         isUserReacted={isUserReacted}
+                          reactionsCount={reactionsCount} 
+                          comments={comments}
+                       />
+                        </Footer>
+                    </PostDetails>
+                    {this.displayComments()}
+                    <EnterComment/>
+            </Div>
+
+        )
+    }
+}
+
+/*
+<Typo24DarkBlueGreyHKGroteskBold>{postTitle} </Typo24DarkBlueGreyHKGroteskBold>
             <Footer hasTags={tags.length?true:false}>
                 {this.tagsToPost()}
                 <Div>
@@ -86,9 +145,6 @@ render(){
             </Footer>
         </Div>
         {this.loadComments()}
-        </Div>
-    )
-}
-}
+*/
 
 export { Posts }

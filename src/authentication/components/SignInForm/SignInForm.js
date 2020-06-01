@@ -3,11 +3,11 @@ import {observer} from 'mobx-react';
 
 import  strings  from "../../i18n/strings.json";
 
-import { InputElement } from "../../../components/common/InputElement";
-import { Typo32DarkBlueGreyRubikRegular, Typo12NeonRedHKGroteskRegular, Typo12SteelHKGroteskSemiBold } from "../../../style_guide/Typos";
+import { InputElement } from "../../../Common/components/InputElement";
+import { Typo32DarkBlueGreyRubikRegular, Typo12NeonRedHKGroteskRegular, Typo12SteelHKGroteskSemiBold } from "../../../Common/style_guide/Typos";
 
 import { SignInButton, SignUpText, Div,SignUpLink,Form, SignInBlock } from "./styledComponents";
-import { ImageElement } from "../../../components/common/ImageElement";
+import { ImageElement } from "../../../Common/components/ImageElement";
 
 
 const {

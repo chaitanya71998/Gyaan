@@ -1,12 +1,12 @@
 import React from "react";
-import { HashRouter , Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import {observer,Provider} from 'mobx-react';
 
 import "./App.css";
-import stores from './stores/index';
-import { SignInRoute } from "./authentication/routes/SignInRoute";
-import HomePage from "./components/HomePage";
-import { paths } from "./constants/paths";
+import stores from './Common/stores';
+import HomePage from "./Common/components/HomePage";
+import { paths } from "./Common/constants/NavigationConstants";
+import { SignInRoute } from "./Authentication/routes/SignInRoute";
 import { DashboardRoute } from "./Dashboard/routes/DashboardRoute";
 
 
@@ -19,12 +19,12 @@ class App extends React.Component{
     
   return (
     <Provider {...stores}>
-    <HashRouter>
+    <BrowserRouter>
        <Switch>
-          <Route path={signInForm}>
+          <Route exact path={signInForm}>
             <SignInRoute/>
           </Route>
-          <Route path={dashboard}>
+          <Route exact path={dashboard}>
             <DashboardRoute/>
           </Route>
           
@@ -33,7 +33,7 @@ class App extends React.Component{
           </Route>
 
         </Switch>
-    </HashRouter>
+    </BrowserRouter>
     </Provider>
   );
   

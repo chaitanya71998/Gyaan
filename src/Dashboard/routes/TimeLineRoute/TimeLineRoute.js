@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { observer, inject } from "mobx-react";
-import { Div } from "./styledComponents";
-import { dashboardStore } from "../../stores";
-import { observable } from "mobx";
-import { PostsRoute } from "../PostsRoute";
+
+import { Posts } from "../../common/Posts";
+
+import { Div,PostsBlock } from "./styledComponents";
 
 
 @inject("dashboardStore")
@@ -13,12 +13,49 @@ class TimeLineRoute extends Component{
 displayPosts=()=>{
     const {dashboardStore} = this.props;
     const {postsList} = dashboardStore;
-    const PO = postsList.map(post=>post);
     
     return postsList.map(post=>{
-        return<PostsRoute key= {post.postId} postData = {post}/>
+        const {
+            postId,
+            profilePic,
+            userName,
+            dateAndTime,
+            domainName,
+            title,
+            tags,
+            reactionsCount,
+            isUserReacted,
+            commentsCount,
+            didPostHasAnswer,
+            answer,
+            postType,
+            commentsLimitToShow,
+            comments
+        } = post
+    
+        return(
+        <PostsBlock key={postId}>
+            <Posts
+            postId =  {postId}
+            profilePic={profilePic}
+            userName={userName}
+            dateAndTime={dateAndTime}
+            domainName={domainName}
+            title={title}
+            tags={tags}
+            reactionsCount={reactionsCount}
+            isUserReacted={isUserReacted}
+            commentsCount={commentsCount}
+            didPostHasAnswer={didPostHasAnswer}
+            answer={answer}
+            postType={postType}
+            commentsLimitToShow={commentsLimitToShow}
+            comments = {comments}/>
+        </PostsBlock>
+        )
     })
 }
+
 
 render(){
    

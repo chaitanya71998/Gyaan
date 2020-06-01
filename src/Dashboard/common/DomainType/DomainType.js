@@ -2,7 +2,7 @@ import React,{ Component } from "react"
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
-import { DomainTypeButton } from "../commonStyledComponents";
+import { DomainTypeButton } from "../styledComponents";
 import { Button,Div } from "./styledComponents"
 @observer
 class DomainType extends Component{
@@ -34,8 +34,8 @@ class DomainType extends Component{
         const limitedDomainsList=domainsList.slice(0,this.limit);
         return( 
             <Div>
-                {limitedDomainsList.map(eachDomain=>{
-                    return <DomainTypeButton key={eachDomain.domain_id} id={eachDomain.id} onClick={this.onClickDomain}>{eachDomain.domain_name}</DomainTypeButton>
+                {limitedDomainsList.map(domain=>{
+                    return <DomainTypeButton key={domain.domain_id} id={domain.id} onClick={this.onClickDomain}>{domain.domain_name}</DomainTypeButton>
                 })}
                 {this.shouldShowAll?<Button onClick={this.onClickSeeAll}>see less</Button>:<Button onClick={this.onClickSeeAll}>see all</Button>}
             </Div>)

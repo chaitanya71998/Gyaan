@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import tw from "tailwind.macro";
-import { colors } from "../../../style_guide/themes/Colors";
+import { colors } from "../../../Common/style_guide/themes/Colors";
 
 const {bright_blue,white,ice_blue} = colors;
 

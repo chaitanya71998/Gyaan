@@ -1,8 +1,8 @@
 import { observable, action,computed } from "mobx";
 import { API_INITIAL, API_SUCCESS } from "@ib/api-constants";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
-import DomainModel from "../../Models/DomainModel/DomainModel";
-import PostModel from "../../Models/PostModel.js";
+import DomainModel from "../../models/DomainModel/DomainModel";
+import PostModel from "../../models/PostModel.js/index.js";
 import domainType from "../../../fixtures/domainTypes.json";
 import postsList from "../../../fixtures/postsList.json";
 
@@ -29,8 +29,6 @@ this.postListAPIError=null;
 this.domainsListAPIError=null;
 this.postsList=[];
 this.domainTypes = {};
-
-
 }
     @action.bound
     getDomainTypes(){

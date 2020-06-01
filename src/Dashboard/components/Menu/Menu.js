@@ -1,11 +1,11 @@
 import React,{ Component } from "react"
 import { observer } from "mobx-react";
-import { ImageElement } from "../../../components/common/ImageElement";
+import { ImageElement } from "../../../Common/components/ImageElement";
 import { AllDomains } from "../AllDomains";
 import { FollowingDomains } from "../FollowingDomains";
 import strings from "../../i18n/strings.json";
 import { Div,Logo,LogoBlock}  from"./styledComponents"
-import { withToggle } from "../../../hoc/withToggle";
+import { withToggle } from "../../../Common/hoc/withToggle";
 
 const {comapanyName} = strings;
 

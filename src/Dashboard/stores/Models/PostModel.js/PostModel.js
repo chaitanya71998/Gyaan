@@ -1,6 +1,6 @@
 import {action,computed, observable } from "mobx";
 import {CommentModel} from "../CommentModel";
-import ApprovedCommentModel from "../ApprovedCommentModel";
+import { ApprovedCommentModel } from "../ApprovedCommentModel";
 
 class PostModel {
     @observable tags
@@ -22,7 +22,7 @@ class PostModel {
         this.content = obj.content,
         this.domainName = obj.domain.domain_name,
         this.domainId  = obj.domain.domain_id,
-        this.tags = obj.tags.map(eachTag=>eachTag.tagname)
+        this.tags = obj.tags.map(tag=>tag.tagname)
         this.reactionsCount = obj.reactions_count;
         this.isUserReacted = obj.is_user_reacted;
         this.commentsCount = obj.comment_content;
@@ -37,13 +37,12 @@ class PostModel {
           this.postType="default";
           this.commentsLimitToShow = 2;
         }
-      
         this.comments = [];
         this.setComments()
     }
     @action.bound
     setComments(){
-        this.postData.comments.map(eachComment=>this.comments.push(new CommentModel(eachComment)))
+        this.postData.comments.map(comment=>this.comments.push(new CommentModel(comment)))
     }
     @action.bound
     onClickReactionOfPost(){

@@ -1,7 +1,7 @@
 import {create} from   'apisauce';
 
-import { networkCallWithApisauce } from '../../../utils/APIUtils.js'
-import { apiMethods } from '../../../constants/APIConstants';
+import { networkCallWithApisauce } from '../../../Common/utils/APIUtils.js'
+import { apiMethods } from '../../../Common/constants/APIConstants';
 
 class AuthService{
     api

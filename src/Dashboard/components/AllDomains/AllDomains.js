@@ -1,7 +1,7 @@
 import React,{ Component } from "react"
 import { observer,inject } from "mobx-react";
 import { Div,Button} from "./styledComponents"
-import { DomainTypeButton } from "../../common/commonStyledComponents";
+import { DomainTypeButton } from "../../common/styledComponents";
 
 
 @inject("dashboardStore")

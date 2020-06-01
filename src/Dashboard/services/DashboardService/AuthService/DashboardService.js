@@ -1,7 +1,7 @@
 import {create} from   'apisauce';
 
-import { networkCallWithApisauce } from '../../../../utils/APIUtils'
-import { apiMethods } from '../../../../constants/APIConstants';
+import { networkCallWithApisauce } from '../../../../Common/utils/APIUtils'
+import { apiMethods } from '../../../../Common/constants/APIConstants';
 
 class DashboardService{
     api

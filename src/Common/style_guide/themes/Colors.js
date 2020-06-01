@@ -1,0 +1,31 @@
+export const colors=
+    {
+        "lightblue" : "#4cc7f4",
+        "greenish_teal" :  "#2dca73",
+        "white_two" :  "#fbfbfb",
+        "light_blue_grey" : "#d7dfe9",
+        "cool_grey" : " #b5b7c4",
+        "yellow_orange" : " #ffb800",
+        "turquoise_blue" : " #00b2ca",
+        "steel_60" : " rgba(126, 133, 142, 0.6)",
+        "cobalt" : " #1a3f70",
+        "algae_green" : " #26bf6a",
+        "yellow_orange_two" : " #eaa800",
+        "cobalt_two" : " #1b3f70",
+        "black" : " #000000",
+        "black_60" : " rgba(0, 0, 0, 0.6)",
+        "ocean_blue" : " #036db0",
+        "neon_red_5" : " rgba(255, 11, 55, 0.05)",
+        "jade" : " #1db05f",
+        "neon_red" : " #ff0b37",
+        "white" : "white",
+        "bright_blue_10":"rgba(11, 105, 255, 0.1)",
+        "light_blue_grey_40" : " rgba(215, 223, 233, 0.4)",
+        "light_blue_grey_24" : " rgba(215, 223, 233, 0.24)",
+        "dark_blue_grey" : " #171f46",
+        "bright_blue" : " #0b69ff",
+        "steel" : " #7e858e",
+        "ice_blue":"#f1f7ff",
+        "purplish_blue":"#6b38fb"
+      
+}

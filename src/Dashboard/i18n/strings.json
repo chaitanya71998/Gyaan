@@ -3,5 +3,10 @@
      "logo":"logo",
      "profile":"Profilepic",
      "writePost":"write post",
-     "followingDomainsString":"Following Domains"
+     "followingDomainsString":"Following Domains",
+     "enterComment" :"Enter comment",
+     "seeAllComments":"See all comments",
+     "seeLessComments":"See less comments",
+     "noComments" :"No comments yet "
+
 }

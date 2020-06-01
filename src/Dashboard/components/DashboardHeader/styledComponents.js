@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import tw from "tailwind.macro"
-import { colors } from "../../../style_guide/themes/Colors";
+import { colors } from "../../../Common/style_guide/themes/Colors";
 
 const {steel_60,light_blue_grey,bright_blue,white} =colors;
 
@@ -62,7 +62,7 @@ color: ${white};
 
 export const HeaderBlock= styled.div`
 ${tw`flex p-4 items-center justify-between`}
-height:73px;
+height:10vh;
 border-bottom:2px solid ${steel_60}
 `;
 

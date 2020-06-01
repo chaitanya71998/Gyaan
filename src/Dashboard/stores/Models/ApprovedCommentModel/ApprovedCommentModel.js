@@ -1,32 +1,29 @@
 import {action,computed, observable } from "mobx";
+import { CommentModel } from "../CommentModel";
 
-class ApprovedCommentModel {
-    @observable replies;
-    @observable repliesCount;
-    @observable isUserReacted;
-    @observable showAllReplies;
 
-    constructor(obj){
-        this.commentData = obj;
-        this.id = obj.comment_id;
-        this.user = obj.commented_by;
-        this.userId = obj.commented_by.user_id;
-        this.userName =obj.commented_by.name;
-        this.userProfilePic = obj.commented_by.profile_pic;
-        this.commentedAt = obj.commented_at;
-        this.commentedContent = obj.comment_content ;
-        this.isUserReacted=obj.is_user_reacted;
-        this.repliesCount = obj.replies_count;
-        this.reactionsCount = obj.reactions_count;
-        this.replies = new Map();
-        this.setReplies();
-        this.showAllReplies=false;
-        this.approvedUser= obj.approved_by.name;
-        this.approvedUserId = obj.approved_by.user_id;
-        this.approvedUserDomain = obj.approved_by.domain_name;
-        this.approvedUserDomainID = obj.approved_by.domain_id;
+class ApprovedCommentModel extends CommentModel{
+
+    approvedUser;
+    approvedUserId;
+    approvedUserDomain ;
+    approvedUserDomainID ;
+    constructor(commentObj)
+    {
+        super(commentObj);
+        this.init(commentObj)
     }
-    
+
+    @action.bound
+    init(commentObj){
+        const { approved_by} = commentObj;
+        const { name,user_id,domain_name,domain_id } = approved_by
+        this.approvedUser= name;
+        this.approvedUserId = user_id;
+        this.approvedUserDomain = domain_name;
+        this.approvedUserDomainID = domain_id;
+    }
+
     @action.bound
     setReplies(){
         this.commentData.replies.forEach(reply=>{
@@ -55,7 +52,7 @@ class ApprovedCommentModel {
         }
         return [...this.replies][0];
     }
-    
-} 
+}
 
-export default ApprovedCommentModel;
+
+export  { ApprovedCommentModel };
