@@ -5,9 +5,10 @@ import { observable } from "mobx";
 import { getAccessToken } from "../../../Common/utils/StorageUtils"
 
 import { SignInForm } from "../../components/SignInForm";
+import { paths } from "../../../Common/constants/NavigationConstants";
+const {dashboard} = paths
 
-
-@inject("authSignInStore")
+@inject("authStore")
 @observer
 class SignInRoute extends Component{
     @observable username;
@@ -28,7 +29,7 @@ class SignInRoute extends Component{
               <Redirect
               to={
                 {
-                  pathname:"/home-screen",
+                  pathname:"/homescreen",
                 }
               }/>)
       }
@@ -39,20 +40,19 @@ class SignInRoute extends Component{
             username:this.username,
             password:this.password
         }
-        await this.props.authSignInStore.userSignIn(userCredenditals);
+        await this.props.authStore.userSignIn(userCredenditals);
         if(getAccessToken()){
             this.hasToken=true;    
         }
         else{
-            this.hasToken=false;
-            this.errorMessage='incorrect username/password'
+            this.hasToken=true;
+            this.errorMessage='incorrect username/password';
         }  
     }
     handleSubmit=(event)=>{
         event.preventDefault();
-        this.handleErrorMessage()
-        this.username='';
-        this.password='';
+        this.handleErrorMessage();
+        
     }
     handlePasswordChange=(event)=>{
         this.emptyErrorMessage();
@@ -73,7 +73,7 @@ class SignInRoute extends Component{
         }
         else if(this.username!==''&& this.password==='')
         {
-            this.errorMessage = 'Please enter Password';
+            this.errorMessage = 'Please enter password';
         }
         else if(this.username===''&& this.password!=='') {
             this.errorMessage = 'Please enter username';

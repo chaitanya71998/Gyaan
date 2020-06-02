@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { observable } from "mobx";
 import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
 
-import { FollowingDomainsTypeList } from "../FollowingDomainsTypeList";
+import  FollowingDomainsTypeList  from "../FollowingDomainsTypeList";
 
 import { Button,Div } from "./styledComponents";
 

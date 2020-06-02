@@ -23,7 +23,8 @@ border-radius: 66.3px;
 background-color:${bright_blue_10};
 `;
 
-export const DomainExperts = styled.div``;
+export const DomainExperts = styled.div`
+${tw`flex flex-col items-center justify-center`}`;
 
 export const Description = styled.div``;
 

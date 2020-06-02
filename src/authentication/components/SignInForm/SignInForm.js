@@ -13,8 +13,8 @@ import { ImageElement } from "../../../Common/components/ImageElement";
 const {
     iBhubs,
     hiThere,
-    pleaseSignUp,
-    loginIn,
+    login,
+    Login,
     usernameLabel,
     passwordLabel,
     signUp,
@@ -32,7 +32,7 @@ class SignInForm extends Component{
     handlePasswordChange,
     handleSubmit}=this.props;
 
-    const isNotCorrectUser = errorMessage?true:false;
+    
         return (
         
         <SignInBlock>
@@ -42,7 +42,7 @@ class SignInForm extends Component{
                     alt={iBhubs}/>
                 
                 <Typo32DarkBlueGreyRubikRegular>
-                    {hiThere}<br/>{pleaseSignUp}  
+                    {hiThere}<br/>{login}  
                 </Typo32DarkBlueGreyRubikRegular>
                 
                 <Form>
@@ -51,16 +51,18 @@ class SignInForm extends Component{
                         type={"text"}  
                         value={username} 
                         onChange={handleusernameChange} 
-                        isCorrect={isNotCorrectUser}/>
+                        isCorrect={errorMessage.includes('username')}/>
                     
-                    <Typo12NeonRedHKGroteskRegular>{errorMessage}</Typo12NeonRedHKGroteskRegular>
-                    <Typo12SteelHKGroteskSemiBold>{passwordLabel}</Typo12SteelHKGroteskSemiBold>
+                      <Typo12SteelHKGroteskSemiBold>{passwordLabel}</Typo12SteelHKGroteskSemiBold>
                     
                     <InputElement  
                         type={"password"} 
                         value={password}
-                        onChange={handlePasswordChange}/>
-                    <SignInButton type={"button"} onClick={handleSubmit} >{loginIn}</SignInButton>
+                        onChange={handlePasswordChange}
+                        isCorrect={errorMessage.includes("password")}/>
+                    <SignInButton type={"button"} onClick={handleSubmit} >{Login}</SignInButton>
+                    <Typo12NeonRedHKGroteskRegular>{errorMessage}</Typo12NeonRedHKGroteskRegular>
+                  
                 </Form>
                 <SignUpText>{dontHaveAnAccount}<SignUpLink >{signUp}</SignUpLink></SignUpText>
             </Div>

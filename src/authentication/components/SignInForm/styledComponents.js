@@ -9,15 +9,15 @@ export const SignInButton = styled.button`
   height: 40px;
   border-radius: 4px;
   background-color:${bright_blue};
-  margin-top:32px;
-  margin-bottom:32px;
+  margin-top:24px;
+  margin-bottom:24px;
   color:${white};
   `; 
 export const Div =styled.div`
   width: 536px;
   border-radius: 8px;
   background-color: ${white};
-${tw`flex flex-col border justify-center  items-center`}
+${tw`flex flex-col border justify-center py-4 items-center`}
 `;
 
 export const Warning = styled.p`
@@ -35,5 +35,5 @@ ${tw`flex flex-col justify-center  `}
 `;
 
 export const SignInBlock = styled.div`
-${tw`flex h-screen justify-center items-center`}
+${tw`flex h-screen justify-center items-center  `}
 background-color: ${ice_blue}`;

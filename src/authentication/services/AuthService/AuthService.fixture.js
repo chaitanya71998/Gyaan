@@ -8,12 +8,7 @@ import userSignInResponse from "../../fixtures/userSignInResponse.json";
 
 
 class AuthFixtureService{
-    api
-    constructor(){
-        this.api = create({
-            baseURL: '127.0.0.1:8080/api/gyaan/',
-        })
-    }
+    
     getUserAPI(requestObject){
         return resolveWithTimeout(userSignInResponse)
     }

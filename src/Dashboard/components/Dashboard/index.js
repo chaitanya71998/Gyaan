@@ -1,2 +1,2 @@
-import  { Dashboard } from "./Dashboard";
-export { Dashboard };
+import   Dashboard  from "./Dashboard";
+export default Dashboard ;

@@ -13,7 +13,7 @@ import  DomainRoute  from "./Dashboard/routes/DomainRoute";
 import { FollowingDomains } from "./Dashboard/components/FollowingDomains";
 
 
-const {signInForm,dashboard} = paths
+const {signInForm,dashboard,DomainPathWithIdAsParameter} = paths
 
 
 @observer   
@@ -27,7 +27,7 @@ class App extends React.Component{
           <Route exact path={signInForm}>
             <SignInRoute/>
           </Route>
-          <Route exact path ="Domain/:id">
+          <Route exact path ={DomainPathWithIdAsParameter}>
             <DomainRoute/>
           </Route>
           <Route exact path={dashboard}>

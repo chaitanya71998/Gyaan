@@ -156,7 +156,7 @@ font-style: normal;
 line-height: 1.33;
 letter-spacing: normal;
 color: ${neon_red};
-margin:8px 0px;`;
+`;
 export const Typo12yellowOrangeHKGroteskSemiBold = styled.span`
 ${tw`mx-2`}
 font-family: HKGrotesk;

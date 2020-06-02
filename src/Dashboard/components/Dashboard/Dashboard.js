@@ -4,12 +4,13 @@ import { observer } from "mobx-react";
 import { Menu } from "../Menu"
 import { MenuBlock,DashboardBlock, Div } from "./styledComponents";
 import { DashboardHeader } from "../DashboardHeader";
+import { withRouter } from "react-router-dom";
 
 @observer
 class Dashboard extends Component{
 
 render(){
-    const {Timeline}= this.props;
+    const {TimeLine}= this.props;
     return(
         <DashboardBlock>
             <MenuBlock>
@@ -17,11 +18,11 @@ render(){
             </MenuBlock>
             <Div>
                 <DashboardHeader/>
-                <Timeline/>
+                <TimeLine/>
             </Div>  
         </DashboardBlock>
     )
 }
 }
 
-export { Dashboard }
+export default withRouter(Dashboard );

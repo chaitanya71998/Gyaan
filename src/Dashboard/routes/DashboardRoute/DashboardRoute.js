@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { observer, inject, Provider } from "mobx-react";
 
-import { Dashboard } from "../../components/Dashboard";
+import  Dashboard  from "../../components/Dashboard";
 import { TimeLine } from "../../components/TimeLine";
 
 import { Div } from "./styledComponents";
@@ -17,7 +17,7 @@ class DashboardRoute extends Component{
 render(){
     return(  
         <Div>
-            <Dashboard Timeline={TimeLine}/>
+            <Dashboard TimeLine={TimeLine}/>
         </Div>
     )
 }

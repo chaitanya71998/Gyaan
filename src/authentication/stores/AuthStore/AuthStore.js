@@ -16,20 +16,20 @@ class AuthStore {
     }
 
     @action.bound
-    userSignIn(obj){     
-        const usersPromise = this.authAPIService.getUserAPI(obj);
-        return bindPromiseWithOnSuccess(usersPromise)
-        .to(this.setGetUserSignInAPIStatus,this.setUserSignInAPIResponse)
-        .catch(this.setGetUserSignInAPIError);
+    userSignIn(requestObj){     
+        const usersPromise = this.authAPIService.getUserAPI(requestObj);
+        console.log(usersPromise)
+        // return bindPromiseWithOnSuccess(usersPromise)
+        // .to(this.setGetUserSignInAPIStatus,this.setUserSignInAPIResponse)
+        // .catch(this.setGetUserSignInAPIError);
 
     }
     @action.bound
     setUserSignInAPIResponse(response){
-        console.log(response);
+        setAccessToken(response.access_token);
     }
     @action.bound
     setUserSignInAPIError(error){
-        console.log(error)
         this.getUserSignInAPIError=error;
     }
     @action.bound
