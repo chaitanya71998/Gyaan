@@ -7,6 +7,7 @@ import { Typo12DarkBlueGreyHKGroteskRegular, Typo16BrightBlueHKGroteskBold ,Typo
 
 import { Div,CommentBlock, AnswerTypeComment, CommentHeader,DateAndTime ,Footer,Numbers,CommentReactions, CommentData, CommenterDetails } from "./styledComponents";
 import { Thumbnail } from "../../../Common/components/Thumbnail"
+import { SmallThumbnail } from "../../../Common/components/Thumbnail/styledComponents";
 
 
 @observer
@@ -45,8 +46,7 @@ render(){
     return(
         <CommentBlock>
             <CommentHeader>
-                <Thumbnail 
-                    thumbnailType={"small"}
+                <SmallThumbnail 
                     src={profilePic}
                     alt={authorName[0]}/>
                 <CommenterDetails>

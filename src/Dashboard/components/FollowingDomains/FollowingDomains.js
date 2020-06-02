@@ -1,18 +1,18 @@
 import React,{ Component } from "react"
-import { observer } from "mobx-react";
-import { dashboardStore } from "../../stores";
+import { observer,inject } from "mobx-react";
 import { Div } from "./styledComponents";
-import { DomainType } from "../../common/DomainType";
+import  DomainType  from "../../common/DomainType";
 import strings  from "../../i18n/strings.json";
 
-
+@inject("dashboardStore")
 @observer
 class FollowingDomains extends Component{
 render(){
     
     const { followingDomainsString } = strings;
-    const {followingDomains}=dashboardStore;
-    const {onToggle,toggleStatus}=this.props;
+    const { dashboardStore } = this.props;
+    const { followingDomains }=dashboardStore;
+    const { onToggle,toggleStatus }=this.props;
     
     if(followingDomains){
         return(

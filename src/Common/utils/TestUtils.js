@@ -1,5 +1,5 @@
 export function resolveWithTimeout(response) {
-    const timeOut = isTestEnvironment() ? 0 : 2000;
+    const timeOut=1000;
     return new Promise((resolve) => {
       setTimeout(() => resolve(response), timeOut);
     });

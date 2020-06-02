@@ -8,6 +8,9 @@ import HomePage from "./Common/components/HomePage";
 import { paths } from "./Common/constants/NavigationConstants";
 import { SignInRoute } from "./Authentication/routes/SignInRoute";
 import { DashboardRoute } from "./Dashboard/routes/DashboardRoute";
+import  DomainRoute  from "./Dashboard/routes/DomainRoute";
+
+import { FollowingDomains } from "./Dashboard/components/FollowingDomains";
 
 
 const {signInForm,dashboard} = paths
@@ -23,6 +26,9 @@ class App extends React.Component{
        <Switch>
           <Route exact path={signInForm}>
             <SignInRoute/>
+          </Route>
+          <Route exact path ="Domain/:id">
+            <DomainRoute/>
           </Route>
           <Route exact path={dashboard}>
             <DashboardRoute/>
@@ -41,3 +47,8 @@ class App extends React.Component{
 }
 export  default App;
         
+/*
+<Route exact path = "followingDomains/:id">
+            <DomainRoute/>
+          </Route>
+*/

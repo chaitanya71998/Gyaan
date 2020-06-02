@@ -31,3 +31,5 @@ border-radius:50%;
 :alt{
     ${tw`flex items-center`}
 }`;
+
+export const Img = styled.img``;

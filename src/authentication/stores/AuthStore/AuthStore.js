@@ -5,7 +5,7 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise';
 import { setAccessToken, clearUserSession, } from '../../../Common/utils/StorageUtils';
 
 
-class AuthSignInStore {
+class AuthStore {
     @observable getUserSignInAPIStatus 
     @observable getUserSignInAPIError 
     @observable token
@@ -55,4 +55,4 @@ class AuthSignInStore {
 }
 
 
-export  {AuthSignInStore};
+export  { AuthStore };

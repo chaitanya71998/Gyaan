@@ -1,9 +1,13 @@
 import React,{ Component } from "react"
 import { observer } from "mobx-react";
+import { withRouter } from "react-router-dom";
 import { observable } from "mobx";
 import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
-import { DomainTypeButton } from "../styledComponents";
-import { Button,Div } from "./styledComponents"
+
+import { FollowingDomainsTypeList } from "../FollowingDomainsTypeList";
+
+import { Button,Div } from "./styledComponents";
+
 @observer
 class DomainType extends Component{
     @observable domainsList;
@@ -17,11 +21,7 @@ class DomainType extends Component{
         this.limit=3;
         
     }
-
-    onClickDomain=(event)=>{
-        const {openDomain} = this.props;
-        openDomain(event.target.id)
-    }
+  
 
     onClickSeeAll=(event)=>{
         const {domainsList} = this.props;  
@@ -31,14 +31,7 @@ class DomainType extends Component{
     }
     displayDomains=()=>{
         const {domainsList} = this.props;
-        const limitedDomainsList=domainsList.slice(0,this.limit);
-        return( 
-            <Div>
-                {limitedDomainsList.map(domain=>{
-                    return <DomainTypeButton key={domain.domain_id} id={domain.id} onClick={this.onClickDomain}>{domain.domain_name}</DomainTypeButton>
-                })}
-                {this.shouldShowAll?<Button onClick={this.onClickSeeAll}>see less</Button>:<Button onClick={this.onClickSeeAll}>see all</Button>}
-            </Div>)
+       return <FollowingDomainsTypeList  onClickSeeAll={this.onClickSeeAll}limit={this.limit} shouldShowAll={this.shouldShowAll} domainsList={domainsList}/>
     }
 render(){
     const {toggleStatus, onToggle,domainName} =this.props;
@@ -51,4 +44,4 @@ render(){
 }
 }
 
-export { DomainType }
+export   default withRouter(DomainType )

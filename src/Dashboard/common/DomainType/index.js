@@ -1,2 +1,2 @@
-import { DomainType } from "./DomainType";
-export { DomainType }
+import DomainType  from "./DomainType";
+export default DomainType ;

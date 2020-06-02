@@ -2,22 +2,22 @@ import React, { Component } from "react"
 import { observer, inject, Provider } from "mobx-react";
 
 import { Dashboard } from "../../components/Dashboard";
+import { TimeLine } from "../../components/TimeLine";
 
 import { Div } from "./styledComponents";
-import { dashboardStore } from "../../stores";
 
 @inject("dashboardStore")
 @observer
 class DashboardRoute extends Component{
     componentDidMount(){
-        const {dashboardStore} = this.props; 
+        const {dashboardStore} = this.props;
         dashboardStore.getDomainTypes();
         dashboardStore.getPosts();
     }
 render(){
     return(  
         <Div>
-            <Dashboard/>
+            <Dashboard Timeline={TimeLine}/>
         </Div>
     )
 }

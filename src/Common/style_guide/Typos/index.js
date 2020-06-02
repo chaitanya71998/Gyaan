@@ -3,7 +3,7 @@ import tw from "tailwind.macro";
 
 import { colors } from "../themes/Colors";
 
-const {dark_blue_grey,neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_60,neon_red,bright_blue,white} =colors;
+const {dark_blue_grey,neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_60,bright_blue,white} =colors;
 
 export const Typo32DarkBlueGreyRubikRegular = styled.p`
 width: 214px;

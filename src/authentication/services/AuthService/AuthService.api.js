@@ -3,7 +3,7 @@ import {create} from   'apisauce';
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils.js'
 import { apiMethods } from '../../../Common/constants/APIConstants';
 
-class AuthService{
+class AuthAPIService{
     api
     constructor(){
         this.api = create({
@@ -21,4 +21,4 @@ class AuthService{
     
 }
 
-export default AuthService;
+export default AuthAPIService;

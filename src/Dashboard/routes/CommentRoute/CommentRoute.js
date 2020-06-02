@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { observer } from "mobx-react";
 import { Div } from "./styledComponents";
 import { Comment } from "../../common/Comment";
-import { AiFillCodeSandboxCircle } from "react-icons/ai";
 
 
 @observer

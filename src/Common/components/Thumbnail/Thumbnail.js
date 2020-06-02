@@ -1,6 +1,6 @@
 import React,{ Component } from "react"
 
-import { LargeThumbnail,MediumThumbnail,SmallThumbnail } from "./styledComponents";
+import {Img, LargeThumbnail,MediumThumbnail,SmallThumbnail } from "./styledComponents";
 
 class Thumbnail extends Component{
 
@@ -8,19 +8,19 @@ thumbnailElement=()=>{
     const { thumbnailType } = this.props;
     switch(thumbnailType){
         case("large"):{
-            return (<LargeThumbnail/>)
+            return (<LargeThumbnail />)
             break;
         }
         case("medium"):{
-            return (<MediumThumbnail/>)
+            return (<MediumThumbnail />)
             break;
         }
         case("small"):{
-            return (<SmallThumbnail/>)
+            return (<SmallThumbnail />)
             break;
         }
         default:{
-            <></>
+            return(<Img/> )
         }
     }
 

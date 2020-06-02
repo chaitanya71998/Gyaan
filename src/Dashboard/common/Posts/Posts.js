@@ -84,7 +84,7 @@ class Posts extends Component{
             commentsLimitToShow,
             comments
         }=this.props;
-        console.log(comments.length,this.isToShowAllComments)
+       
         const numberLimit = this.isToShowAllComments?comments.length:commentsLimitToShow;
         const commentsList=comments.map(comment=>{
             return <CommentRoute key={comment.id} isAnswerToPost={false} id={comment.id} commentData={comment}/>
