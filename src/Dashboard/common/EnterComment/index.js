@@ -1,3 +1,3 @@
-import { EnterComment } from "./EnterComment";
+import { EnterComment } from './EnterComment'
 
-export { EnterComment };
+export { EnterComment }

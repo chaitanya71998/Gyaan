@@ -1,3 +1,3 @@
-import { withToggle } from "./withToggle.js";
+import { withToggle } from './withToggle.js'
 
-export { withToggle };
+export { withToggle }

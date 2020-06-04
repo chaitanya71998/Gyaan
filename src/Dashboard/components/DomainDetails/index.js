@@ -1,3 +1,3 @@
-import { DomainDetails } from "./DomainDetails";
+import { DomainDetails } from './DomainDetails'
 
 export { DomainDetails }

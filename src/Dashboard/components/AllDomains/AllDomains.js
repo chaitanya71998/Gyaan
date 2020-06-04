@@ -1,29 +1,30 @@
-import React,{ Component } from "react"
-import { observer,inject } from "mobx-react";
-import { Div,Button} from "./styledComponents"
-import { DomainTypeButton } from "../../common/styledComponents";
-import { withRouter } from "react-router-dom";
-import { paths } from "../../../Common/constants/NavigationConstants";
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
+import { Div, Button } from './styledComponents'
+import { DomainTypeButton } from '../../common/styledComponents'
+import { withRouter } from 'react-router-dom'
+import { paths } from '../../../Common/constants/NavigationConstants'
 
-const {dashboard}=paths;
+const { dashboard } = paths
 
-@inject("dashboardStore")
+@inject('dashboardStore')
 @observer
-class AllDomains extends Component{
-
-  onClickAllDomainsButton=(event)=>{
-    const {dashboardStore} = this.props;
-    const {getPosts } = dashboardStore;
-    getPosts();
-    this.props.history.push(dashboard)
-
-  }
-  render(){
-    
+class AllDomains extends Component {
+   onClickAllDomainsButton = event => {
+      const { dashboardStore } = this.props
+      const { getPosts } = dashboardStore
+      getPosts()
+      this.props.history.push(dashboard)
+   }
+   render() {
       return (
-          <Div><DomainTypeButton onClick={this.onClickAllDomainsButton}>All Domains</DomainTypeButton></Div>
+         <Div>
+            <DomainTypeButton onClick={this.onClickAllDomainsButton}>
+               All Domains
+            </DomainTypeButton>
+         </Div>
       )
-  }
+   }
 }
 
-export default withRouter (AllDomains);
+export default withRouter(AllDomains)

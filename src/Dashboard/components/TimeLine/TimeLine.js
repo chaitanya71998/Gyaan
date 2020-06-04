@@ -1,20 +1,19 @@
-import React, { Component } from "react"
-import { observer, inject } from "mobx-react";
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
 
-import  Posts  from "../../common/Posts";
+import Posts from '../../common/Posts'
 
-import { Div,PostsBlock } from "./styledComponents";
+import { Div, PostsBlock } from './styledComponents'
 
-@inject("dashboardStore")
+@inject('dashboardStore')
 @observer
-class TimeLine extends Component{
+class TimeLine extends Component {
+   displayPosts = () => {
+      const { dashboardStore } = this.props
+      const { postsList } = dashboardStore
 
-displayPosts=()=>{
-    const {dashboardStore} = this.props;
-    const {postsList} = dashboardStore;
-    
-    return postsList.map(post=>{
-        const {
+      return postsList.map(post => {
+         const {
             postId,
             profilePic,
             userName,
@@ -30,41 +29,36 @@ displayPosts=()=>{
             postType,
             commentsLimitToShow,
             comments
-        } = post
-        return(
-        <PostsBlock key={postId}>
-            <Posts
-            postId =  {postId}
-            profilePic={profilePic}
-            userName={userName}
-            dateAndTime={dateAndTime}
-            domainName={domainName}
-            title={title}
-            tags={tags}
-            reactionsCount={reactionsCount}
-            isUserReacted={isUserReacted}
-            commentsCount={commentsCount}
-            didPostHasAnswer={didPostHasAnswer}
-            answer={answer}
-            postType={postType}
-            commentsLimitToShow={commentsLimitToShow}
-            comments = {comments}/>
-        </PostsBlock>
-        )
-    })
-}
+         } = post
+         return (
+            <PostsBlock key={postId}>
+               <Posts
+                  postId={postId}
+                  profilePic={profilePic}
+                  userName={userName}
+                  dateAndTime={dateAndTime}
+                  domainName={domainName}
+                  title={title}
+                  tags={tags}
+                  reactionsCount={reactionsCount}
+                  isUserReacted={isUserReacted}
+                  commentsCount={commentsCount}
+                  didPostHasAnswer={didPostHasAnswer}
+                  answer={answer}
+                  postType={postType}
+                  commentsLimitToShow={commentsLimitToShow}
+                  comments={comments}
+               />
+            </PostsBlock>
+         )
+      })
+   }
 
-
-render(){
-   
-    const {dashboardStore} = this.props;
-    const {postsList} = dashboardStore;
-    return(
-        <Div>
-            {this.displayPosts()}
-        </Div>
-    )
-}
+   render() {
+      const { dashboardStore } = this.props
+      const { postsList } = dashboardStore
+      return <Div>{this.displayPosts()}</Div>
+   }
 }
 
 export { TimeLine }

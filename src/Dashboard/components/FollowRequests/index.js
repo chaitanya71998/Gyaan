@@ -1,3 +1,3 @@
-import { FollowRequests } from "./FollowRequests";
+import { FollowRequests } from './FollowRequests'
 
 export { FollowRequests }

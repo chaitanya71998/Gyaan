@@ -1,3 +1,3 @@
-import { Thumbnail } from "./Thumbnail";
+import { Thumbnail } from './Thumbnail'
 
-export { Thumbnail };
+export { Thumbnail }

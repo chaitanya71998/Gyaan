@@ -1,3 +1,3 @@
-import { ApprovedCommentModel } from "./ApprovedCommentModel";
+import { ApprovedCommentModel } from './ApprovedCommentModel'
 
-export  { ApprovedCommentModel };
+export { ApprovedCommentModel }

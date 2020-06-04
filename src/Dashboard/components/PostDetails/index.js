@@ -1,3 +1,3 @@
-import  { PostDetails }  from "./PostDetails";
+import { PostDetails } from './PostDetails'
 
-export  { PostDetails };
+export { PostDetails }

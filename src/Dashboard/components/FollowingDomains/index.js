@@ -1,3 +1,3 @@
-import { FollowingDomains } from "./FollowingDomains";
+import { FollowingDomains } from './FollowingDomains'
 
 export { FollowingDomains }

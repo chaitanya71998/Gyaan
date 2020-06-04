@@ -1,3 +1,3 @@
-import { UserPostsUnderPending } from "./UserPostsUnderPending";
+import { UserPostsUnderPending } from './UserPostsUnderPending'
 
 export { UserPostsUnderPending }

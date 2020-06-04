@@ -1,3 +1,3 @@
-import  FollowingDomainsTypeList  from "./FollowingDomainsTypeList";
- 
-export default FollowingDomainsTypeList 
+import FollowingDomainsTypeList from './FollowingDomainsTypeList'
+
+export default FollowingDomainsTypeList

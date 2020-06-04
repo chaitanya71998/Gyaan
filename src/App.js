@@ -28,17 +28,21 @@ class App extends React.Component {
                      <SignInRoute />
                   </Route>
                   <Route exact path={dashboard}>
-                     <DashboardRoute />
+                     {getAccessToken() ? <DashboardRoute /> : <SignInRoute />}
                   </Route>
                   <Route exact path={domainPath}>
-                     <DomainRoute />
+                     {getAccessToken() ? <DomainRoute /> : <SignInRoute />}
                   </Route>
                   <Route exact path={postPath}>
-                     <PostsRoute />
+                     {getAccessToken() ? <PostsRoute /> : <SignInRoute />}
+                  </Route>
+
+                  <Route path='/HomePage'>
+                     <HomePage />
                   </Route>
 
                   <Route path='/'>
-                     {getAccessToken() ? <DashboardRoute /> : <SignInRoute />}
+                     {getAccessToken() ? <DomainRoute /> : <SignInRoute />}
                   </Route>
                </Switch>
             </BrowserRouter>

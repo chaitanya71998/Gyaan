@@ -1,253 +1,266 @@
-import styled from "@emotion/styled";
-import tw from "tailwind.macro";
+import styled from '@emotion/styled'
+import tw from 'tailwind.macro'
 
-import { colors } from "../themes/Colors";
+import { colors } from '../themes/Colors'
 
-const {dark_blue_grey, black, neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_40,bright_blue,white} =colors;
+const {
+   dark_blue_grey,
+   black,
+   neon_red,
+   greenish_teal,
+   purplish_blue,
+   yellow_orange,
+   steel,
+   steel_40,
+   bright_blue,
+   white
+} = colors
 
 export const Typo32DarkBlueGreyRubikRegular = styled.p`
-width: 214px;
-height: 80px;
-text-align:center;
-font-family: Rubik;
-  font-size: 32px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: ${dark_blue_grey};
-  margin:24px 0px;
-`;
+   width: 214px;
+   height: 80px;
+   text-align: center;
+   font-family: Rubik;
+   font-size: 32px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+   margin: 24px 0px;
+`
 export const Typo32BlackHKGrostek = styled.p`
-
-font-family: HKGrostek;
-  font-size: 32px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: ${black};
-
-`;
-export const Typo24DarkBlueGreyHKGroteskBold =styled.p`
-    font-family: HKGrotesk;
-    font-size: 24px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color: ${dark_blue_grey};
-  `;
+   font-family: HKGrostek;
+   font-size: 32px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
+   letter-spacing: normal;
+   color: ${black};
+`
+export const Typo24DarkBlueGreyHKGroteskBold = styled.p`
+   font-family: HKGrotesk;
+   font-size: 24px;
+   font-weight: bold;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
 export const Typo18DarkBlueGreyHKGroteskMedium = styled.p`
-font-family: HKGrotesk;
-font-size: 18px;
-font-weight: 500;
-font-stretch: normal;
-font-style: normal;
-line-height: 1.33;
-letter-spacing: normal;
-color: ${dark_blue_grey};
-`;
+   font-family: HKGrotesk;
+   font-size: 18px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
 
 export const Typo18WhiteHKGroteskRegular = styled.span`
-font-family: HKGrotesk;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  color: ${white};`;
+   font-family: HKGrotesk;
+   font-size: 18px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${white};
+`
 
- 
-export const Typo16BrightBlueHKGroteskBold =styled.span`
-    font-family: HKGrotesk;
-    font-size: 12px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color: ${bright_blue};
-  `;
+export const Typo16BrightBlueHKGroteskBold = styled.span`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: bold;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${bright_blue};
+`
 export const Typo16DarkBlueGreyHKGroteskRegular = styled.span`
-${tw`mx-2`}
-  font-family: HKGrotesk;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  color: ${dark_blue_grey};
-`;
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 16px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.5;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
 export const Typo14Steel60HKGroteskRegular = styled.span`
-${tw`mx-2`}
-  font-family: HKGrotesk;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: ${steel_40};
-  `;
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${steel_40};
+`
 
-  export const Type14NeonRedHKGroteskSemiBold = styled.span`
-  font-family: HKGrotesk;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: ${neon_red};`;
+export const Type14NeonRedHKGroteskSemiBold = styled.span`
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${neon_red};
+`
 
 export const Typo14SteelHKGroteskRegular = styled.p`
-font-family: HKGrotesk;
-  font-size: 14px;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  font-weight: 600;
-  color: ${steel};
-  margin:0px;
-  padding:0px;`;
-  
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   font-weight: 600;
+   color: ${steel};
+   margin: 0px;
+   padding: 0px;
+`
+
 export const Typo14WhiteHKGroteskSemiBold = styled.p`
-font-family: HKGrotesk;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: ${white};`;
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${white};
+`
 
 export const Typo14Steel60HKGrotesk_Regular = styled.p`
-font-family: HKGrotesk;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: ${steel_40};`;
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${steel_40};
+`
 
 export const Typo14DarkBlueGreyHKGroteskRegular = styled.p`
-font-family: HKGrotesk;
-font-size: 14px;
-font-weight: normal;
-font-stretch: normal;
-font-style: normal;
-line-height: 1.71;
-letter-spacing: normal;
-color:${dark_blue_grey};`;
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
 
 export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.p`
-font-family: HKGrotesk;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: ${dark_blue_grey};
-  margin:0px;
-  padding:0px;
-`; 
-export const Typo12NeonRedHKGroteskRegular=styled.label`
-font-family: HKGrotesk;
-font-size: 12px;
-font-weight: normal;
-font-stretch: normal;
-font-style: normal;
-line-height: 1.33;
-letter-spacing: normal;
-color: ${neon_red};
-`;
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+   margin: 0px;
+   padding: 0px;
+`
+export const Typo12NeonRedHKGroteskRegular = styled.label`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${neon_red};
+`
 export const Typo12yellowOrangeHKGroteskSemiBold = styled.span`
-${tw`mx-2`}
-font-family: HKGrotesk;
-  font-size: 12px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: 0.12px;
-  color: ${yellow_orange};`;
-  
-export const Typo12GreenishTealHKGroteskSemiBold=styled.span`
-${tw`mx-2`}
-font-family: HKGrotesk;
-  font-size: 12px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: 0.12px;
-  color: ${greenish_teal};
-`;
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: 0.12px;
+   color: ${yellow_orange};
+`
+
+export const Typo12GreenishTealHKGroteskSemiBold = styled.span`
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: 0.12px;
+   color: ${greenish_teal};
+`
 
 export const Typo12PurplishBlueHKGroteskSemiBold = styled.span`
-${tw`mx-2`}
-font-family: HKGrotesk;
-  font-size: 12px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: 0.12px;
-  color: ${purplish_blue};
-`;
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: 0.12px;
+   color: ${purplish_blue};
+`
 
+export const Typo12DarkBlueGreyHKGrosteskSemiBold = styled.span`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
+export const Typo12SteelHKGroteskSemiBold = styled.label`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: 0.12px;
+   color: ${steel};
+`
 
-export const Typo12DarkBlueGreyHKGrosteskSemiBold =styled.span`
-    font-family: HKGrotesk;
-    font-size: 12px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color:${dark_blue_grey};
-  `;
-export const Typo12SteelHKGroteskSemiBold =styled.label`
-font-family: HKGrotesk;
-  font-size: 12px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: 0.12px; 
-  color: ${steel};
-  
-`; 
-
-export const Typo12BrightBlueRubikRegular =styled.span`
-    font-family: Rubik;
-    font-size: 12px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color: ${bright_blue};
-  `;
-export const Typo12DarkBlueGreyHKGroteskRegular= styled.p `
-  font-family: HKGrotesk;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  color: ${dark_blue_grey};
-`;
+export const Typo12BrightBlueRubikRegular = styled.span`
+   font-family: Rubik;
+   font-size: 12px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${bright_blue};
+`
+export const Typo12DarkBlueGreyHKGroteskRegular = styled.p`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: ${dark_blue_grey};
+`
 /*
 export const Typo32BrightBlueHKGroteskMedium =styled.span`
     font-family: HKGrotesk;

@@ -1,3 +1,3 @@
-import { UserReviewPendings } from"./UserReviewPending";
+import { UserReviewPendings } from './UserReviewPending'
 
 export { UserReviewPendings }

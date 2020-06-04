@@ -1,3 +1,3 @@
-import {ImageElement} from "./Image"
+import { ImageElement } from './Image'
 
-export {ImageElement};
+export { ImageElement }

@@ -1,3 +1,3 @@
-import { AddNewDomain } from "./AddNewDomain";
+import { AddNewDomain } from './AddNewDomain'
 
 export { AddNewDomain }

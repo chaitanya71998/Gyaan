@@ -1,3 +1,3 @@
-import DomainRoute from "./DomainRoute";
+import DomainRoute from './DomainRoute'
 
-export default (DomainRoute);
+export default DomainRoute

@@ -1,5 +1,3 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
-
-export const ImageElement = styled.img`
-`;
+export const ImageElement = styled.img``

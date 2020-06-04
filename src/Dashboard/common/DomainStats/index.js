@@ -1,3 +1,3 @@
-import { DomainStats } from "./DomainStats";
+import { DomainStats } from './DomainStats'
 
-export { DomainStats };
+export { DomainStats }

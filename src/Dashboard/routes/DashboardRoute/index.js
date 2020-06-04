@@ -1,3 +1,3 @@
-import { DashboardRoute } from "./DashboardRoute";
+import { DashboardRoute } from './DashboardRoute'
 
-export { DashboardRoute };
+export { DashboardRoute }

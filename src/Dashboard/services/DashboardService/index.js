@@ -1,3 +1,3 @@
-import DashboardService from './DashboardService.api.js';
+import DashboardService from './DashboardService.api.js'
 
 export default DashboardService

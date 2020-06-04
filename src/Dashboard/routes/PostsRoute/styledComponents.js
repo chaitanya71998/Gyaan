@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
-import tw from "tailwind.macro";
+import styled from '@emotion/styled'
+import tw from 'tailwind.macro'
 
-import { colors } from "../../../Common/style_guide/themes/Colors";
+import { colors } from '../../../Common/style_guide/themes/Colors'
 
-const {light_blue_grey}= colors;
+const { light_blue_grey } = colors
 
 export const Div = styled.div`
 ${tw`my-5 `}
 border :1px solid ${light_blue_grey};
 
-`;
+`

@@ -1,3 +1,3 @@
-import { InputElement } from "./InputElemet";
+import { InputElement } from './InputElemet'
 
-export { InputElement }  ;
+export { InputElement }

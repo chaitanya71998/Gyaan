@@ -1,3 +1,3 @@
-import { PendingRequests } from "./PendingRequests";
+import { PendingRequests } from './PendingRequests'
 
 export { PendingRequests }

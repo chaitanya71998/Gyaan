@@ -1,46 +1,45 @@
-import React, { Component } from "react"
-import { observer } from "mobx-react";
-import { Div } from "./styledComponents";
-import { Comment } from "../../common/Comment";
-
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+import { Div } from './styledComponents'
+import { Comment } from '../../common/Comment'
 
 @observer
-class CommentRoute extends Component{
-render(){
-    const {commentData,isAnswerToPost}=this.props;
-   
-const {
-userName,
-userProfilePic,
-commentedAt,
-commentedContent,
-replies,
-repliesCount,
-isUserReacted,
-showAllReplies,
-reactionsCount,
-approvedUser,
-approvedUserDomain}
-= commentData;
+class CommentRoute extends Component {
+   render() {
+      const { commentData, isAnswerToPost } = this.props
 
-    return(
-        <Div>        
+      const {
+         userName,
+         userProfilePic,
+         commentedAt,
+         commentedContent,
+         replies,
+         repliesCount,
+         isUserReacted,
+         showAllReplies,
+         reactionsCount,
+         approvedUser,
+         approvedUserDomain
+      } = commentData
+
+      return (
+         <Div>
             <Comment
-            profilePic={userProfilePic}
-            authorName={userName}
-            commentDateAndTime={commentedAt}
-            comment={commentedContent}
-            hasReacted={isUserReacted}
-            reactionsCount={reactionsCount}
-            repliesCount={repliesCount}
-            replies={replies}
-            isAnswerToPost={isAnswerToPost}
-            approvedUser={approvedUser}
-            postDomain={approvedUserDomain}/>
-            
-        </Div>
-    )
-}
+               profilePic={userProfilePic}
+               authorName={userName}
+               commentDateAndTime={commentedAt}
+               comment={commentedContent}
+               hasReacted={isUserReacted}
+               reactionsCount={reactionsCount}
+               repliesCount={repliesCount}
+               replies={replies}
+               isAnswerToPost={isAnswerToPost}
+               approvedUser={approvedUser}
+               postDomain={approvedUserDomain}
+            />
+         </Div>
+      )
+   }
 }
 
 export { CommentRoute }

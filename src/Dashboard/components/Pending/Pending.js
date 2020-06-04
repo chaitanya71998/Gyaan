@@ -1,16 +1,15 @@
-import React,{ Component } from "react"
-import { observer } from "mobx-react";
-
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 
 @observer
-class Pending extends Component{
-render(){
-    return(
-        <div>
+class Pending extends Component {
+   render() {
+      return (
+         <div>
             <p>Pending</p>
-        </div>
-    )
-}
+         </div>
+      )
+   }
 }
 
 export { Pending }

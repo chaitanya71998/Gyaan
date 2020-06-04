@@ -1,3 +1,3 @@
-import { CommentRoute } from "./CommentRoute";
+import { CommentRoute } from './CommentRoute'
 
 export { CommentRoute }

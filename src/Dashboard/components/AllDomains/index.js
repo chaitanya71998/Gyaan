@@ -1,3 +1,3 @@
-import  AllDomains  from "./AllDomains";
+import AllDomains from './AllDomains'
 
-export default AllDomains 
+export default AllDomains

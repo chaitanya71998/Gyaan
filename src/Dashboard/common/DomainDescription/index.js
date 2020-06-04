@@ -1,3 +1,3 @@
-import { DomainDescription } from "./DomainDescription";
+import { DomainDescription } from './DomainDescription'
 
-export { DomainDescription };
+export { DomainDescription }

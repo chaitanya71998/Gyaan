@@ -1,3 +1,3 @@
-import   MenuTypeRequests   from "./MenuTypeRequests";
- 
-export default  MenuTypeRequests 
+import MenuTypeRequests from './MenuTypeRequests'
+
+export default MenuTypeRequests

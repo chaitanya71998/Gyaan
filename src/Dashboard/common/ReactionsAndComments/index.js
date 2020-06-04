@@ -1,3 +1,3 @@
-import { ReactionsAndComments } from "./ReactionsAndComments";
+import { ReactionsAndComments } from './ReactionsAndComments'
 
- export { ReactionsAndComments }
+export { ReactionsAndComments }

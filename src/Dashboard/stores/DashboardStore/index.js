@@ -1,3 +1,3 @@
-import { DashboardStore} from "./DashboardStore";
+import { DashboardStore } from './DashboardStore'
 
-export { DashboardStore};
+export { DashboardStore }

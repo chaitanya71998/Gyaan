@@ -1,3 +1,3 @@
-import {CommentModel} from "./CommentModel";
+import { CommentModel } from './CommentModel'
 
 export { CommentModel }

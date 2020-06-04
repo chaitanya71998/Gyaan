@@ -1,3 +1,3 @@
-import { DashboardHeader } from "./DashBoardHeader"
+import { DashboardHeader } from './DashBoardHeader'
 
-export {DashboardHeader}
+export { DashboardHeader }

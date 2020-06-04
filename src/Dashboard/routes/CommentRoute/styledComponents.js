@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
-import tw from "tailwind.macro";
+import styled from '@emotion/styled'
+import tw from 'tailwind.macro'
 
-export const Div = styled.div``;
+export const Div = styled.div``

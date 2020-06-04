@@ -1,19 +1,15 @@
-import {create} from   'apisauce';
+import { create } from 'apisauce'
 
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils.js'
-import { apiMethods } from '../../../Common/constants/APIConstants';
-import { resolveWithTimeout } from "../../../Common/utils/TestUtils.js";
+import { apiMethods } from '../../../Common/constants/APIConstants'
+import { resolveWithTimeout } from '../../../Common/utils/TestUtils.js'
 
-import userSignInResponse from "../../fixtures/userSignInResponse.json";
+import userSignInResponse from '../../fixtures/userSignInResponse.json'
 
-
-class AuthFixtureService{
-    
-    getUserAPI(requestObject){
-        console.log(requestObject)
-        return resolveWithTimeout(userSignInResponse)
-    }
-    
+class AuthFixtureService {
+   getUserAPI(requestObject) {
+      return resolveWithTimeout(userSignInResponse)
+   }
 }
 
-export default AuthFixtureService;
+export default AuthFixtureService

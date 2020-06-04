@@ -1,3 +1,3 @@
-import { SuggestedDomains } from "./SuggestedDomains";
+import { SuggestedDomains } from './SuggestedDomains'
 
 export { SuggestedDomains }

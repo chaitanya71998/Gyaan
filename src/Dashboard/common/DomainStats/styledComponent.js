@@ -1,12 +1,14 @@
-import styled from "@emotion/styled";
-import tw from "tailwind.macro";
+import styled from '@emotion/styled'
+import tw from 'tailwind.macro'
 
-import { colors } from "../../../Common/style_guide/themes/Colors";
+import { colors } from '../../../Common/style_guide/themes/Colors'
 
-const {light_blue_grey, white,steel_40} =colors
+const { light_blue_grey, white, steel_40 } = colors
 
 export const DomainStatsBlock = styled.div`
-${tw`flex`}`;
+   ${tw`flex`}
+`
 
 export const IconAndCount = styled.div`
-${tw` flex items-center ml-4`}`;
+   ${tw` flex items-center ml-4`}
+`

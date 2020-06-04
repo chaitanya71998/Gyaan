@@ -1,3 +1,3 @@
-import  PendingRequestsTypeList  from "./PendingRequestsTypeList";
- 
-export default PendingRequestsTypeList 
+import PendingRequestsTypeList from './PendingRequestsTypeList'
+
+export default PendingRequestsTypeList
