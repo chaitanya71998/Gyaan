@@ -33,8 +33,9 @@ export const PostTitle = styled.div`
 margin:8px 8px 24px 72px;`;
 
 export const PostDetails = styled.div`
-border-bottom:1px solid ${light_blue_grey} 
+border-bottom:2px solid ${light_blue_grey}; 
 margin-bottom:20px;`;
+
 export const Footer = styled.div`
 ${tw` flex`}
 justify-content:justify-between;

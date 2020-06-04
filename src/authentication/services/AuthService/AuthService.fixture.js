@@ -10,6 +10,7 @@ import userSignInResponse from "../../fixtures/userSignInResponse.json";
 class AuthFixtureService{
     
     getUserAPI(requestObject){
+        console.log(requestObject)
         return resolveWithTimeout(userSignInResponse)
     }
     

@@ -4,6 +4,5 @@ import { colors } from "../../../Common/style_guide/themes/Colors";
 const {white_two}= colors
 export const DomainDetailsBlock = styled.div`
 ${tw`mx-5`}
-max-height:400px;
 over-flow:auto;
 border-bottom:2px solid ${white_two}`;

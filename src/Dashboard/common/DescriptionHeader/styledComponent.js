@@ -3,7 +3,7 @@ import tw from "tailwind.macro";
 
 import { colors } from "../../../Common/style_guide/themes/Colors";
 
-const {light_blue_grey, white,steel_60} =colors
+const {light_blue_grey, white,steel_40} =colors
 
 export const DomainStatsBlock = styled.div`
 ${tw`flex`}`;

@@ -12,14 +12,13 @@ class PostModel {
     @observable didPostHasAnswer;
     constructor(obj)
     { 
-        this.tags = new Map();
         this.postData = obj;
         this.postId = obj.post_id;
         this.userName = obj.creater.name;
         this.profilePic = obj.creater.profile_pic;
         this.dateAndTime = obj.created_at,
         this.title = obj.title,
-        this.content = obj.content,
+        this.content = obj.post_content,
         this.domainName = obj.domain.domain_name,
         this.domainId  = obj.domain.domain_id,
         this.tags = obj.tags.map(tag=>tag.tagname)

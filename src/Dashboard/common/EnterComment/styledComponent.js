@@ -3,7 +3,7 @@ import tw from "tailwind.macro";
 
 import { colors } from "../../../Common/style_guide/themes/Colors";
 
-const {light_blue_grey, white,steel_60} =colors
+const {light_blue_grey, white,steel_40} =colors
 
 export const InputCommentForm = styled.form`
   ${tw`flex items-center`}
@@ -38,6 +38,6 @@ ${tw`m-3 pl-2`}
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${steel_60};
+  color: ${steel_40};
 }
 `;

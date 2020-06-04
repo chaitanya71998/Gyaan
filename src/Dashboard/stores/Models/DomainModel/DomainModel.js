@@ -1,6 +1,7 @@
-import { observable,action,computed } from "mobx";
+import { observable,action,computed, reaction } from "mobx";
 import PostModel from "../PostModel.js/index.js";
-import { API_INITIAL } from "@ib/api-constants";
+import { API_INITIAL, API_SUCCESS } from "@ib/api-constants";
+import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 
 class DomainModel {
     @observable domainPosts;
@@ -10,22 +11,27 @@ class DomainModel {
     @observable domainDescription;
     @observable domainDescriptionAPIStatus;
     @observable domainDescriptionAPIError;
-    dashboardService;
-    constructor(dashboardService,domainObj){
+    @observable dashboardService;
+    @observable domainRequestsList;
+    domainName;
+    domainId;
+    constructor(dashboardService,domainId){
         this.dashboardService = dashboardService;
-       this.init(domainObj);
+        this.domainId = domainId;
+       this.init();
     }
    
-    init(domainObj){
-        const {domain_name,domain_id} = domainObj;
-        this.domainName=domain_name;
-        this.domainId =domain_id;
+    init(){
         this.postsLoadLimit = 10;
         this.domainPostsAPIStatus=API_INITIAL;
         this.domainPostsAPIError= null;
         this.domainDescriptionAPIStatus=API_INITIAL;
         this.domainDescriptionAPIError= null;
+        this.domainPosts=[];
+        this.domainDescription = {};
+        this.getDomainData();
     }
+
    @action.bound
    getDomainData(){
     this.getDomainDescription();
@@ -34,8 +40,8 @@ class DomainModel {
    
    @action.bound
    getDomainDescription(){
-    const descriptionPromise = this.dashboardService.domainDescriptionAPI();
-        return bindPromiseWithOnSuccess(descriptionPromise)
+    const descriptionPromise = this.dashboardService.domainDescriptionAPI(this.domainId);
+        return  bindPromiseWithOnSuccess(descriptionPromise)
         .to(this.setDomainDescriptionAPIStatus,this.setDomainDescriptionAPIResponse)
         .catch(this.setDomainDescriptionAPIError);
    }
@@ -45,16 +51,16 @@ class DomainModel {
    }
    @action.bound
    setDomainDescriptionAPIResponse(response){
-            this.domainDescription=object({}, response);
+            this.domainDescription=response; 
    }
    @action.bound
    setDomainDescriptionAPIStatus(status){
        this.domainDescriptionAPIStatus = status;
    }
    @action.bound 
-   getDomainPosts(){
+    getDomainPosts(){
     const postsPromise = this.dashboardService.domainPostsAPI();
-        return bindPromiseWithOnSuccess(postsPromise)
+        return  bindPromiseWithOnSuccess(postsPromise)
         .to(this.setDomainPostsAPIStatus,this.setDomainPostsAPIResponse)
         .catch(this.setDomainPostsAPIError);
    }
@@ -64,33 +70,61 @@ class DomainModel {
    }
    @action.bound
    setDomainPostsAPIResponse(response){
-    response.forEach(post=>this.domainPosts.push(new PostModel(post,this.dashboardService)))
-           
-   }
+    this.domainPosts = response.map(post=>new PostModel(post,this.dashboardService)) 
+   
+}
    @action.bound
    setDomainPostsAPIStatus(status){
        this.domainPostsAPIStatus = status;
    }
+   setDomainRequests = reaction(()=>this.domainDescriptionAPIStatus,(status)=>{
+       if(status===API_SUCCESS){
+           this.domainRequestsList=this.domainDescription.requests.map(request=>{   
+            return{
+                   username:request.name,
+                   userId:request.user_id
+               }
+           })
+           
+       }
+   })
 
 
+//    @action.bound
+//    setDomainPosts(postsList){
+//     postsList.forEach(postObj => this.domainPosts.set(postObj.post_id,new PostModel(postObj)));
+//    }
 
-
-
-
-
-
-
-
-   @action.bound
-   setDomainPosts(postsList){
-    postsList.forEach(postObj => this.domainPosts.set(postObj.post_id,new PostModel(postObj)));
-   }
-
-   onClickLoadMoreProducts(){
+   onClickLoadMorePosts(){
        this.postsLoadLimit+=this.postsLoadLimit;
    }
    @computed get posts(){
-       
+       return this.domainPosts;
+   }
+   @computed get description(){
+      const  {
+        domain_name:domainName,
+       description,
+       domain_experts: domainExperts,
+       pending_for_review_count:pendingForReview,
+       members:members,
+       total_posts_count:totalPostsCount,
+       stars_count:starsCount,
+       total_requests_count:totalRequestsCount,
+       requests,
+       is_user_following:isUserFollowing }= this.domainDescription;
+       return {
+           domainName,
+           description,
+           domainExperts,
+           pendingForReview,
+           members,
+           totalPostsCount,
+           starsCount,
+           totalRequestsCount,
+           requests,
+           isUserFollowing
+       }
    }
 }
 

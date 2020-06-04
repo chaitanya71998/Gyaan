@@ -1,3 +1,3 @@
-import { PostsRoute } from "./PostsRoute";
+import  PostsRoute  from "./PostsRoute";
 
-export { PostsRoute }
+export  default ( PostsRoute); 

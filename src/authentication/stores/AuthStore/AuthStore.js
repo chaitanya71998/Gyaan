@@ -17,15 +17,16 @@ class AuthStore {
 
     @action.bound
     userSignIn(requestObj){     
-        const usersPromise = this.authAPIService.getUserAPI(requestObj);
-        console.log(usersPromise)
-        // return bindPromiseWithOnSuccess(usersPromise)
-        // .to(this.setGetUserSignInAPIStatus,this.setUserSignInAPIResponse)
-        // .catch(this.setGetUserSignInAPIError);
+        const usersSignInPromise = this.authAPIService.getUserAPI(requestObj);
+        console.log(usersSignInPromise, this.authAPIService)
+        return bindPromiseWithOnSuccess(usersSignInPromise)
+        .to(this.setUserSignInAPIStatus,this.setUserSignInAPIResponse)
+        .catch(this.setUserSignInAPIError)
+        
 
     }
     @action.bound
-    setUserSignInAPIResponse(response){
+    setUserSignInAPIResponse(response){   
         setAccessToken(response.access_token);
     }
     @action.bound

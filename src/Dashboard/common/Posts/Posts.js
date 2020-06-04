@@ -1,24 +1,26 @@
 import React,{ Component } from "react"
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import { AiOutlineReload } from "react-icons/ai";
+import { withRouter } from "react-router-dom";
 import { observable } from "mobx";
 
 import { ImageElement} from "../../../Common/components/ImageElement";
 import { Typo12BrightBlueRubikRegular,Typo24DarkBlueGreyHKGroteskBold, Typo12DarkBlueGreyHKGrosteskSemiBold } from "../../../Common/style_guide/Typos";
 
 import strings from "../../i18n/strings.json";
-import { CommentRoute } from "../../routes/CommentRoute";
 
 
 import { PostHeader } from "../PostHeader";
 import { EnterComment } from "../EnterComment";
+import { ReactionsAndComments } from "../ReactionsAndComments";
+import { Comment } from "../Comment";
 
 import { Div, SeeAllComments, PostTitle,PostDetails,PostComments,Tags, Footer} from "./styledComponents";
-import { ReactionsAndComments } from "../ReactionsAndComments";
 
 const { seeAllComments,noComments, seeLessComments } = strings;
 const reloadIconSize = 12;
 
+@inject("dashboardStore")
 @observer
 class Posts extends Component{
     @observable isToShowAllComments;
@@ -26,7 +28,12 @@ class Posts extends Component{
         super(props);
         this.isToShowAllComments = false
     }
-
+    onClickPost=(event)=>{
+        const { postId,dashboardStore } = this.props;
+        const { currentDomainId } = dashboardStore;
+        console.log(currentDomainId);
+        this.props.history.push(`/Domain/${currentDomainId}/post/${postId}`);
+    }
     onClickShowAllComments=(event)=>{
         this.isToShowAllComments= !this.isToShowAllComments;
     }
@@ -51,7 +58,7 @@ class Posts extends Component{
     return <Div></Div>
 }
     displayComments=()=>{
-        const { comments } = this.props;
+    const { comments } = this.props;
        if(comments.length>0) return(
             <PostComments>
                 {this.displayAnswer()}
@@ -70,9 +77,37 @@ class Posts extends Component{
             answer,
         }=this.props;
         if(didPostHasAnswer){
-        return <CommentRoute
-            key={answer.id} isAnswerToPost={didPostHasAnswer} commentData={answer} id={answer.id}
-            />
+            const {
+                userName,
+                userProfilePic,
+                commentedAt,
+                commentedContent,
+                replies,
+                repliesCount,
+                isUserReacted,
+                showAllReplies,
+                reactionsCount,
+                approvedUser,
+                approvedUserDomain}
+                = answer;
+                
+                    return(
+                        <Div>        
+                            <Comment
+                            profilePic={userProfilePic}
+                            authorName={userName}
+                            commentDateAndTime={commentedAt}
+                            comment={commentedContent}
+                            hasReacted={isUserReacted}
+                            reactionsCount={reactionsCount}
+                            repliesCount={repliesCount}
+                            replies={replies}
+                            isAnswerToPost={didPostHasAnswer}
+                            approvedUser={approvedUser}
+                            postDomain={approvedUserDomain}/>
+                            
+                        </Div>
+                    )
         }
         else{
             return <></>
@@ -81,13 +116,48 @@ class Posts extends Component{
 
     loadCommentsList=()=>{
         const {
+            didPostHasAnswer,
             commentsLimitToShow,
             comments
         }=this.props;
        
         const numberLimit = this.isToShowAllComments?comments.length:commentsLimitToShow;
         const commentsList=comments.map(comment=>{
-            return <CommentRoute key={comment.id} isAnswerToPost={false} id={comment.id} commentData={comment}/>
+            const {
+                id,
+                userName,
+                userProfilePic,
+                commentedAt,
+                commentedContent,
+                replies,
+                repliesCount,
+                isUserReacted,
+                showAllReplies,
+                reactionsCount,
+                approvedUser,
+                approvedUserDomain}
+                = comment;
+                
+                    return(
+                        <Div>        
+                            <Comment
+                             key={id}
+                             id={id}
+                            profilePic={userProfilePic}
+                            authorName={userName}
+                            commentDateAndTime={commentedAt}
+                            comment={commentedContent}
+                            hasReacted={isUserReacted}
+                            reactionsCount={reactionsCount}
+                            repliesCount={repliesCount}
+                            replies={replies}
+                            isAnswerToPost={false}
+                            approvedUser={approvedUser}
+                            postDomain={approvedUserDomain}/>
+                            
+                        </Div>
+                    )
+    
         })
         return commentsList.slice(0,numberLimit);
     }
@@ -104,19 +174,20 @@ class Posts extends Component{
             isUserReacted,
             comments
         } = this.props;
+       
         return(
-            <Div>
-                <PostDetails>
+            <Div  id={postId} onClick={this.onClickPost}  >
+                <PostDetails >
                         <PostHeader 
                             profilePic={profilePic}
                             userName={userName}
                             dateAndTime={dateAndTime}
                             domainName={domainName}
                             />
-                        <PostTitle>
+                        <PostTitle >
                             <Typo24DarkBlueGreyHKGroteskBold>{title} </Typo24DarkBlueGreyHKGroteskBold>
                         </PostTitle>
-                        <Footer hasTags={tags.length>0?true:false}>
+                        <Footer hasTags={tags.length?true:false}>
                             {this.tagsToPost()}
                        <ReactionsAndComments
                          isUserReacted={isUserReacted}
@@ -124,7 +195,7 @@ class Posts extends Component{
                           comments={comments}
                        />
                         </Footer>
-                    </PostDetails>
+                </PostDetails>
                     {this.displayComments()}
                     <EnterComment/>
             </Div>
@@ -133,18 +204,6 @@ class Posts extends Component{
     }
 }
 
-/*
-<Typo24DarkBlueGreyHKGroteskBold>{postTitle} </Typo24DarkBlueGreyHKGroteskBold>
-            <Footer hasTags={tags.length?true:false}>
-                {this.tagsToPost()}
-                <Div>
-                    <ReactionAndComments>
-                        <FiHeart color={hasReacted?"red":""}/>{reactions}  <ImageElement src="https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/e185f501-5dde-45ad-9f10-0cbeea737ee4.svg"/>{comments}
-                    </ReactionAndComments>
-                </Div>
-            </Footer>
-        </Div>
-        {this.loadComments()}
-*/
 
-export { Posts }
+
+export default withRouter( Posts )

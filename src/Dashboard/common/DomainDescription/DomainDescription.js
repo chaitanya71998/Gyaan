@@ -1,16 +1,18 @@
 import React,{ Component } from "react";
 import { observer } from "mobx-react";
 
-import { Typo24DarkBlueGreyHKGroteskBold, Typo12SteelHKGroteskSemiBold, Typo18WhiteHKGroteskRegular } from "../../../Common/style_guide/Typos";
+import { Typo24DarkBlueGreyHKGroteskBold, Typo12SteelHKGroteskSemiBold, Typo18DarkBlueGreyHKGroteskMedium,Typo18WhiteHKGroteskRegular,Typo14DarkBlueGreyHKGroteskRegular, Type14NeonRedHKGroteskSemiBold } from "../../../Common/style_guide/Typos";
 import { SmallThumbnail, LargeThumbnail } from "../../../Common/components/Thumbnail/styledComponents";
 
 import strings from "../../i18n/strings.json";
 import { DomainStats } from "../DomainStats";
-import { DomainDescriptionBlock, DomainNameAndExperts, DomainLogoAndName, DomainExperts, Description } from "./styledComponent";
+import { DomainDescriptionBlock, DomainNameAndExperts,DomainExpertsList, DomainLogoAndName, DomainExperts, Description, DomainLogo, DomainStatsAndLeaveButton } from "./styledComponent";
 import { SecondaryButton } from "../../../Common/components/ButtonElement/styledComponents";
 
 
-const { domainExperts } = strings;
+const { domainExperts,leave } = strings;
+const LeaveText = <Type14NeonRedHKGroteskSemiBold>{leave}</Type14NeonRedHKGroteskSemiBold>
+
 @observer
 class DomainDescription extends Component{
   
@@ -19,7 +21,7 @@ class DomainDescription extends Component{
             const noOfExpertsToShow = 3;
             return domainExpertsList.slice(0,noOfExpertsToShow).map(expert=>{
                 const { profilePic,name } = expert;
-                return <SmallThumbnail src={profilePic} alt={name[0]}/>
+                return <SmallThumbnail key={name} src={profilePic} alt={name[0]}/>
          })
     }
     render(){
@@ -29,9 +31,9 @@ class DomainDescription extends Component{
                         <DomainNameAndExperts>
                             <DomainLogoAndName>
                                 <DomainLogo>
-                                    <Typo18WhiteHKGroteskRegular>
+                                    <Typo18DarkBlueGreyHKGroteskMedium>
                                         {domainName[2].toUpperCase()}
-                                    </Typo18WhiteHKGroteskRegular>
+                                    </Typo18DarkBlueGreyHKGroteskMedium>
                                 </DomainLogo>
                                 <Typo24DarkBlueGreyHKGroteskBold>
                                     {domainName}
@@ -41,7 +43,9 @@ class DomainDescription extends Component{
                                 <Typo12SteelHKGroteskSemiBold>
                                     {domainExperts}
                                 </Typo12SteelHKGroteskSemiBold>
-                                {this.displayDomainExperts()}
+                                <DomainExpertsList>
+                                 {this.displayDomainExperts()}
+                                </DomainExpertsList>
                             </DomainExperts>
                         </DomainNameAndExperts>
                         <Description>
@@ -53,8 +57,8 @@ class DomainDescription extends Component{
                             <DomainStats
                             domainFollowers={domainFollowers} 
                             domainPosts={domainPosts}
-                            domainStars={domainStars}/>\
-                            <SecondaryButton text={leave}/>
+                            />
+                            <SecondaryButton children={LeaveText}/>
                         </DomainStatsAndLeaveButton>
                 </DomainDescriptionBlock>
              )

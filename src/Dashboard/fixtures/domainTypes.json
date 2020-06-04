@@ -13,7 +13,7 @@
   
         "domain_name": "Mech",
   
-        "domain_id": 0
+        "domain_id": 4532
   
       },
       {
@@ -46,7 +46,7 @@
   
         "domain_name": "Geology",
   
-        "domain_id": 0,
+        "domain_id": 676655,
   
         "follow_requested": "string"
   
@@ -55,7 +55,7 @@
   
         "domain_name": "Maths",
   
-        "domain_id": 0,
+        "domain_id":977,
   
         "follow_requested": "string"
   
@@ -65,7 +65,7 @@
   
         "domain_name": "Social",
   
-        "domain_id": 0,
+        "domain_id": 23456,
   
         "follow_requested": "string"
   
@@ -75,7 +75,7 @@
   
         "domain_name": "Economics",
   
-        "domain_id": 0,
+        "domain_id": 1232,
   
         "follow_requested": "string"
   
@@ -85,7 +85,7 @@
   
         "domain_name": "Geography",
   
-        "domain_id": 0,
+        "domain_id": 76564,
   
         "follow_requested": "string"
   

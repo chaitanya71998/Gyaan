@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import tw from "tailwind.macro"
 import { colors } from "../../../Common/style_guide/themes/Colors";
 
-const {steel_60,light_blue_grey,bright_blue,white} =colors;
+const {steel_40,light_blue_grey,bright_blue,white} =colors;
 
 export const Div = styled.div`
 ${tw`flex items-center mx-4`}`;
@@ -32,7 +32,7 @@ ${tw`m-4`}
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${steel_60};
+  color: ${steel_40};
 }
 `;
 
@@ -63,6 +63,7 @@ color: ${white};
 export const HeaderBlock= styled.div`
 ${tw`flex p-4 items-center justify-between`}
 height:10vh;
-border-bottom:2px solid ${steel_60}
+border-bottom:2px solid ${steel_40};
+border-collapse:collapse;
 `;
 

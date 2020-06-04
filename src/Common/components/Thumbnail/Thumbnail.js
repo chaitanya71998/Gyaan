@@ -5,7 +5,7 @@ import {Img, LargeThumbnail,MediumThumbnail,SmallThumbnail } from "./styledCompo
 class Thumbnail extends Component{
 
 thumbnailElement=()=>{
-    const { thumbnailType } = this.props;
+    const { thumbnailType,src,alt } = this.props;
     switch(thumbnailType){
         case("large"):{
             return (<LargeThumbnail />)
@@ -20,7 +20,7 @@ thumbnailElement=()=>{
             break;
         }
         default:{
-            return(<Img/> )
+            return(<img src={src} alt ={alt}/> )
         }
     }
 

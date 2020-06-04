@@ -10,11 +10,12 @@ import { withRouter } from "react-router-dom";
 class Dashboard extends Component{
 
 render(){
-    const {TimeLine}= this.props;
+    const {TimeLine, pendingRequests}= this.props;
+    
     return(
         <DashboardBlock>
             <MenuBlock>
-                <Menu/>
+                <Menu pendingRequests={pendingRequests}/>
             </MenuBlock>
             <Div>
                 <DashboardHeader/>

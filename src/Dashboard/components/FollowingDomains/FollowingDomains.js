@@ -7,22 +7,28 @@ import strings  from "../../i18n/strings.json";
 @inject("dashboardStore")
 @observer
 class FollowingDomains extends Component{
+    componentDidMount(){
+        this.followingDomains()
+     }
+     async followingDomains(){
+         const {dashboardStore} = this.props;
+         await dashboardStore.getDomainTypes();
+     }
 render(){
     
     const { followingDomainsString } = strings;
-    const { dashboardStore } = this.props;
+    const { dashboardStore, onToggle,toggleStatus } = this.props;
     const { followingDomains }=dashboardStore;
-    const { onToggle,toggleStatus }=this.props;
-    
+
     if(followingDomains){
         return(
 
             <Div>
-                <DomainType toggleStatus={toggleStatus} domainName={followingDomainsString} onToggle={onToggle} domainsList={followingDomains}/>
+                <DomainType  toggleStatus={toggleStatus} domainName={followingDomainsString} onToggle={onToggle} domainsList={followingDomains}/>
             </Div>
         )
     }
-    return <></>
+    return <p>Loading</p>
     
 }
 }

@@ -41,11 +41,12 @@ class SignInRoute extends Component{
             password:this.password
         }
         await this.props.authStore.userSignIn(userCredenditals);
+        
         if(getAccessToken()){
             this.hasToken=true;    
         }
         else{
-            this.hasToken=true;
+            this.hasToken=false;
             this.errorMessage='incorrect username/password';
         }  
     }

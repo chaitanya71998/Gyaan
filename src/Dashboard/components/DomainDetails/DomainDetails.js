@@ -1,36 +1,131 @@
 import React,{Component} from "react";
-import { DomainDescription } from "../../common/DomainDescription";
-import { Posts } from "../../common/Posts";
 import { observable } from "mobx";
 import { observer, inject } from "mobx-react";
+import { API_SUCCESS } from "@ib/api-constants";
+
+import LoadingWrapperWithFailure from "../../../Common/components/LoadingWrapperWithFailure";
+
+import { DomainDescription } from "../../common/DomainDescription";
+import  Posts  from "../../common/Posts";
+import { PostsBlock, TimelineDiv } from "../../common/styledComponents";
+import { DomainDetailsBlock } from "./styledComponents";
 
 @inject("dashboardStore")
 @observer
 class DomainDetails extends Component{
-    @observable domainModelObj;
-    componentDidMount(){
-        const { dashboardStore,params } = this.props;
-        console.log(this.props.params)
-        // const {params}= match;
-        
-        // const { getdomainModel } = dashboardStore;
-        // this.domainModelObj = getdomainModel(params);
-        // this.getPostAndDescription();
-    }
 
-     getPostAndDescription=async()=>{
-            this.domainModelObj.getDomainData();
+    displayDescription=()=>{
+        const {domainModelObj} = this.props;
+        
+        const { 
+        domainName,
+        description,
+        domainExperts,
+        members,
+        totalPostsCount,
+         }= domainModelObj.description;
+           
+        return (
+            <>
+              <DomainDetailsBlock>
+                    <DomainDescription 
+                    domainExpertsList={domainExperts} 
+                    domainName={domainName} 
+                    domainDescription={description}
+                    domainFollowers={members}
+                    domainPosts={totalPostsCount}
+                    />
+                </DomainDetailsBlock>
+               
+                        
+            </>)
+    }
+    displayPosts=()=>{
+        const { domainModelObj } = this.props;
+        const { domainPosts } = domainModelObj
+        
+        return domainPosts.map(post=>{
+            const {
+                postId,
+                profilePic,
+                userName,
+                dateAndTime,
+                domainName,
+                title,
+                tags,
+                reactionsCount,
+                isUserReacted,
+                commentsCount,
+                didPostHasAnswer,
+                answer,
+                postType,
+                commentsLimitToShow,
+                comments
+            } = post
+            return(
+            
+            <PostsBlock key={postId}>
+                <Posts
+                postId =  {postId}
+                profilePic={profilePic}
+                userName={userName}
+                dateAndTime={dateAndTime}
+                domainName={domainName}
+                title={title}
+                tags={tags}
+                reactionsCount={reactionsCount}
+                isUserReacted={isUserReacted}
+                commentsCount={commentsCount}
+                didPostHasAnswer={didPostHasAnswer}
+                answer={answer}
+                postType={postType}
+                commentsLimitToShow={commentsLimitToShow}
+                comments = {comments}/>
+            </PostsBlock>
+            )
+        })
     }
     render(){
-        if(this.domainModelObj){
         const {
+            domainModelObj
+        } = this.props;
+            if(domainModelObj.domainPostsAPIStatus===API_SUCCESS && domainModelObj.domainDescriptionAPIStatus===API_SUCCESS){
+             return(
+                 
+                 <TimelineDiv>
+                    {this.displayDescription()}
+                    {this.displayPosts()}
+                 </TimelineDiv>
+                 
+             )
+            } 
+        else{
+                return<LoadingWrapperWithFailure/>
+            }
+        
+    }
+}
+
+export  { DomainDetails }
+
+/**
+ *  <Posts/>
+ * 
+ * 
+ *   console.log(14123,(this.domainModelObj.domainDescription));
+            const {
             domainExperts,
             domainName,
             domainDescription,
             domainFollowers,
             domainStars,
-            domainPosts} = this.domainModelObj;
-            
+            domainPosts} = this.domainModelObj.domainDescription;
+            console.log( domainExperts,
+                domainName,
+                domainDescription,
+                domainFollowers,
+                domainStars,
+                domainPosts)
         return (
             <>
                 <DomainDetailsBlock>
@@ -42,14 +137,6 @@ class DomainDetails extends Component{
                     domainPosts={domainPosts}
                     domainStars={domainStars}/>
                 </DomainDetailsBlock>
-                <Posts/>
+               
             </>)
-            }
-            else{
-                return <p>hi</p>
-            }
-        
-    }
-}
-
-export  { DomainDetails }
+ */

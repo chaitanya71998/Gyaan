@@ -1,19 +1,30 @@
 import React,{ Component } from "react"
 import { observer } from "mobx-react";
 import { ImageElement } from "../../../Common/components/ImageElement";
-import { AllDomains } from "../AllDomains";
+import  AllDomains  from "../AllDomains";
 import { FollowingDomains } from "../FollowingDomains";
 import strings from "../../i18n/strings.json";
 import { Div,Logo,LogoBlock}  from"./styledComponents"
 import { withToggle } from "../../../Common/hoc/withToggle";
+import { PendingRequests } from "../PendingRequests";
 
 const {comapanyName} = strings;
 
 const FollowingDomainsWithToogle = withToggle(FollowingDomains)
-
+const PendingRequestsWithToogle = withToggle(PendingRequests);
 @observer
 class Menu extends Component{
-render(){
+
+    showPendingRequests=()=>{
+        const { pendingRequests }= this.props;
+        if(pendingRequests){
+           return  <PendingRequestsWithToogle/>
+        }
+        return <></>;
+    }
+
+    render(){
+
     return(
         <Div>
             <LogoBlock>
@@ -23,6 +34,7 @@ render(){
             </LogoBlock>
             <AllDomains/>
             <FollowingDomainsWithToogle/>
+            {this.showPendingRequests()}
         </Div>
     )
 }

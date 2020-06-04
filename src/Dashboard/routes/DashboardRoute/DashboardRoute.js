@@ -10,6 +10,9 @@ import { Div } from "./styledComponents";
 @observer
 class DashboardRoute extends Component{
     componentDidMount(){
+       this.setDashboardData()
+    }
+     setDashboardData(){
         const {dashboardStore} = this.props;
         dashboardStore.getDomainTypes();
         dashboardStore.getPosts();

@@ -1,61 +1,55 @@
-import React, { Component } from "react"
+import React,{Component} from "react";
+import { withRouter } from "react-router-dom";
 import { observer, inject } from "mobx-react";
-import { Div } from "./styledComponents";
-import { Posts } from "../../common/Posts";
+import { observable } from "mobx";
 
+import  Dashboard  from "../../components/Dashboard";
+
+import { API_SUCCESS } from "@ib/api-constants";
+import LoadingWrapperWithFailure from "../../../Common/components/LoadingWrapperWithFailure";
+import { PostDetails } from "../../components/PostDetails";
+
+@inject("dashboardStore")
 @observer
-class PostsRoute extends Component{
-render(){
-    const {postData} = this.props;
-    const {
-        postId,
-        profilePic,
-        userName,
-        dateAndTime,
-        domainName,
-        title,
-        tags,
-        reactionsCount,
-        isUserReacted,
-        commentsCount,
-        didPostHasAnswer,
-        answer,
-        postType,
-        commentsLimitToShow,
-        comments
-    } = postData
+class PostRoute extends Component{
+    @observable postModelObj;
+  componentDidMount(){
+      
+    const { dashboardStore ,match} = this.props;
+    const {params} = match;
+    const { domainId} = params;
+    dashboardStore.createDomainModelObj(domainId);
+  }
 
-    return(
-        <Div>
-            <Posts
-            postId =  {postId}
-            profilePic={profilePic}
-            userName={userName}
-            dateAndTime={dateAndTime}
-            domainName={domainName}
-            title={title}
-            tags={tags}
-            reactionsCount={reactionsCount}
-            isUserReacted={isUserReacted}
-            commentsCount={commentsCount}
-            didPostHasAnswer={didPostHasAnswer}
-            answer={answer}
-            postType={postType}
-            commentsLimitToShow={commentsLimitToShow}
-            comments = {comments}/>
-        </Div>
-    )
-}
+    render()
+        {  
+            const { dashboardStore} = this.props;
+            const { domainModel } = dashboardStore;
+
+            if(domainModel){
+                
+                if(domainModel.domainPostsAPIStatus===API_SUCCESS && domainModel.domainDescriptionAPIStatus===API_SUCCESS)
+               {
+                    const { match } = this.props;
+                    const { params } = match;
+                    const { postId } = params;
+                    const postObj = domainModel.domainPosts.find(post =>post.postId===Number(postId));
+                    const PostDetailsWithIdAsParams = ()=>{
+                        return <PostDetails postData={postObj}/>
+                    }
+                    return(
+                        <>
+                            <Dashboard pendingRequests={domainModel.domainRequestsList} TimeLine={PostDetailsWithIdAsParams} /> 
+                        </>
+                    )
+                }
+                return <LoadingWrapperWithFailure/>
+            }
+            return <LoadingWrapperWithFailure/>
+        }
 }
 
-export { PostsRoute }
-/*
-imageSrc= {"asd"}
-            authorName= { }
-            postDateAndTime= { }
-            DomainName= { }
-            postTitle= { }
-            tags= { }
-            hasReacted= { }
-            reactions= { }
-            comments= { } */
+
+
+
+export default withRouter(PostRoute);

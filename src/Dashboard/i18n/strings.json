@@ -4,11 +4,12 @@
      "profile":"Profilepic",
      "writePost":"write post",
      "followingDomainsString":"Following Domains",
-     "enterComment" :"Enter comment",
+     "enterComment" :"Write a comment...",
      "seeAllComments":"See all comments",
      "seeLessComments":"See less comments",
      "noComments" :"No comments yet ",
      "domainExperts" :"Domain Experts",
-     "leave":"Leave"
+     "leave":"Leave",
+     "requests":"REQUESTS"
 
 }

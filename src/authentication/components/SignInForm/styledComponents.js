@@ -17,7 +17,7 @@ export const Div =styled.div`
   width: 536px;
   border-radius: 8px;
   background-color: ${white};
-${tw`flex flex-col border justify-center py-4 items-center`}
+${tw`flex flex-col border justify-center py-8 items-center`}
 `;
 
 export const Warning = styled.p`

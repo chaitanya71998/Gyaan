@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import { observer, inject } from "mobx-react";
 
-import { Posts } from "../../common/Posts";
+import  Posts  from "../../common/Posts";
 
 import { Div,PostsBlock } from "./styledComponents";
-
 
 @inject("dashboardStore")
 @observer
@@ -32,7 +31,6 @@ displayPosts=()=>{
             commentsLimitToShow,
             comments
         } = post
-    
         return(
         <PostsBlock key={postId}>
             <Posts

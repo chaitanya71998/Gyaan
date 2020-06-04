@@ -1,5 +1,6 @@
 export const paths={
     "signInForm":"/SignIn-Form",
     "dashboard" :"/homeScreen",
-    "DomainPathWithIdAsParameter":"/Domain/:id"
+    "domainPath":"/Domain/:domainId",
+    "postPath":"/Domain/:domainId/post/:postId"
 }

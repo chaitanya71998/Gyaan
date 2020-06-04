@@ -3,7 +3,7 @@ import tw from "tailwind.macro";
 
 import { colors } from "../themes/Colors";
 
-const {dark_blue_grey,neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_60,bright_blue,white} =colors;
+const {dark_blue_grey, black, neon_red,greenish_teal,purplish_blue,yellow_orange,steel,steel_40,bright_blue,white} =colors;
 
 export const Typo32DarkBlueGreyRubikRegular = styled.p`
 width: 214px;
@@ -18,6 +18,18 @@ font-family: Rubik;
   letter-spacing: normal;
   color: ${dark_blue_grey};
   margin:24px 0px;
+`;
+export const Typo32BlackHKGrostek = styled.p`
+
+font-family: HKGrostek;
+  font-size: 32px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: ${black};
+
 `;
 export const Typo24DarkBlueGreyHKGroteskBold =styled.p`
     font-family: HKGrotesk;
@@ -81,7 +93,7 @@ ${tw`mx-2`}
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${steel_60};
+  color: ${steel_40};
   `;
 
   export const Type14NeonRedHKGroteskSemiBold = styled.span`
@@ -124,7 +136,7 @@ font-family: HKGrotesk;
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${steel_60};`;
+  color: ${steel_40};`;
 
 export const Typo14DarkBlueGreyHKGroteskRegular = styled.p`
 font-family: HKGrotesk;
@@ -135,6 +147,7 @@ font-style: normal;
 line-height: 1.71;
 letter-spacing: normal;
 color:${dark_blue_grey};`;
+
 export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.p`
 font-family: HKGrotesk;
   font-size: 14px;
@@ -167,6 +180,7 @@ font-family: HKGrotesk;
   line-height: 1.33;
   letter-spacing: 0.12px;
   color: ${yellow_orange};`;
+  
 export const Typo12GreenishTealHKGroteskSemiBold=styled.span`
 ${tw`mx-2`}
 font-family: HKGrotesk;

@@ -7,7 +7,7 @@ export const colors=
         "cool_grey" : " #b5b7c4",
         "yellow_orange" : " #ffb800",
         "turquoise_blue" : " #00b2ca",
-        "steel_60" : " rgba(126, 133, 142, 0.6)",
+        "steel_40" : " rgba(126, 133, 142, 0.6)",
         "cobalt" : " #1a3f70",
         "algae_green" : " #26bf6a",
         "yellow_orange_two" : " #eaa800",
@@ -26,6 +26,7 @@ export const colors=
         "bright_blue" : " #0b69ff",
         "steel" : " #7e858e",
         "ice_blue":"#f1f7ff",
-        "purplish_blue":"#6b38fb"
+        "purplish_blue":"#6b38fb",
+        
       
 }

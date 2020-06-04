@@ -1,4 +1,4 @@
-import { observable, action,computed } from "mobx";
+import { observable, action,computed,reaction,autorun} from "mobx";
 import { API_INITIAL, API_SUCCESS } from "@ib/api-constants";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 
@@ -7,18 +7,19 @@ import DomainModel from "../models/DomainModel/DomainModel";
 import PostModel from "../models/PostModel.js/index.js";
 
 class DashboardStore {
-    
     @observable postsList;
-    @observable domainTypes;
     @observable postsListAPIStatus;
     @observable postListAPIError;
+    @observable domainTypes;
     @observable domainsListAPIStatus;
     @observable domainsListAPIError;
+    @observable domainModel;
+    @observable currentDomainId;
     @observable dashboardService;
-
     constructor(dashboardService){
         this.dashboardService = dashboardService;
         this.init();
+        this.postCreation;
     }
 
     @action.bound
@@ -30,9 +31,10 @@ class DashboardStore {
     this.postsList=[];
     this.domainTypes = {};
     }
-        @action.bound
+    @action.bound
     getDomainTypes(){
         const requestObj={};
+      
         const domainServicePromise = this.dashboardService.domainTypesAPI(requestObj);
         return bindPromiseWithOnSuccess(domainServicePromise)
         .to(this.setDomainsListStatus,this.setDomainsListResponse)
@@ -55,8 +57,7 @@ class DashboardStore {
         this.domainsListAPIError =error;
     }
     @action.bound
-    getPosts(){
-       
+    getPosts(){    
         const postServicePromise = this.dashboardService.allDomainsPostsAPI();
         return bindPromiseWithOnSuccess(postServicePromise)
         .to(this.setPostsListStatus,this.setPostsListResponse)
@@ -70,17 +71,41 @@ class DashboardStore {
     
     @action.bound
     setPostsListResponse(response){
+        this.postsList=[];
      response.forEach(post=>this.postsList.push(new PostModel(post,this.dashboardService)))
-     
-    }
-    @action.bound
-    setPostsListError(error){
-        
-        this.postListAPIError =error;
     }
 
-    @computed get domainsPosts (){
+    @action.bound
+    setPostsListError(error){
+        this.postListAPIError =error;
+    }
+    @action.bound
+    createDomainModelObj(domainId){
+        this.domainModel  = new DomainModel(this.dashboardService,domainId);
+        this.currentDomainId = domainId;
+        console.log(this.currentDomainId,domainId);
+    }
+    
+   @computed get postsListOnscreen(){
+       if(this.domainModel.domainPostsAPIStatus===API_SUCCESS){
+        this.postsList= this.domainModel.domainPosts;
+       }
+    }
+
+    setPostAndRequestListsFromDomains = reaction(()=>this.domainModel,(domainModel)=>{
+        if(domainModel.domainPostsAPIStatus===API_SUCCESS){
+            this.postsList=[];
+            this.postsList = this.domainModel.domainPosts;
+        }}
+    )
+    trackingOfPostsLists= autorun(()=>console.log(1111,this.postsList))
+    
+    @action.bound
+    getPostModel(id){
+        return this.postsList.find(post =>post.postId===id)
+    }
         
+    @computed get domainsPosts (){       
       let postsObjList = [];
       this.postsList.forEach(value=>{
           postsObjList.push(value)
@@ -90,19 +115,17 @@ class DashboardStore {
     }
 
     @computed get followingDomains(){
-        
-        let followingDomains = this.domainTypes.following_domains
-        if(followingDomains){
-            return   followingDomains.map(domain=>new DomainModel(this.dashboardService,domain) );
+        let computedFollowingDomains = this.domainTypes.following_domains;
+        if(computedFollowingDomains){
+            return   computedFollowingDomains.map(domain=>{
+                return{
+                    domainName:domain.domain_name,
+                    domainId:domain.domain_id
+                }
+            } );
         }
     }
-    @action.bound
-    getDomainModel(id){
-        if(this.domainTypes.following_domains){
-            return new DomainModel( this.dashboardService, this.domainTypes.following_domains.find(domain=>domain.domain_id===id) )
-        }
-    }
-        
+          
 }
 
 export { DashboardStore };
