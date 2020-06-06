@@ -48,7 +48,7 @@
   
         "domain_id": 676655,
   
-        "follow_requested": "string"
+        "follow_requested": "true"
   
       },
       {
@@ -57,7 +57,7 @@
   
         "domain_id":977,
   
-        "follow_requested": "string"
+        "follow_requested": "false"
   
       }
       ,
@@ -67,7 +67,7 @@
   
         "domain_id": 23456,
   
-        "follow_requested": "string"
+        "follow_requested": "true"
   
       }
       ,
@@ -77,7 +77,7 @@
   
         "domain_id": 1232,
   
-        "follow_requested": "string"
+        "follow_requested": "true"
   
       }
       ,
@@ -87,10 +87,28 @@
   
         "domain_id": 76564,
   
-        "follow_requested": "string"
+        "follow_requested": "false"
   
       }
   
+    ],
+    "total_pending_coutn":12,
+    "pending_for_review":[
+      {
+        "domain_id": 132,
+        "domain_name":"Geology",
+        "count":2
+      },
+      {
+        "domain_id": 867,
+        "domain_name":"maths",
+        "count":8
+      },
+      {
+        "domain_id": 12,
+        "domain_name":"Video Editing",
+        "count":2
+      }
     ]
   
   }

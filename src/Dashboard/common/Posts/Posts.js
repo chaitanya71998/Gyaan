@@ -3,7 +3,6 @@ import { observer, inject } from 'mobx-react'
 import { AiOutlineReload } from 'react-icons/ai'
 import { withRouter } from 'react-router-dom'
 import { observable } from 'mobx'
-
 import { ImageElement } from '../../../Common/components/ImageElement'
 import {
    Typo12BrightBlueRubikRegular,
@@ -25,7 +24,9 @@ import {
    PostDetails,
    PostComments,
    Tags,
-   Footer
+   Footer,
+   NoCommmentsBlock,
+   TagsForPosts
 } from './styledComponents'
 
 const { seeAllComments, noComments, seeLessComments } = strings
@@ -39,11 +40,14 @@ class Posts extends Component {
       super(props)
       this.isToShowAllComments = false
    }
+
+
    onClickPost = event => {
       const { postId, dashboardStore } = this.props
-      const { currentDomainId } = dashboardStore
-      
-      this.props.history.push(`/Domain/${currentDomainId}/post/${postId}`)
+      const { currentDomainId } = dashboardStore;
+currentDomainId?
+      this.props.history.push(`/followingDomain/${currentDomainId}/post/${postId}`):
+      this.props.history.push(`/allDomainPosts/post/${postId}`)
    }
    onClickShowAllComments = event => {
       this.isToShowAllComments = !this.isToShowAllComments
@@ -53,7 +57,7 @@ class Posts extends Component {
       const { tags } = this.props
       if (tags.length) {
          return (
-            <Div>
+            <TagsForPosts>
                {tags.map(tag => {
                   return (
                      <Tags key={tag}>
@@ -62,12 +66,12 @@ class Posts extends Component {
                            alt='tag'
                         />
                         <Typo12BrightBlueRubikRegular>
-                           {tag}
+                           {tag.tagName}
                         </Typo12BrightBlueRubikRegular>
                      </Tags>
                   )
                })}
-            </Div>
+            </TagsForPosts>
          )
       }
       return <Div></Div>
@@ -90,9 +94,9 @@ class Posts extends Component {
             </PostComments>
          )
       return (
-         <>
+         <NoCommmentsBlock>
             <Typo12DarkBlueGreyHKGrosteskSemiBold children={noComments} />
-         </>
+         </NoCommmentsBlock>
       )
    }
    displayAnswer = () => {
@@ -135,7 +139,7 @@ class Posts extends Component {
    }
 
    loadCommentsList = () => {
-      const { didPostHasAnswer, commentsLimitToShow, comments } = this.props
+      const { commentsLimitToShow, comments } = this.props
 
       const numberLimit = this.isToShowAllComments
          ? comments.length
@@ -189,13 +193,13 @@ class Posts extends Component {
          tags,
          reactionsCount,
          isUserReacted,
-         comments
+         comments,
       } = this.props
-
+console.log(this.props,1211)
       return (
-         <Div id={postId} onClick={this.onClickPost}>
-            <PostDetails>
-               <PostHeader
+         <Div id={postId}>
+            <PostDetails onClick={this.onClickPost} >
+               <PostHeader 
                   profilePic={profilePic}
                   userName={userName}
                   dateAndTime={dateAndTime}
@@ -203,11 +207,11 @@ class Posts extends Component {
                />
                <PostTitle>
                   <Typo24DarkBlueGreyHKGroteskBold>
-                     {title}{' '}
+                     {title}
                   </Typo24DarkBlueGreyHKGroteskBold>
                </PostTitle>
                <Footer hasTags={tags.length ? true : false}>
-                  {this.tagsToPost()}
+               {this.tagsToPost()}
                   <ReactionsAndComments
                      isUserReacted={isUserReacted}
                      reactionsCount={reactionsCount}

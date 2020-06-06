@@ -7,16 +7,15 @@ class AuthAPIService {
    api
    constructor() {
       this.api = create({
-         baseURL: 'https://7969a15995b8.ngrok.io/api/gyaan'
+         baseURL: 'https://dcf9663914c2.ngrok.io/api/gyaan'
       })
    }
-   getUserAPI(requestObject) {
-      console.log(requestObject)
+   getUserAPI(requestObject) {  
       return networkCallWithApisauce(
          this.api,
          '/login/v1/',
          requestObject,
-         apiMethods.get
+         apiMethods.post
       )
    }
 }

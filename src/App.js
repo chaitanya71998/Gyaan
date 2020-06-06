@@ -14,8 +14,17 @@ import { FollowingDomains } from './Dashboard/components/FollowingDomains'
 import PostsRoute from './Dashboard/routes/PostsRoute'
 import { getAccessToken } from './Common/utils/StorageUtils'
 import Dashboard from './Dashboard/components/Dashboard'
+import { CreatePost } from './Dashboard/components/CreatePost'
+import { CreatePostRoute } from './Dashboard/routes/CreatePostRoute/CreatePostRoute'
 
-const { signInForm, dashboard, domainPath, postPath } = paths
+const {
+   signInForm,
+   dashboard,
+   createPostPath,
+   followingDomainPostPath,
+   followingDomainPath,
+   allDomainsPostsPath
+} = paths
 
 @observer
 class App extends React.Component {
@@ -28,13 +37,20 @@ class App extends React.Component {
                      <SignInRoute />
                   </Route>
                   <Route exact path={dashboard}>
-                     {getAccessToken() ? <DashboardRoute /> : <SignInRoute />}
+                     <DashboardRoute />
                   </Route>
-                  <Route exact path={domainPath}>
-                     {getAccessToken() ? <DomainRoute /> : <SignInRoute />}
+                  <Route exact path={createPostPath}>
+                     <CreatePostRoute />
                   </Route>
-                  <Route exact path={postPath}>
-                     {getAccessToken() ? <PostsRoute /> : <SignInRoute />}
+
+                  <Route exact path={followingDomainPath}>
+                     <DomainRoute />
+                  </Route>
+                  <Route exact path={followingDomainPostPath}>
+                     <PostsRoute />
+                  </Route>
+                  <Route exact path={allDomainsPostsPath}>
+                     <PostsRoute />
                   </Route>
 
                   <Route path='/HomePage'>
@@ -42,7 +58,7 @@ class App extends React.Component {
                   </Route>
 
                   <Route path='/'>
-                     {getAccessToken() ? <DomainRoute /> : <SignInRoute />}
+                     <SignInRoute />
                   </Route>
                </Switch>
             </BrowserRouter>

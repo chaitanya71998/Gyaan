@@ -8,34 +8,45 @@ class DashboardAPIService {
    endpoint
    constructor() {
       this.api = create({
-         baseURL: 'https://7969a15995b8.ngrok.io/127.0.0.1:8080/api/gyaan/'
+         baseURL: 'https://dcf9663914c2.ngrok.io/api/gyaan'
       })
    }
-   domainTypesAPI(requestObject={}) {
+   domainTypesAPI(requestObject = {}) {
       return networkCallWithApisauce(
          this.api,
-         `domains/v1/?offset_parameter=${1}&limit_parameter=${8}`,
+         `/domains/v1/?offset_parameter=${1}&limit_parameter=${3}`,
          requestObject,
          apiMethods.get
       )
    }
-   allDomainsPostsAPI(requestObject={}) {
+
+   getDomainRelatedTags(domainId){
       return networkCallWithApisauce(
          this.api,
-         `posts/v1/?offset_parameter=${1}&limit_parameter=${8}`,
+         `/domain/${domainId}/tags/v1/`,
          requestObject,
+         apiMethods.get
+      )
+   }
+
+   allDomainsPostsAPI() {
+      return networkCallWithApisauce(
+         this.api,
+         `/posts/v1/?offset_parameter=${1}&limit_parameter=${3}`,
+         {},
          apiMethods.get
       )
    }
    followingDomainsAPI(id, requestObject) {
       return networkCallWithApisauce(
          this.api,
-         'domains/id',
-         requestObject,
+         `domains/${id}`,
+         {},
          apiMethods.get
       )
    }
-   domainDescriptionAPI(id, requestObject={}) {
+   
+   domainDescriptionAPI(id, requestObject = {}) {
       return networkCallWithApisauce(
          this.api,
          `domain/${id}/v1/`,
@@ -43,11 +54,12 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   domainPostsAPI(domainId, requestObject) {
+
+   domainPostsAPI(domainId) {
       return networkCallWithApisauce(
          this.api,
          `domain/${domainId}/posts/v1/?offset_parameter=${1}&limit_parameter=${8}`,
-         requestObject,
+         {},
          apiMethods.get
       )
    }
@@ -67,10 +79,10 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   userReactionAPI(requestObject) {
+   userReactionAPI(id,requestObject) {
       return networkCallWithApisauce(
          this.api,
-         '',
+         `/entity/${id}/react/v1/`,
          requestObject,
          apiMethods.get
       )

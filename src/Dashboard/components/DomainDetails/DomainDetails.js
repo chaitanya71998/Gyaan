@@ -41,7 +41,7 @@ class DomainDetails extends Component {
    displayPosts = () => {
       const { domainModelObj } = this.props
       const { domainPosts } = domainModelObj
-
+console.log("domainPosts",domainPosts);
       return domainPosts.map(post => {
          const {
             postId,
@@ -85,10 +85,7 @@ class DomainDetails extends Component {
    }
    render() {
       const { domainModelObj } = this.props
-      if (
-         domainModelObj.domainPostsAPIStatus === API_SUCCESS &&
-         domainModelObj.domainDescriptionAPIStatus === API_SUCCESS
-      ) {
+      if (domainModelObj.domainDescriptionAPIStatus === API_SUCCESS) {
          return (
             <TimelineDiv>
                {this.displayDescription()}
@@ -104,6 +101,9 @@ class DomainDetails extends Component {
 export { DomainDetails }
 
 /**
+ * 
+ * 
+ *  domainModelObj.domainPostsAPIStatus === API_SUCCESS &&
  *  <Posts/>
  * 
  * 

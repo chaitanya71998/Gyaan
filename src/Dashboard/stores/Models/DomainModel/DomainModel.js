@@ -64,20 +64,19 @@ class DomainModel {
    }
    @action.bound
    getDomainPosts() {
-      const postsPromise = this.dashboardService.domainPostsAPI()
+    
+      const postsPromise = this.dashboardService.domainPostsAPI(this.domainId)
       return bindPromiseWithOnSuccess(postsPromise)
          .to(this.setDomainPostsAPIStatus, this.setDomainPostsAPIResponse)
          .catch(this.setDomainPostsAPIError)
    }
    @action.bound
    setDomainPostsAPIError(error) {
-      this.domainPostsAPIError = error
+      this.domainPostsAPIError = error;
    }
    @action.bound
    setDomainPostsAPIResponse(response) {
-      this.domainPosts = response.map(
-         post => new PostModel(post, this.dashboardService)
-      )
+      this.domainPosts = response.map( post => new PostModel(post, this.dashboardService))
    }
    @action.bound
    setDomainPostsAPIStatus(status) {
@@ -112,28 +111,35 @@ class DomainModel {
    }
    @computed get description() {
       const {
-         domain_name: domainName,
+         domain_name,
          description,
-         domain_experts: domainExperts,
-         pending_for_review_count: pendingForReview,
-         members: members,
-         total_posts_count: totalPostsCount,
-         stars_count: starsCount,
-         total_requests_count: totalRequestsCount,
-         requests,
-         is_user_following: isUserFollowing
-      } = this.domainDescription
-      return {
-         domainName,
-         description,
-         domainExperts,
-         pendingForReview,
+         domain_experts,
+         pending_for_review_count,
          members,
-         totalPostsCount,
-         starsCount,
-         totalRequestsCount,
+         total_posts_count,
+         stars_count,
+         total_requests_count,
          requests,
-         isUserFollowing
+         is_user_following,
+      } = this.domainDescription
+   
+      return {
+         domainName:domain_name,
+         description,
+         domainExperts:domain_experts.map(expert=>{
+            return {
+               profilePic:expert.profile_pic,
+               userId:expert.user_id,
+               name:expert.name
+            }
+         }),
+         pendingForReview:pending_for_review_count,
+         members,
+         totalPostsCount:total_posts_count,
+         starsCount:stars_count,
+         totalRequestsCount:total_requests_count,
+         requests,
+         isUserFollowing:is_user_following
       }
    }
 }

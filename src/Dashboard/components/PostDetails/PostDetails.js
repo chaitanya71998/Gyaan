@@ -44,10 +44,10 @@ class PostDetails extends Component {
             <TagsBlock>
                {tags.map(tag => {
                   return (
-                     <Tags key={tag}>
+                     <Tags key={tag.tagId}>
                         <AiFillTag size={12} color={bright_blue} />
                         <Typo12BrightBlueRubikRegular>
-                           {tag}
+                           {tag.tagName}
                         </Typo12BrightBlueRubikRegular>
                      </Tags>
                   )
@@ -155,9 +155,7 @@ class PostDetails extends Component {
    }
    render() {
       const { postData } = this.props
-      console.log(postData)
       const { title, dateAndTime, content } = postData
-      console.log(postData)
       if (postData) {
          return (
             <PostContainer>

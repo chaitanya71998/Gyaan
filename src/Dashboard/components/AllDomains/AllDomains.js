@@ -12,8 +12,9 @@ const { dashboard } = paths
 class AllDomains extends Component {
    onClickAllDomainsButton = event => {
       const { dashboardStore } = this.props
-      const { getPosts } = dashboardStore
-      getPosts()
+      const { getPosts,clearCurrentDominId } = dashboardStore
+      getPosts();
+      clearCurrentDominId();
       this.props.history.push(dashboard)
    }
    render() {

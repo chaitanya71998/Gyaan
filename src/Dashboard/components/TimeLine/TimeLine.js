@@ -11,7 +11,6 @@ class TimeLine extends Component {
    displayPosts = () => {
       const { dashboardStore } = this.props
       const { postsList } = dashboardStore
-
       return postsList.map(post => {
          const {
             postId,
@@ -28,11 +27,13 @@ class TimeLine extends Component {
             answer,
             postType,
             commentsLimitToShow,
-            comments
+            comments,
+
          } = post
          return (
             <PostsBlock key={postId}>
                <Posts
+               postData={post}
                   postId={postId}
                   profilePic={profilePic}
                   userName={userName}
@@ -56,7 +57,6 @@ class TimeLine extends Component {
 
    render() {
       const { dashboardStore } = this.props
-      const { postsList } = dashboardStore
       return <Div>{this.displayPosts()}</Div>
    }
 }

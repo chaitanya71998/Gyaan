@@ -25,33 +25,14 @@ class CommentModel {
       this.isUserReacted = obj.is_user_reacted
       this.repliesCount = obj.replies_count
       this.reactionsCount = obj.reactions_count
-      this.replies = new Map()
-      this.setReplies()
-      this.showAllReplies = false
+      this.replies = [];
+      this.setReplies();
+      this.showAllReplies = false;
+      
    }
 
    @action.bound
    setReplies() {
-      this.commentData.replies.forEach(reply => {
-         this.replies.set(reply.reply_id, reply)
-      })
-   }
-
-   @action.bound
-   onClickReaction() {
-      this.isUserReacted = !this.isUserReacted
-      /**API call for reaction set */
-   }
-
-   @action.bound
-   onClickShowAll() {
-      this.showAllReplies = !this.showAllReplies
-   }
-   @computed get repliesForComments() {
-      if (this.showAllReplies) {
-         return [...this.replies]
-      }
-      return [...this.replies][0]
    }
 }
 

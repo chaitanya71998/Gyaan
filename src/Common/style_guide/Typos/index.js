@@ -73,6 +73,7 @@ export const Typo18WhiteHKGroteskRegular = styled.span`
 `
 
 export const Typo16BrightBlueHKGroteskBold = styled.span`
+${tw`mx-2`}
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: bold;
@@ -242,7 +243,8 @@ export const Typo12SteelHKGroteskSemiBold = styled.label`
 `
 
 export const Typo12BrightBlueRubikRegular = styled.span`
-   font-family: Rubik;
+${tw`mx-2`}  
+font-family: Rubik;
    font-size: 12px;
    font-weight: normal;
    font-stretch: normal;
@@ -252,6 +254,7 @@ export const Typo12BrightBlueRubikRegular = styled.span`
    color: ${bright_blue};
 `
 export const Typo12DarkBlueGreyHKGroteskRegular = styled.p`
+${tw`mx-1`}
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: normal;

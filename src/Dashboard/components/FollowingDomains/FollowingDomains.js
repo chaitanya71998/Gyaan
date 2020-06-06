@@ -7,18 +7,12 @@ import strings from '../../i18n/strings.json'
 @inject('dashboardStore')
 @observer
 class FollowingDomains extends Component {
-   componentDidMount() {
-      this.followingDomains()
-   }
-   async followingDomains() {
-      const { dashboardStore } = this.props
-      await dashboardStore.getDomainTypes()
-   }
+
    render() {
       const { followingDomainsString } = strings
       const { dashboardStore, onToggle, toggleStatus } = this.props
-      const { followingDomains } = dashboardStore
-
+      const { followingDomains,pendingForReview,suggestedDomains } = dashboardStore
+      console.log(followingDomains,pendingForReview,suggestedDomains,1234567890)
       if (followingDomains) {
          return (
             <Div>

@@ -6,7 +6,7 @@ import { getAccessToken } from '../../../Common/utils/StorageUtils'
 
 import { SignInForm } from '../../components/SignInForm'
 import { paths } from '../../../Common/constants/NavigationConstants'
-import { getUserDisplayableErrorMessage } from "../../../Common/utils/APIUtils"
+import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 const { dashboard } = paths
 
 @inject('authStore')
@@ -27,9 +27,7 @@ class SignInRoute extends Component {
    gotoHomeScreen() {
       return (
          <Redirect
-            to={{
-               pathname: '/homescreen'
-            }}
+            to={dashboard}
          />
       )
    }
@@ -42,10 +40,12 @@ class SignInRoute extends Component {
       await this.props.authStore.userSignIn(userCredenditals)
 
       if (getAccessToken()) {
-         this.hasToken = true;
+         this.hasToken = true
       } else {
-         this.hasToken = false
-         this.errorMessage = getUserDisplayableErrorMessage(this.props.authStore.getUserSignInAPIError)
+         this.hasToken = false;
+         this.errorMessage = getUserDisplayableErrorMessage(
+            this.props.authStore.getUserSignInAPIError
+         )
       }
    }
    handleSubmit = event => {

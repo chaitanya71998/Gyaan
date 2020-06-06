@@ -25,5 +25,6 @@ export const colors = {
    bright_blue: ' #0b69ff',
    steel: ' #7e858e',
    ice_blue: '#f1f7ff',
-   purplish_blue: '#6b38fb'
+   purplish_blue: '#6b38fb',
+   off_white:"#fff8e6"
 }

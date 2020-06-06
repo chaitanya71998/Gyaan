@@ -12,9 +12,10 @@ class PendingRequests extends Component {
       const { requests } = strings
       const { onToggle, toggleStatus, dashboardStore } = this.props
       const { domainModel } = dashboardStore
-      const { domainRequestsList } = domainModel
+     
 
-      if (domainRequestsList) {
+      if (domainModel) {
+         const { domainRequestsList } = domainModel
          return (
             <Div>
                <MenuTypeRequests
@@ -26,7 +27,7 @@ class PendingRequests extends Component {
             </Div>
          )
       }
-      return <p>Loading...</p>
+      return <></>
    }
 }
 

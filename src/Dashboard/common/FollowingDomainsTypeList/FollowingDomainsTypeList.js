@@ -4,10 +4,15 @@ import { DomainTypeButton } from '../styledComponents'
 
 import { Button, Div } from './styledComponents'
 import { withRouter } from 'react-router-dom'
+import { observer, inject } from "mobx-react"
 
+@inject("dashboardStore")
+@observer
 class FollowingDomainsTypeList extends Component {
    onClickDomain = event => {
-      this.props.history.push(`/Domain/${event.target.id}`)
+      const { dashboardStore } = this.props;
+      dashboardStore.createDomainModelObj(event.target.id)
+      this.props.history.push(`/followingDomain/${event.target.id}`)
    }
 
    render() {

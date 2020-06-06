@@ -1,6 +1,8 @@
 export const paths = {
    signInForm: '/SignIn-Form',
    dashboard: '/homeScreen',
-   domainPath: '/Domain/:domainId',
-   postPath: '/Domain/:domainId/post/:postId'
+   followingDomainPath: '/followingDomain/:domainId',
+   followingDomainPostPath: '/followingDomain/:domainId/post/:postId',
+   allDomainsPostsPath :'/:domainType/post/:postId',
+   createPostPath:'/createPost'
 }

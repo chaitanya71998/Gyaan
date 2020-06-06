@@ -3,13 +3,15 @@
      "logo":"logo",
      "profile":"Profilepic",
      "writePost":"write post",
-     "followingDomainsString":"Following Domains",
+     "followingDomainsString":"FOllOWING DOMAINS",
      "enterComment" :"Write a comment...",
      "seeAllComments":"See all comments",
      "seeLessComments":"See less comments",
      "noComments" :"No comments yet ",
      "domainExperts" :"Domain Experts",
      "leave":"Leave",
-     "requests":"REQUESTS"
+     "requests":"REQUESTS",
+     "pendingForReview":"PENDING FOR REVIEW",
+     "suggestedDomains":"SUGGESTED DOMAINS"
 
 }

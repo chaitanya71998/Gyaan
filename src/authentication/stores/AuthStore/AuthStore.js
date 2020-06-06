@@ -19,7 +19,6 @@ class AuthStore {
 
    @action.bound
    userSignIn(requestObj) {
-      
       const usersSignInPromise = this.authAPIService.getUserAPI(requestObj)
       return bindPromiseWithOnSuccess(usersSignInPromise)
          .to(this.setUserSignInAPIStatus, this.setUserSignInAPIResponse)
@@ -31,7 +30,6 @@ class AuthStore {
    }
    @action.bound
    setUserSignInAPIError(error) {
-      console.log(error);
       this.getUserSignInAPIError = error
    }
    @action.bound

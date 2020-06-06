@@ -21,7 +21,7 @@ export const CommenterDetails = styled.div`
    margin: 8px 8px 8px 24px;
 `
 export const AnswerTypeComment = styled.div`
-   ${tw`flex items-center justify-start w-1/2`}
+   ${tw`flex items-center justify-start w-full`}
 `
 
 export const DateAndTime = Typo14SteelHKGroteskRegular.withComponent('span')

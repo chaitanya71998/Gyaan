@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { Div, Button, MenuButton, Follow,Cancel, Name } from "./styledComponents";
+import { Div, Button, MenuButton, Number, NumberLiteral, Name } from "./styledComponents";
 import strings from "../../i18n/strings.json";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { observable } from "mobx";
 
-const { suggestedDomains } = strings;
+const { pendingForReview } = strings;
 
 @inject('dashboardStore')
 @observer
-class SuggestedDomains extends Component {
+class PendingForReview extends Component {
 
 
    @observable limit
@@ -21,26 +21,27 @@ class SuggestedDomains extends Component {
    }
    onClickSeeAll = (event) => {
       const { dashboardStore } = this.props;
-      const { suggestedDomains } = dashboardStore;
+      const { pendingForReview } = dashboardStore;
    
       this.shouldShowAll = !this.shouldShowAll
       const defaultLimit = 3;
-      this.limit = this.shouldShowAll ? suggestedDomains.length : defaultLimit
+      this.limit = this.shouldShowAll ? pendingForReview.length : defaultLimit
    }
 
 
    displayDomains=()=>{
          const { dashboardStore } = this.props;
-         const { suggestedDomains } = dashboardStore;
+         const { pendingForReview } = dashboardStore;
    
          return (
             <>
-               {suggestedDomains.slice(0,this.limit).map(domain => {
-                  const { domainId, domainName ,isRequested} = domain;
+               {pendingForReview.slice(0,this.limit).map(domain => {
+                  const { domainId, domainName ,pendingCount} = domain
+                  
                   return (
                   <MenuButton key={domainId}>
                      <Name>{domainName}</Name>  
-                     {isRequested?<Cancel/>:<Follow/>}
+                     <Number><NumberLiteral>{pendingCount}</NumberLiteral></Number>
                   </MenuButton>
                   )
                })}
@@ -57,9 +58,10 @@ class SuggestedDomains extends Component {
    render() {
       const { toggleStatus, onToggle, } = this.props
       return (
+       <Div> 
            <Div>
             <Button onClick={onToggle}>
-               {suggestedDomains}
+               {pendingForReview}
                <span>
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
@@ -70,8 +72,9 @@ class SuggestedDomains extends Component {
             </Button>
          {toggleStatus ? <></> : this.displayDomains()}
          </Div>
+      </Div>
       )
    }
 }
 
-export { SuggestedDomains }
+export { PendingForReview }

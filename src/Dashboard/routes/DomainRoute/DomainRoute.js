@@ -15,18 +15,18 @@ class DomainRoute extends Component {
    componentDidMount() {
       const { dashboardStore, match } = this.props
       const { params } = match
-      const { domainId } = params
+      const { domainId } = params;
       dashboardStore.createDomainModelObj(domainId)
    }
 
    render() {
-      const { dashboardStore } = this.props
-      const { domainModel } = dashboardStore
+      const { dashboardStore,match } = this.props
+      const { domainModel } = dashboardStore;
+      const {params} = match;
+      const {domainId} = params;
+
       if (domainModel) {
-         if (
-            domainModel.domainPostsAPIStatus === API_SUCCESS &&
-            domainModel.domainDescriptionAPIStatus === API_SUCCESS
-         ) {
+         if (domainModel.domainDescriptionAPIStatus === API_SUCCESS) {
             const DomainDetailsWithIdAsParams = () => {
                return <DomainDetails domainModelObj={domainModel} />
             }
@@ -47,3 +47,6 @@ class DomainRoute extends Component {
 }
 
 export default withRouter(DomainRoute)
+/**
+ *  domainModel.domainPostsAPIStatus === API_SUCCESS &&
+ */
