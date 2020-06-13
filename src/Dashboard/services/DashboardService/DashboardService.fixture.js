@@ -4,12 +4,12 @@ import { resolveWithTimeout } from '../../../Common/utils/TestUtils'
 import domainTypes from '../../fixtures/domainTypes.json'
 import postsList from '../../fixtures/postsList.json'
 import domainDescription from '../../fixtures/domainDescription.json'
-import tagsFixtures from "../../fixtures/tagsFixtures.json";
+import tagsFixtures from '../../fixtures/tagsFixtures.json'
 class DashboardFixtureService {
    domainTypesAPI() {
       return resolveWithTimeout(domainTypes)
    }
-   getDomainRelatedTags(domainId){
+   getDomainRelatedTags(domainId) {
       return resolveWithTimeout(tagsFixtures)
    }
 

@@ -64,7 +64,6 @@ class DomainModel {
    }
    @action.bound
    getDomainPosts() {
-    
       const postsPromise = this.dashboardService.domainPostsAPI(this.domainId)
       return bindPromiseWithOnSuccess(postsPromise)
          .to(this.setDomainPostsAPIStatus, this.setDomainPostsAPIResponse)
@@ -72,11 +71,13 @@ class DomainModel {
    }
    @action.bound
    setDomainPostsAPIError(error) {
-      this.domainPostsAPIError = error;
+      this.domainPostsAPIError = error
    }
    @action.bound
    setDomainPostsAPIResponse(response) {
-      this.domainPosts = response.map( post => new PostModel(post, this.dashboardService))
+      this.domainPosts = response.map(
+         post => new PostModel(post, this.dashboardService)
+      )
    }
    @action.bound
    setDomainPostsAPIStatus(status) {
@@ -120,26 +121,26 @@ class DomainModel {
          stars_count,
          total_requests_count,
          requests,
-         is_user_following,
+         is_user_following
       } = this.domainDescription
-   
+
       return {
-         domainName:domain_name,
+         domainName: domain_name,
          description,
-         domainExperts:domain_experts.map(expert=>{
+         domainExperts: domain_experts.map(expert => {
             return {
-               profilePic:expert.profile_pic,
-               userId:expert.user_id,
-               name:expert.name
+               profilePic: expert.profile_pic,
+               userId: expert.user_id,
+               name: expert.name
             }
          }),
-         pendingForReview:pending_for_review_count,
+         pendingForReview: pending_for_review_count,
          members,
-         totalPostsCount:total_posts_count,
-         starsCount:stars_count,
-         totalRequestsCount:total_requests_count,
+         totalPostsCount: total_posts_count,
+         starsCount: stars_count,
+         totalRequestsCount: total_requests_count,
          requests,
-         isUserFollowing:is_user_following
+         isUserFollowing: is_user_following
       }
    }
 }

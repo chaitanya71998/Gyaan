@@ -12,7 +12,6 @@ class PendingRequests extends Component {
       const { requests } = strings
       const { onToggle, toggleStatus, dashboardStore } = this.props
       const { domainModel } = dashboardStore
-     
 
       if (domainModel) {
          const { domainRequestsList } = domainModel

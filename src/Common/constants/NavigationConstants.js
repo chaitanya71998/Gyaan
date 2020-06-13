@@ -3,6 +3,6 @@ export const paths = {
    dashboard: '/homeScreen',
    followingDomainPath: '/followingDomain/:domainId',
    followingDomainPostPath: '/followingDomain/:domainId/post/:postId',
-   allDomainsPostsPath :'/:domainType/post/:postId',
-   createPostPath:'/createPost'
+   allDomainsPostsPath: '/:domainType/post/:postId',
+   createPostPath: '/createPost'
 }

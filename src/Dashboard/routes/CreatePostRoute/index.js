@@ -1,3 +1,3 @@
-import { CommentRoute } from './CreatePostRoute'
+import { CreatePostTestFile } from './CreatePostTestFile'
 
-export { CommentRoute }
+export { CreatePostTestFile }

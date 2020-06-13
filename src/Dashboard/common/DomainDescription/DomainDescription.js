@@ -36,10 +36,10 @@ const LeaveText = (
 @observer
 class DomainDescription extends Component {
    displayDomainExperts = () => {
-      const { domainExpertsList } = this.props;
+      const { domainExpertsList } = this.props
       const noOfExpertsToShow = 3
       return domainExpertsList.slice(0, noOfExpertsToShow).map(expert => {
-         const { profilePic, name,userId } = expert
+         const { profilePic, name, userId } = expert
          return <SmallThumbnail key={userId} src={profilePic} alt={name[0]} />
       })
    }

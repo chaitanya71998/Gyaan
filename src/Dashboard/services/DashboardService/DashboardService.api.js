@@ -20,7 +20,7 @@ class DashboardAPIService {
       )
    }
 
-   getDomainRelatedTags(domainId){
+   getDomainRelatedTags(domainId) {
       return networkCallWithApisauce(
          this.api,
          `/domain/${domainId}/tags/v1/`,
@@ -45,7 +45,7 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   
+
    domainDescriptionAPI(id, requestObject = {}) {
       return networkCallWithApisauce(
          this.api,
@@ -79,7 +79,7 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   userReactionAPI(id,requestObject) {
+   userReactionAPI(id, requestObject) {
       return networkCallWithApisauce(
          this.api,
          `/entity/${id}/react/v1/`,

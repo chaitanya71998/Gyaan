@@ -16,7 +16,7 @@ import { getAccessToken } from './Common/utils/StorageUtils'
 import Dashboard from './Dashboard/components/Dashboard'
 import { CreatePost } from './Dashboard/components/CreatePost'
 import { CreatePostRoute } from './Dashboard/routes/CreatePostRoute/CreatePostRoute'
-
+import { CreatePostTestFile } from './Dashboard/routes/CreatePostRoute'
 const {
    signInForm,
    dashboard,
@@ -40,7 +40,7 @@ class App extends React.Component {
                      <DashboardRoute />
                   </Route>
                   <Route exact path={createPostPath}>
-                     <CreatePostRoute />
+                     <CreatePostTestFile />
                   </Route>
 
                   <Route exact path={followingDomainPath}>

@@ -6,7 +6,7 @@ import { DashboardStore } from '../../Dashboard/stores/DashboardStore'
 import DashboardAPIService from '../../Dashboard/services/DashboardService/DashboardService.api'
 import DashboardFixtureService from '../../Dashboard/services/DashboardService/DashboardService.fixture'
 
-export const isFixtures = false;
+export const isFixtures = true
 
 const getAuthServiceInstance = () => {
    if (isFixtures) {

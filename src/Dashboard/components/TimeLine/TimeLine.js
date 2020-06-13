@@ -27,13 +27,12 @@ class TimeLine extends Component {
             answer,
             postType,
             commentsLimitToShow,
-            comments,
-
+            comments
          } = post
          return (
             <PostsBlock key={postId}>
                <Posts
-               postData={post}
+                  postData={post}
                   postId={postId}
                   profilePic={profilePic}
                   userName={userName}

@@ -41,7 +41,7 @@ class DomainDetails extends Component {
    displayPosts = () => {
       const { domainModelObj } = this.props
       const { domainPosts } = domainModelObj
-console.log("domainPosts",domainPosts);
+     
       return domainPosts.map(post => {
          const {
             postId,
@@ -100,38 +100,3 @@ console.log("domainPosts",domainPosts);
 
 export { DomainDetails }
 
-/**
- * 
- * 
- *  domainModelObj.domainPostsAPIStatus === API_SUCCESS &&
- *  <Posts/>
- * 
- * 
- *   console.log(14123,(this.domainModelObj.domainDescription));
-            const {
-            domainExperts,
-            domainName,
-            domainDescription,
-            domainFollowers,
-            domainStars,
-            domainPosts} = this.domainModelObj.domainDescription;
-            console.log( domainExperts,
-                domainName,
-                domainDescription,
-                domainFollowers,
-                domainStars,
-                domainPosts)
-        return (
-            <>
-                <DomainDetailsBlock>
-                    <DomainDescription 
-                    domainExpertsList={domainExperts} 
-                    domainName={domainName} 
-                    domainDescription={domainDescription}
-                    domainFollowers={domainFollowers}
-                    domainPosts={domainPosts}
-                    domainStars={domainStars}/>
-                </DomainDetailsBlock>
-               
-            </>)
- */

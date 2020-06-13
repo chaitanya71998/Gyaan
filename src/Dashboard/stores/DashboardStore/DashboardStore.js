@@ -15,9 +15,9 @@ class DashboardStore {
    @observable domainModel
    @observable currentDomainId
    @observable dashboardService
-   @observable domainTagsList;
-   @observable domainTagsListAPIStatus;
-   @observable domainTagsListAPIError;
+   @observable domainTagsList
+   @observable domainTagsListAPIStatus
+   @observable domainTagsListAPIError
    constructor(dashboardService) {
       this.dashboardService = dashboardService
       this.init()
@@ -30,14 +30,16 @@ class DashboardStore {
       this.domainsListAPIStatus = API_INITIAL
       this.postListAPIError = null
       this.domainsListAPIError = null
-      this.postsList = [];
-      this.domainTagsList=[];
+      this.postsList = []
+      this.domainTagsList = []
       this.domainTypes = {}
    }
    @action.bound
    getDomainTypes() {
       const requestObj = {}
-      const domainServicePromise = this.dashboardService.domainTypesAPI(requestObj)
+      const domainServicePromise = this.dashboardService.domainTypesAPI(
+         requestObj
+      )
       return bindPromiseWithOnSuccess(domainServicePromise)
          .to(this.setDomainsListStatus, this.setDomainsListResponse)
          .catch(this.setDomainsListError)
@@ -50,8 +52,7 @@ class DashboardStore {
 
    @action.bound
    setDomainsListResponse(response) {
-      console.log("DomainTypes",response)
-      this.domainTypes= response;
+      this.domainTypes = response
    }
    @action.bound
    setDomainsListError(error) {
@@ -67,13 +68,12 @@ class DashboardStore {
 
    @action.bound
    setPostsListStatus(status) {
-      this.postsListAPIStatus = status;
-      
+      this.postsListAPIStatus = status
    }
 
    @action.bound
    setPostsListResponse(response) {
-      this.postsList=[];
+      this.postsList = []
       response.forEach(post =>
          this.postsList.push(new PostModel(post, this.dashboardService))
       )
@@ -81,36 +81,42 @@ class DashboardStore {
 
    @action.bound
    setPostsListError(error) {
-      this.postListAPIError = error;
+      this.postListAPIError = error
    }
    @action.bound
    createDomainModelObj(domainId) {
       this.domainModel = new DomainModel(this.dashboardService, domainId)
-      this.currentDomainId = domainId;
+      this.currentDomainId = domainId
    }
    @action.bound
-   createDomainTags(domainId){
-      const createDomainTagsPromise = this.dashboardService.getDomainRelatedTags(domainId)
+   createDomainTags(domainId) {
+      const createDomainTagsPromise = this.dashboardService.getDomainRelatedTags(
+         domainId
+      )
       return bindPromiseWithOnSuccess(createDomainTagsPromise)
          .to(this.setDomainTagsStatus, this.setDomainTagsResponse)
          .catch(this.setDomainTagsError)
    }
+
+   @action.bound
    setDomainTagsStatus(status) {
-      this.domainTagsListAPIStatus = status
+      this.domainTagsListAPIStatus = status;
+      console.log(status,":status")
    }
 
    @action.bound
    setDomainTagsResponse(response) {
-      this.domainTagsList= response.map(tag=>{
+      console.log(response,":responseOFTags")
+      this.domainTagsList = response.map(tag => {
          return {
-            tagName:tag_name,
-            tagId:tag_id
+            tagName: tag.tag_name,
+            tagId: tag.tag_id
          }
-      });
+      })
+      console.log(response,":responseOFTags")
    }
    @action.bound
    setDomainTagsError(error) {
-     
       this.domainTagsListAPIError = error
    }
    @computed get postsListOnscreen() {
@@ -134,8 +140,8 @@ class DashboardStore {
       return this.postsList.find(post => post.postId === id)
    }
    @action.bound
-   clearCurrentDominId(){
-      this.currentDomainId="";
+   clearCurrentDominId() {
+      this.currentDomainId = ''
    }
 
    @computed get domainsPosts() {
@@ -147,7 +153,7 @@ class DashboardStore {
    }
 
    @computed get followingDomains() {
-      if (this.domainsListAPIStatus===API_SUCCESS) {
+      if (this.domainsListAPIStatus === API_SUCCESS) {
          return this.domainTypes.following_domains.map(domain => {
             return {
                domainName: domain.domain_name,
@@ -155,33 +161,32 @@ class DashboardStore {
             }
          })
       }
-      return [];
+      return []
    }
-   @computed get pendingForReview(){
-      if(this.domainsListAPIStatus===API_SUCCESS){
-        return  this.domainTypes.pending_for_review.map(domain=>{
+   @computed get pendingForReview() {
+      if (this.domainsListAPIStatus === API_SUCCESS) {
+         return this.domainTypes.pending_for_review.map(domain => {
             return {
-            domainId:domain.domain_id,
-            domainName:domain.domain_name,
-            pendingCount:domain.count
+               domainId: domain.domain_id,
+               domainName: domain.domain_name,
+               pendingCount: domain.count
             }
          })
       }
-      return [];
-    
+      return []
    }
 
-   @computed get suggestedDomains(){
-      if(this.domainsListAPIStatus===API_SUCCESS){
-        return this.domainTypes.remaining_domains.map(domain=>{
-           return {
-              domainId:domain.domain_id,
-              domainName:domain.domain_name,
-              isRequested:domain.follow_requested
-           }
-        });
+   @computed get suggestedDomains() {
+      if (this.domainsListAPIStatus === API_SUCCESS) {
+         return this.domainTypes.remaining_domains.map(domain => {
+            return {
+               domainId: domain.domain_id,
+               domainName: domain.domain_name,
+               isRequested: domain.follow_requested
+            }
+         })
       }
-      return[];
+      return []
    }
 }
 

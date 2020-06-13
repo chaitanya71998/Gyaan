@@ -25,15 +25,13 @@ class CommentModel {
       this.isUserReacted = obj.is_user_reacted
       this.repliesCount = obj.replies_count
       this.reactionsCount = obj.reactions_count
-      this.replies = [];
-      this.setReplies();
-      this.showAllReplies = false;
-      
+      this.replies = []
+      this.setReplies()
+      this.showAllReplies = false
    }
 
    @action.bound
-   setReplies() {
-   }
+   setReplies() {}
 }
 
 export { CommentModel }

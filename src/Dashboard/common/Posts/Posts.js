@@ -41,13 +41,14 @@ class Posts extends Component {
       this.isToShowAllComments = false
    }
 
-
    onClickPost = event => {
       const { postId, dashboardStore } = this.props
-      const { currentDomainId } = dashboardStore;
-currentDomainId?
-      this.props.history.push(`/followingDomain/${currentDomainId}/post/${postId}`):
-      this.props.history.push(`/allDomainPosts/post/${postId}`)
+      const { currentDomainId } = dashboardStore
+      currentDomainId
+         ? this.props.history.push(
+              `/followingDomain/${currentDomainId}/post/${postId}`
+           )
+         : this.props.history.push(`/allDomainPosts/post/${postId}`)
    }
    onClickShowAllComments = event => {
       this.isToShowAllComments = !this.isToShowAllComments
@@ -193,13 +194,13 @@ currentDomainId?
          tags,
          reactionsCount,
          isUserReacted,
-         comments,
+         comments
       } = this.props
-console.log(this.props,1211)
+      
       return (
          <Div id={postId}>
-            <PostDetails onClick={this.onClickPost} >
-               <PostHeader 
+            <PostDetails onClick={this.onClickPost}>
+               <PostHeader
                   profilePic={profilePic}
                   userName={userName}
                   dateAndTime={dateAndTime}
@@ -211,7 +212,7 @@ console.log(this.props,1211)
                   </Typo24DarkBlueGreyHKGroteskBold>
                </PostTitle>
                <Footer hasTags={tags.length ? true : false}>
-               {this.tagsToPost()}
+                  {this.tagsToPost()}
                   <ReactionsAndComments
                      isUserReacted={isUserReacted}
                      reactionsCount={reactionsCount}

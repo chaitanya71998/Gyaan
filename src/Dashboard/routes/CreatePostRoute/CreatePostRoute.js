@@ -2,83 +2,97 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Div } from './styledComponents'
 import { Comment } from '../../common/Comment'
-import { observable, computed } from "mobx"
-import { CreatePost } from "../../components/CreatePost";
-import LoadingWrapperWithFailure from "../../../Common/components/LoadingWrapperWithFailure"
-import Dashboard from "../../components/Dashboard"
+import { observable, computed } from 'mobx'
+import { CreatePost } from '../../components/CreatePost'
+import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapperWithFailure'
+import Dashboard from '../../components/Dashboard'
 
-@inject("dashboardStore")
+@inject('dashboardStore')
 @observer
 class CreatePostRoute extends Component {
-   @observable postTitle;
-   @observable postDescription;
-   @observable selectedTag;
-   @observable selectedDomain;
+   @observable postTitle
+   @observable postDescription
+   @observable selectedTag
+   @observable selectedDomain
 
-   constructor(){
-      super();
-      this.postTitle='';
-      this.postDescription='';
+   constructor() {
+      super()
+      this.postTitle = ''
+      this.postDescription = ''
    }
-      onChangeDomainValue=(event)=>{
-         
-      this.selectedDomain= event.target.value;
+   onChangeDomainValue = event => {
+      this.selectedDomain = event.target.value
    }
-   onChangePostTitle=(event)=>{
-      console.log("PostTitiel",event.target.value)
-      this.postTitle = event.target.value;
+   onChangePostTitle = event => {   
+      this.postTitle = event.target.value
    }
-   onSubmitPostDetails=(event)=>{
-      event.preventDefault();
-      if(this.hadAllFieldsEntered){
-         console.log(this.postTitle,this.postDescription,this.selectedTag,this.selectedDomain)
+   onSubmitPostDetails = event => {
+      event.preventDefault()
+      if (this.hadAllFieldsEntered) {
+         console.log(
+            this.postTitle,
+            this.postDescription,
+            this.selectedTag,
+            this.selectedDomain
+         )
       }
-
    }
-   onChangePostDescription=(event)=>{
-         this.postDescription = event.target.value
+   onChangePostDescription = event => {
+      this.postDescription = event.target.value
    }
-   @computed get hadAllFieldsEntered(){
-      if(this.postTitle!=''&&
-         this.postDescription!=''&&
-         this.selectedDomain!=''&&
-         this.selectedTag!=''){
-            return true;
-         }
-      return false;
+   @computed get hadAllFieldsEntered() {
+      if (
+         this.postTitle != '' &&
+         this.postDescription != '' &&
+         this.selectedDomain != '' &&
+         this.selectedTag != ''
+      ) {
+         return true
+      }
+      return false
    }
-   componentDidMount(){
-      const { dashboardStore } = this.props;
-      dashboardStore.getDomainTypes();
-  }
+   componentDidMount() {
+      const { dashboardStore } = this.props
+      dashboardStore.getDomainTypes()
+   }
    render() {
-      const { dashboardStore } = this.props;
-      const {domainsListAPIStatus,domainsListAPIError,getDomainTypes,domainTagsList,domainTagsListAPIStatus} = dashboardStore;
-      const createPostComponent=()=>{
-          return (  <Div>
-              <CreatePost
-              onChangeDomainValue={this.onChangeDomainValue}
-              onChangePostTitle={this.onChangePostTitle}
-              onSubmitPostDetails={this.onSubmitPostDetails}
-              onChangePostDescription={this.onChangePostDescription}
-              domainTags={domainTagsList}
-              domainTagsStatus={domainTagsListAPIStatus}
-              hadAllFieldsFilled={this.hadAllFieldsEntered}
-              postTitle={this.postTitle}
-              postDescription = {this.postDescription}
-              />
+      
+      const { dashboardStore } = this.props
+      const {
+         domainsListAPIStatus,
+         domainsListAPIError,
+         getDomainTypes,
+         domainTagsList,
+         domainTagsListAPIStatus
+      } = dashboardStore
+      const createPostComponent = () => {
+         return (
+            <Div>
+               <CreatePost
+                  onChangeDomainValue={this.onChangeDomainValue}
+                  onChangePostTitle={this.onChangePostTitle}
+                  onSubmitPostDetails={this.onSubmitPostDetails}
+                  onChangePostDescription={this.onChangePostDescription}
+                  domainTags={domainTagsList}
+                  domainTagsStatus={domainTagsListAPIStatus}
+                  hadAllFieldsFilled={this.hadAllFieldsEntered}
+                  postTitle={this.postTitle}
+                  postDescription={this.postDescription}
+               />
             </Div>
          )
       }
-      const createPostUI = ()=>{
-         return <Dashboard TimeLine={createPostComponent}/>
-      } 
-      return <LoadingWrapperWithFailure 
-      apiStatus={domainsListAPIStatus}
-         renderSuccessUI={createPostUI}
-         onRetryClick={getDomainTypes}
-         apiError={domainsListAPIError}/>
-     
+      const createPostUI = () => {
+         return <Dashboard TimeLine={createPostComponent} />
+      }
+      return (
+         <LoadingWrapperWithFailure
+            apiStatus={domainsListAPIStatus}
+            renderSuccessUI={createPostUI}
+            onRetryClick={getDomainTypes}
+            apiError={domainsListAPIError}
+         />
+      )
    }
 }
 

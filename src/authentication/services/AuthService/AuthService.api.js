@@ -10,7 +10,7 @@ class AuthAPIService {
          baseURL: 'https://dcf9663914c2.ngrok.io/api/gyaan'
       })
    }
-   getUserAPI(requestObject) {  
+   getUserAPI(requestObject) {
       return networkCallWithApisauce(
          this.api,
          '/login/v1/',

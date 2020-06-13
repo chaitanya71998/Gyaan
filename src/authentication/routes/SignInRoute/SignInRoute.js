@@ -25,11 +25,7 @@ class SignInRoute extends Component {
    }
 
    gotoHomeScreen() {
-      return (
-         <Redirect
-            to={dashboard}
-         />
-      )
+      return <Redirect to={dashboard} />
    }
 
    handleSignIn = async () => {
@@ -42,7 +38,7 @@ class SignInRoute extends Component {
       if (getAccessToken()) {
          this.hasToken = true
       } else {
-         this.hasToken = false;
+         this.hasToken = false
          this.errorMessage = getUserDisplayableErrorMessage(
             this.props.authStore.getUserSignInAPIError
          )

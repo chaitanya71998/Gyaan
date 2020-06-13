@@ -15,15 +15,16 @@ class DomainRoute extends Component {
    componentDidMount() {
       const { dashboardStore, match } = this.props
       const { params } = match
-      const { domainId } = params;
-      dashboardStore.createDomainModelObj(domainId)
+      const { domainId } = params
+      dashboardStore.createDomainModelObj(domainId);
+      dashboardStore.getDomainTypes();
    }
 
    render() {
-      const { dashboardStore,match } = this.props
-      const { domainModel } = dashboardStore;
-      const {params} = match;
-      const {domainId} = params;
+      const { dashboardStore, match } = this.props
+      const { domainModel } = dashboardStore
+      const { params } = match
+      const { domainId } = params
 
       if (domainModel) {
          if (domainModel.domainDescriptionAPIStatus === API_SUCCESS) {

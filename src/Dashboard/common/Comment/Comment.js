@@ -24,7 +24,7 @@ import {
 } from './styledComponents'
 import { Thumbnail } from '../../../Common/components/Thumbnail'
 import { SmallThumbnail } from '../../../Common/components/Thumbnail/styledComponents'
-import { FiHeart } from "react-icons/fi"
+import { FiHeart } from 'react-icons/fi'
 
 @observer
 class Comment extends Component {
@@ -46,7 +46,7 @@ class Comment extends Component {
       }
       return <Div></Div>
    }
-  
+
    render() {
       const {
          profilePic,

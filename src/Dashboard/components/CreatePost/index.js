@@ -1,3 +1,3 @@
-import { CreatePost } from "./CreatePost.js";
+import { CreatePost } from './CreatePost.js'
 
-export { CreatePost };
+export { CreatePost }

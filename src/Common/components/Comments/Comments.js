@@ -47,7 +47,8 @@ class Comments extends Component {
          answer,
          hasReacted,
          reactions,
-         comments,handleReaction
+         comments,
+         handleReaction
       } = this.props
 
       return (

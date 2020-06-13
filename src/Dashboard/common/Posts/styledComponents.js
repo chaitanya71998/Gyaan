@@ -14,13 +14,14 @@ export const Div = styled.div``
 export const PostComments = styled.div``
 
 export const TagsForPosts = styled.div`
-${tw`flex items-center`}`;
+   ${tw`flex items-center`}
+`
 
 export const Tags = styled.div`
    ${tw`flex items-center`}
    padding:4px 4px;
-   margin:5px;
-   border-radius:3px;
+   margin: 5px;
+   border-radius: 3px;
    background-color: ${bright_blue_10};
 `
 
@@ -51,6 +52,7 @@ export const Footer = styled.div`
 
 export const SeeAllComments = styled.button`
    ${tw`flex items-center border-transparent`}
-   margin:8px 8px 8px 72px;`;
+   margin:8px 8px 8px 72px;
+`
 
-export const NoCommmentsBlock = SeeAllComments.withComponent('div'); 
+export const NoCommmentsBlock = SeeAllComments.withComponent('div')
