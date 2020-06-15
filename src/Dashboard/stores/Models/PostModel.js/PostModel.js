@@ -19,8 +19,8 @@ class PostModel {
       this.dashboardService = dashboardService
       this.postId = obj.post_id
       this.userName = obj.creater.name
-      this.profilePic = obj.creater.profile_pic
-      ;(this.dateAndTime = obj.created_at),
+      this.profilePic = obj.creater.profile_pic;
+      (this.dateAndTime = obj.created_at),
          (this.title = obj.title),
          (this.content = obj.post_content),
          (this.domainName = obj.domain.domain_name),
@@ -75,6 +75,12 @@ class PostModel {
    @action.bound
    onClickSeeAllComments() {
       this.commentsLimitToShow = this.comments.size
+   }
+
+   @action.bound
+   handleReaction(){
+      this.isUserReacted = !this.isUserReacted;
+      this.reactionsCount = this.isUserReacted?this.reactionsCount+1:this.reactionsCount-1;
    }
 }
 

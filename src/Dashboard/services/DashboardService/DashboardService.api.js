@@ -29,7 +29,7 @@ class DashboardAPIService {
       )
    }
 
-   allDomainsPostsAPI() {
+   getAllDomainsPostsAPI() {
       return networkCallWithApisauce(
          this.api,
          `/posts/v1/?offset_parameter=${1}&limit_parameter=${3}`,

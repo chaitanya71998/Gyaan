@@ -32,6 +32,11 @@ class CommentModel {
 
    @action.bound
    setReplies() {}
+   @action.bound
+   handleReaction(){
+      this.isUserReacted = !this.isUserReacted;
+      this.reactionsCount = this.isUserReacted?this.reactionsCount+1:this.reactionsCount-1;
+   }
 }
 
 export { CommentModel }

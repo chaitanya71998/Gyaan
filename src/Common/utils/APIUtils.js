@@ -1,4 +1,5 @@
-import getData from '@ib/api'
+import getData from '@ib/api';
+
 
 import {
    apiMethods,

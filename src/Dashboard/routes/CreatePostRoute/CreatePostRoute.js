@@ -23,7 +23,7 @@ class CreatePostRoute extends Component {
    onChangeDomainValue = event => {
       this.selectedDomain = event.target.value
    }
-   onChangePostTitle = event => {   
+   onChangePostTitle = event => {
       this.postTitle = event.target.value
    }
    onSubmitPostDetails = event => {
@@ -56,7 +56,6 @@ class CreatePostRoute extends Component {
       dashboardStore.getDomainTypes()
    }
    render() {
-      
       const { dashboardStore } = this.props
       const {
          domainsListAPIStatus,

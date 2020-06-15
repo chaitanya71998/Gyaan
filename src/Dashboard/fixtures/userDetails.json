@@ -1,0 +1,9 @@
+{
+    "user_name" : "Chaintanya",
+    "user_id" :"1",
+    "user_description":"Beautiful products happen here.The better way to share, organize and collaborate on designs—built with developers in mind.",
+    "user_posts_count":4,
+    "user_likes":333,
+    "user_expertise":["React","Javascript"],
+    "user_mail":"abc.1233@gmail.com"
+}

@@ -6,7 +6,8 @@ import { colors } from '../../../Common/style_guide/themes/Colors'
 const { steel, neon_red, bright_blue, bright_blue_10, dark_blue_grey } = colors
 
 export const Div = styled.div`
-${tw`my-3`}`
+   ${tw`my-3`}
+`
 
 export const Button = styled.button`
 ${tw`flex justify-between items-center`}
@@ -29,7 +30,7 @@ export const Follow = styled.span`
    line-height: 1.33;
    letter-spacing: normal;
    color: ${bright_blue};
-`;
+`
 
 export const Cancel = styled.span`
    font-family: HKGrotesk;
@@ -43,7 +44,7 @@ export const Cancel = styled.span`
 `
 
 export const Name = styled.span`
-width: 100%;
-display: inherit;
-text-align: left;
-`;
+   width: 100%;
+   display: inherit;
+   text-align: left;
+`

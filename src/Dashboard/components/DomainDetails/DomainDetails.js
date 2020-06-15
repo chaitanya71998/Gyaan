@@ -41,7 +41,7 @@ class DomainDetails extends Component {
    displayPosts = () => {
       const { domainModelObj } = this.props
       const { domainPosts } = domainModelObj
-     
+
       return domainPosts.map(post => {
          const {
             postId,
@@ -58,7 +58,8 @@ class DomainDetails extends Component {
             answer,
             postType,
             commentsLimitToShow,
-            comments
+            comments,
+            handleReaction
          } = post
          return (
             <PostsBlock key={postId}>
@@ -78,6 +79,7 @@ class DomainDetails extends Component {
                   postType={postType}
                   commentsLimitToShow={commentsLimitToShow}
                   comments={comments}
+                  handleReaction={handleReaction}
                />
             </PostsBlock>
          )
@@ -99,4 +101,3 @@ class DomainDetails extends Component {
 }
 
 export { DomainDetails }
-

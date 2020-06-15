@@ -36,9 +36,9 @@
 //     it('should test dashboard  getPosts in fetching state', () => {
 
 //        const mockLoadingPromise = new Promise(function(resolve, reject) {})
-//        const allDomainsPostsAPI = jest.fn()
-//        allDomainsPostsAPI.mockReturnValue(mockLoadingPromise)
-//        dashboardService.allDomainsPostsAPI = allDomainsPostsAPI
+//        const  getAllDomainsPostsAPI = jest.fn()
+//         getAllDomainsPostsAPI.mockReturnValue(mockLoadingPromise)
+//        dashboardService.getAllDomainsPostsAPI = allDomainsPostsAPI
 
 //        dashboardStore.getPosts(requestObject);
 //        expect(dashboardStore.postsListAPIStatus).toBe(API_FETCHING);

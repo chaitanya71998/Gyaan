@@ -1,5 +1,6 @@
 {
   "npm-intellisense.importQuotes": "\"",
   "typescript.preferences.quoteStyle": "double",
-  "javascript.preferences.quoteStyle": "double"
+  "javascript.preferences.quoteStyle": "double",
+  "editor.cursorStyle": "line-thin"
 }

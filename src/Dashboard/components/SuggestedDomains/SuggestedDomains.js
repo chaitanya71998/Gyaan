@@ -24,17 +24,17 @@ class SuggestedDomains extends Component {
       this.shouldShowAll = false
       this.limit = 3
    }
-   dispalySeeAllLine=()=>{
-      const {dashboardStore} = this.props;
-      const {suggestedDomains} = dashboardStore;
-      if(suggestedDomains.length>3){
-      return this.shouldShowAll ? (
-          <Button onClick={this.onClickSeeAll}>see less</Button>
-       ) : (
-          <Button onClick={this.onClickSeeAll}>see all</Button>
-       )
-       }
-    }
+   dispalySeeAllLine = () => {
+      const { dashboardStore } = this.props
+      const { suggestedDomains } = dashboardStore
+      if (suggestedDomains.length > 3) {
+         return this.shouldShowAll ? (
+            <Button onClick={this.onClickSeeAll}>see less</Button>
+         ) : (
+            <Button onClick={this.onClickSeeAll}>see all</Button>
+         )
+      }
+   }
    onClickSeeAll = event => {
       const { dashboardStore } = this.props
       const { suggestedDomains } = dashboardStore
@@ -51,12 +51,16 @@ class SuggestedDomains extends Component {
       return (
          <>
             {suggestedDomains.slice(0, this.limit).map(domain => {
-               const { domainId, domainName, isRequested } = domain;
-               
+               const { domainId, domainName, isRequested } = domain
+
                return (
                   <MenuButton key={domainId}>
                      <Name>{domainName}</Name>
-                     {isRequested ?<Cancel>Cancel</Cancel>:<Follow>Follow</Follow>}
+                     {isRequested ? (
+                        <Cancel>Cancel</Cancel>
+                     ) : (
+                        <Follow>Follow</Follow>
+                     )}
                   </MenuButton>
                )
             })}

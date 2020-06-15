@@ -25,17 +25,17 @@ class PendingForReview extends Component {
       this.shouldShowAll = false
       this.limit = 3
    }
-   dispalySeeAllLine=()=>{
-      const {dashboardStore} = this.props;
-      const {pendingForReview} = dashboardStore;
-      if(pendingForReview.length>3){
-      return shouldShowAll ? (
-          <Button onClick={onClickSeeAll}>see less</Button>
-       ) : (
-          <Button onClick={onClickSeeAll}>see all</Button>
-       )
-       }
-    }
+   dispalySeeAllLine = () => {
+      const { dashboardStore } = this.props
+      const { pendingForReview } = dashboardStore
+      if (pendingForReview.length > 3) {
+         return shouldShowAll ? (
+            <Button onClick={onClickSeeAll}>see less</Button>
+         ) : (
+            <Button onClick={onClickSeeAll}>see all</Button>
+         )
+      }
+   }
    onClickSeeAll = event => {
       const { dashboardStore } = this.props
       const { pendingForReview } = dashboardStore
@@ -63,23 +63,20 @@ class PendingForReview extends Component {
                   </MenuButton>
                )
             })}
-            {this.dispalySeeAllLine()}
-            
-            
-            }
+            {this.dispalySeeAllLine()}}
          </>
       )
    }
 
    render() {
-      const { toggleStatus,dashboardStore, onToggle } = this.props
+      const { toggleStatus, dashboardStore, onToggle } = this.props
       return (
          <Div>
             <Div>
                <Button onClick={onToggle}>
-                 <PendingForReviesLiteral>
-                    {pendingForReview}
-                 </PendingForReviesLiteral> 
+                  <PendingForReviesLiteral>
+                     {pendingForReview}
+                  </PendingForReviesLiteral>
 
                   <span>
                      {toggleStatus ? (

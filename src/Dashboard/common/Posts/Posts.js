@@ -114,7 +114,8 @@ class Posts extends Component {
             showAllReplies,
             reactionsCount,
             approvedUser,
-            approvedUserDomain
+            approvedUserDomain,
+            handleReaction
          } = answer
 
          return (
@@ -131,6 +132,7 @@ class Posts extends Component {
                   isAnswerToPost={didPostHasAnswer}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
+                 handleCommentReaction = {handleReaction}
                />
             </Div>
          )
@@ -158,7 +160,9 @@ class Posts extends Component {
             showAllReplies,
             reactionsCount,
             approvedUser,
-            approvedUserDomain
+            approvedUserDomain,
+            handleReaction
+            
          } = comment
 
          return (
@@ -177,6 +181,7 @@ class Posts extends Component {
                   isAnswerToPost={false}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
+                   handleCommentReaction = {handleReaction}
                />
             </Div>
          )
@@ -194,9 +199,10 @@ class Posts extends Component {
          tags,
          reactionsCount,
          isUserReacted,
-         comments
+         comments,
+         handleReaction
       } = this.props
-      
+
       return (
          <Div id={postId}>
             <PostDetails onClick={this.onClickPost}>
@@ -217,6 +223,7 @@ class Posts extends Component {
                      isUserReacted={isUserReacted}
                      reactionsCount={reactionsCount}
                      comments={comments}
+                     handleReaction = {handleReaction}
                   />
                </Footer>
             </PostDetails>

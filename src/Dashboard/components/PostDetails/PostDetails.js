@@ -36,6 +36,7 @@ const { bright_blue } = colors
 
 @observer
 class PostDetails extends Component {
+
    displayTags = () => {
       const { postData } = this.props
       const { tags } = postData
@@ -88,7 +89,8 @@ class PostDetails extends Component {
             showAllReplies,
             reactionsCount,
             approvedUser,
-            approvedUserDomain
+            approvedUserDomain,
+            handleReaction
          } = answer
 
          return (
@@ -105,6 +107,7 @@ class PostDetails extends Component {
                   isAnswerToPost={didPostHasAnswer}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
+                  handleCommentReaction = {handleReaction}
                />
             </AnswerPost>
          )
@@ -128,7 +131,8 @@ class PostDetails extends Component {
             isUserReacted,
             reactionsCount,
             approvedUser,
-            approvedUserDomain
+            approvedUserDomain,
+            handleReaction
          } = comment
 
          return (
@@ -147,6 +151,7 @@ class PostDetails extends Component {
                   isAnswerToPost={false}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
+                  handleCommentReaction = {handleReaction}
                />
             </Div>
          )
@@ -176,6 +181,7 @@ class PostDetails extends Component {
                      </Typo14DarkBlueGreyHKGroteskRegular>
                   </PostDescription>
                </PostDetailsBlock>
+               {this.displayTags()}
                <CommentsBlock>{this.displayComments()}</CommentsBlock>
                <EnterComment />
             </PostContainer>

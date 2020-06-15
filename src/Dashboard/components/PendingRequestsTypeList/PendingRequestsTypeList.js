@@ -10,14 +10,14 @@ import { colors } from '../../../Common/style_guide/themes/Colors'
 
 const { bright_blue, cool_grey } = colors
 class PendingRequestsTypeList extends Component {
-   dispalySeeAllLine=()=>{
-     const {requestsList ,onClickSeeAll, shouldShowAll} = this.props;
-     if(requestsList.length>3){
-     return shouldShowAll ? (
-         <Button onClick={onClickSeeAll}>see less</Button>
-      ) : (
-         <Button onClick={onClickSeeAll}>see all</Button>
-      )
+   dispalySeeAllLine = () => {
+      const { requestsList, onClickSeeAll, shouldShowAll } = this.props
+      if (requestsList.length > 3) {
+         return shouldShowAll ? (
+            <Button onClick={onClickSeeAll}>see less</Button>
+         ) : (
+            <Button onClick={onClickSeeAll}>see all</Button>
+         )
       }
    }
    render() {

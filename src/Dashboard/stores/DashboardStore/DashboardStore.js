@@ -60,7 +60,7 @@ class DashboardStore {
    }
    @action.bound
    getPosts() {
-      const postServicePromise = this.dashboardService.allDomainsPostsAPI()
+      const postServicePromise = this.dashboardService.getAllDomainsPostsAPI()
       return bindPromiseWithOnSuccess(postServicePromise)
          .to(this.setPostsListStatus, this.setPostsListResponse)
          .catch(this.setPostsListError)
@@ -68,7 +68,10 @@ class DashboardStore {
 
    @action.bound
    setPostsListStatus(status) {
-      this.postsListAPIStatus = status
+      console.log(status);
+      this.postsListAPIStatus = status;
+      console.log(status);
+      
    }
 
    @action.bound
@@ -100,20 +103,20 @@ class DashboardStore {
 
    @action.bound
    setDomainTagsStatus(status) {
-      this.domainTagsListAPIStatus = status;
-      console.log(status,":status")
+      this.domainTagsListAPIStatus = status
+      console.log(status, ':status')
    }
 
    @action.bound
    setDomainTagsResponse(response) {
-      console.log(response,":responseOFTags")
+      console.log(response, ':responseOFTags')
       this.domainTagsList = response.map(tag => {
          return {
             tagName: tag.tag_name,
             tagId: tag.tag_id
          }
       })
-      console.log(response,":responseOFTags")
+      console.log(response, ':responseOFTags')
    }
    @action.bound
    setDomainTagsError(error) {

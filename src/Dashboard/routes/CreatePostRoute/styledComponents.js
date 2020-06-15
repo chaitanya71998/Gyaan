@@ -10,7 +10,7 @@ const {
    light_blue_grey,
    dark_blue_grey,
    cool_grey
-} = colors;
+} = colors
 
 export const Form = styled.form`
    height: screen;
@@ -112,10 +112,9 @@ export const SubmitButton = styled.button`
    ${tw`py-3 px-3 flex justify-center items-center`}
    border-radius:4px;
    background-color: ${props =>
-      props.isDisabled ? `${cool_grey}`: `${bright_blue}` };
+      props.isDisabled ? `${cool_grey}` : `${bright_blue}`};
    color: ${white};
-`;
-
+`
 
 /**
  * 

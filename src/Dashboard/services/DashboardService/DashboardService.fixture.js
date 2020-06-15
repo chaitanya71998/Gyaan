@@ -13,7 +13,7 @@ class DashboardFixtureService {
       return resolveWithTimeout(tagsFixtures)
    }
 
-   allDomainsPostsAPI() {
+   getAllDomainsPostsAPI () {
       return resolveWithTimeout(postsList)
    }
    followingDomainsAPI() {

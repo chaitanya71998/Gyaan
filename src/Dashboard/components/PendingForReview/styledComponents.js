@@ -8,13 +8,14 @@ const { steel, yellow_orange_two, off_white, dark_blue_grey } = colors
 export const Div = styled.div``
 
 export const Button = styled.button`
-${tw`flex justify-between w-full items-center`}
-padding-left:20px;
-padding-right:16px;`
-
+   ${tw`flex justify-between w-full items-center`}
+   padding-left:20px;
+   padding-right: 16px;
+`
 
 export const PendingForReviesLiteral = styled.span`
-color:${yellow_orange_two};`;
+   color: ${yellow_orange_two};
+`
 
 export const MenuButton = styled.button`
    ${tw`w-full flex justify-between pl-5 pr-3`} :hover {

@@ -45,7 +45,6 @@ class CreatePost extends Component {
          }
       })
       const domainTags = domainTagsList.map(tag => {
-        
          return {
             label: tag.tagName,
             value: tag.tagId

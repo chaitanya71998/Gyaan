@@ -15,7 +15,7 @@ class FollowingDomains extends Component {
          pendingForReview,
          suggestedDomains
       } = dashboardStore
-     
+
       if (followingDomains) {
          return (
             <Div>
