@@ -1,4 +1,5 @@
 import { action, computed, observable } from 'mobx'
+import { API_SUCCESS } from "@ib/api-constants"
 
 class CommentModel {
    id
@@ -13,7 +14,8 @@ class CommentModel {
    @observable isUserReacted
    @observable showAllReplies
 
-   constructor(obj) {
+   constructor(obj,dashboardService) {
+      this.dashboardService = dashboardService;
       this.commentData = obj
       this.id = obj.comment_id
       this.user = obj.commented_by
@@ -32,11 +34,20 @@ class CommentModel {
 
    @action.bound
    setReplies() {}
+
+
    @action.bound
-   handleReaction(){
+   updateReaction(){
       this.isUserReacted = !this.isUserReacted;
       this.reactionsCount = this.isUserReacted?this.reactionsCount+1:this.reactionsCount-1;
    }
+   
+   @action.bound
+   async handleReaction(){
+       this.updateReaction();
+       const reactionStatus = await this.dashboardService.getCommentReactionStatus(this.id);
+       reactionStatus===API_SUCCESS?"":this.updateReaction();
+    }
 }
 
 export { CommentModel }

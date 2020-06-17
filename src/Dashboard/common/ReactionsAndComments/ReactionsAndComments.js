@@ -4,6 +4,7 @@ import { FiHeart } from 'react-icons/fi'
 import { Thumbnail } from '../../../Common/components/Thumbnail'
 
 import { PostReactions, Numbers } from './styledComponents'
+import { AiFillHeart } from "react-icons/ai"
 class ReactionsAndComments extends Component {
    render() {
       const { isUserReacted, reactionsCount, comments,handleReaction } = this.props

@@ -63,23 +63,8 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   createCommentPostAPI(requestObject) {
-      return networkCallWithApisauce(
-         this.api,
-         '',
-         requestObject,
-         apiMethods.get
-      )
-   }
-   createCommentCreationAPI(requestObject) {
-      return networkCallWithApisauce(
-         this.api,
-         '',
-         requestObject,
-         apiMethods.get
-      )
-   }
-   userReactionAPI(id, requestObject) {
+
+   getPostReactionStatus(postId){
       return networkCallWithApisauce(
          this.api,
          `/entity/${id}/react/v1/`,
@@ -87,14 +72,16 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   postAPI(requestObject) {
+   getCommentReactionStatus(commentId){
       return networkCallWithApisauce(
          this.api,
-         '',
+         `/entity/${id}/react/v1/`,
          requestObject,
          apiMethods.get
       )
    }
+
+  
 }
 
 export default DashboardAPIService

@@ -205,14 +205,14 @@ class Posts extends Component {
 
       return (
          <Div id={postId}>
-            <PostDetails onClick={this.onClickPost}>
+            <PostDetails>
                <PostHeader
                   profilePic={profilePic}
                   userName={userName}
                   dateAndTime={dateAndTime}
                   domainName={domainName}
                />
-               <PostTitle>
+               <PostTitle  onClick={this.onClickPost}>
                   <Typo24DarkBlueGreyHKGroteskBold>
                      {title}
                   </Typo24DarkBlueGreyHKGroteskBold>

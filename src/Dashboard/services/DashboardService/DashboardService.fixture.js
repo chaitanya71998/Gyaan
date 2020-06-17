@@ -5,6 +5,7 @@ import domainTypes from '../../fixtures/domainTypes.json'
 import postsList from '../../fixtures/postsList.json'
 import domainDescription from '../../fixtures/domainDescription.json'
 import tagsFixtures from '../../fixtures/tagsFixtures.json'
+import { API_SUCCESS, API_FAILED } from "@ib/api-constants"
 class DashboardFixtureService {
    domainTypesAPI() {
       return resolveWithTimeout(domainTypes)
@@ -25,18 +26,16 @@ class DashboardFixtureService {
    domainPostsAPI() {
       return resolveWithTimeout(postsList)
    }
-   createCommentPostAPI(requestObject) {
-      return resolveWithTimeout((postId = 0))
+  
+ 
+   getPostReactionStatus(postId){
+      return resolveWithTimeout(API_SUCCESS);
+
    }
-   createCommentCreationAPI(requestObject) {
-      return resolveWithTimeout((commentId = 0))
+   getCommentReactionStatus(commentId){
+      return resolveWithTimeout(API_SUCCESS);
    }
-   userReactionAPI(requestObject) {
-      return resolveWithTimeout({})
-   }
-   domainPostAPI(requestObject) {
-      return resolveWithTimeout(postsList[0])
-   }
+   
 }
 
 export default DashboardFixtureService

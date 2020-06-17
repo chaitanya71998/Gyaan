@@ -6,8 +6,8 @@ class ApprovedCommentModel extends CommentModel {
    approvedUserId
    approvedUserDomain
    approvedUserDomainID
-   constructor(commentObj) {
-      super(commentObj)
+   constructor(commentObj,dashboardService) {
+      super(commentObj,dashboardService)
       this.init(commentObj)
    }
 

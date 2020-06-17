@@ -23,7 +23,7 @@ class DashboardRoute extends Component {
    setDashboardData() {
       const { dashboardStore } = this.props
       dashboardStore.getDomainTypes()
-      dashboardStore.getPosts()
+      dashboardStore.getAllDomainsPosts()
    }
    render() {
       const { dashboardStore } = this.props

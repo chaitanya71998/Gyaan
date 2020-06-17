@@ -40,7 +40,7 @@ class PostModel {
       this.userReactionAPIError = null
 
       if (this.didPostHasAnswer) {
-         this.answer = new ApprovedCommentModel(obj.answer)
+         this.answer = new ApprovedCommentModel(obj.answer,this.dashboardService)
          this.postType = 'question'
          this.commentsLimitToShow = 1
       } else {
@@ -53,7 +53,7 @@ class PostModel {
    @action.bound
    setComments() {
       this.postData.comments.map(comment =>
-         this.comments.push(new CommentModel(comment))
+         this.comments.push(new CommentModel(comment,this.dashboardService))
       )
    }
    @action.bound
@@ -64,23 +64,17 @@ class PostModel {
          : this.reactionsCount--
    }
 
-   @action.bound
-   onCreationOfNewComment(commentTxt) {
-      this.getComments()
-   }
-   @action.bound
-   getComments() {
-      this.setComments()
-   }
-   @action.bound
-   onClickSeeAllComments() {
-      this.commentsLimitToShow = this.comments.size
-   }
 
    @action.bound
-   handleReaction(){
+   updateReaction(){
       this.isUserReacted = !this.isUserReacted;
       this.reactionsCount = this.isUserReacted?this.reactionsCount+1:this.reactionsCount-1;
+   }
+   @action.bound
+  async handleReaction(){
+      this.updateReaction();
+      const reactionStatus = await this.dashboardService.getPostReactionStatus(this.postId);
+      reactionStatus===API_SUCCESS ?"":this.updateReaction();
    }
 }
 

@@ -83,30 +83,25 @@ class DomainModel {
    setDomainPostsAPIStatus(status) {
       this.domainPostsAPIStatus = status
    }
-   setDomainRequests = reaction(
-      () => this.domainDescriptionAPIStatus,
-      status => {
-         if (status === API_SUCCESS) {
-            this.domainRequestsList = this.domainDescription.requests.map(
-               request => {
-                  return {
-                     username: request.name,
-                     userId: request.user_id
-                  }
-               }
-            )
-         }
-      }
-   )
-
+   
    //    @action.bound
    //    setDomainPosts(postsList){
-   //     postsList.forEach(postObj => this.domainPosts.set(postObj.post_id,new PostModel(postObj)));
-   //    }
-
-   onClickLoadMorePosts() {
-      this.postsLoadLimit += this.postsLoadLimit
-   }
+      //     postsList.forEach(postObj => this.domainPosts.set(postObj.post_id,new PostModel(postObj)));
+      //    }
+      
+      setDomainRequests = reaction(() => this.domainDescriptionAPIStatus,status => {
+                     if (status === API_SUCCESS) {
+                        this.domainRequestsList = this.domainDescription.requests.map(
+                           request => {
+                              return {
+                                 username: request.name,
+                                 userId: request.user_id
+                              }
+                           }
+                        )
+                     }
+                  }
+               )
    @computed get posts() {
       return this.domainPosts
    }

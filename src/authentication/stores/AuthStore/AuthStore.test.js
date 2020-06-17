@@ -4,19 +4,17 @@ import {
    API_FETCHING,
    API_INITIAL
 } from '@ib/api-constants'
-import Cookie from 'js-cookie'
-let mockSetCookie = jest.fn()
-global.mockSetCookie = mockSetCookie
-Cookie.set = mockSetCookie
 
-import AuthAPI from '../../services/AuthService/AuthService.fixture'
-import getUserSignInResponse from '../../fixtures/getUserSignInResponse.json'
+import { mockRemoveCookie, mockSetCookie } from "../../../Common/utils/SetupTests"
 
-import AuthStore from './index.js'
+import AuthAPI from '../../services/AuthService/AuthService.fixture';
+import userSignInResponse from '../../fixtures/userSignInResponse.json';
+
+import { AuthStore } from './index.js'
 
 describe('AuthStore Tests', () => {
-   let authAPI
-   let authStore
+   let authAPI;
+   let authStore;
 
    beforeEach(() => {
       authAPI = new AuthAPI()
@@ -34,7 +32,7 @@ describe('AuthStore Tests', () => {
          password: 'test-password'
       }
 
-      const mockLoadingPromise = new Promise(function(resolve, reject) {})
+      const mockLoadingPromise = new Promise(function (resolve, reject) { })
       const mockSignInAPI = jest.fn()
       mockSignInAPI.mockReturnValue(mockLoadingPromise)
       authAPI.getUserAPI = mockSignInAPI
@@ -49,13 +47,6 @@ describe('AuthStore Tests', () => {
          password: 'test-password'
       }
 
-      const mockSuccessPromise = new Promise(function(resolve, reject) {
-         resolve(setUserSignInAPIResponse)
-      })
-      const mockSignInAPI = jest.fn()
-      mockSignInAPI.mockReturnValue(mockSuccessPromise)
-      authAPI.getUserAPI = mockSignInAPI
-
       await authStore.userSignIn(requestObject)
       expect(authStore.getUserSignInAPIStatus).toBe(API_SUCCESS)
       expect(mockSetCookie).toBeCalled()
@@ -67,7 +58,7 @@ describe('AuthStore Tests', () => {
          password: 'test-password'
       }
 
-      const mockFailurePromise = new Promise(function(resolve, reject) {
+      const mockFailurePromise = new Promise(function (resolve, reject) {
          reject(new Error('error'))
       })
 

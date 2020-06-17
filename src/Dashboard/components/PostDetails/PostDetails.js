@@ -181,7 +181,6 @@ class PostDetails extends Component {
                      </Typo14DarkBlueGreyHKGroteskRegular>
                   </PostDescription>
                </PostDetailsBlock>
-               {this.displayTags()}
                <CommentsBlock>{this.displayComments()}</CommentsBlock>
                <EnterComment />
             </PostContainer>

@@ -19,15 +19,14 @@ class PostRoute extends Component {
       const { domainId, domainType } = params
       dashboardStore.getDomainTypes()
       if (domainType === 'allDomainPosts') {
-         dashboardStore.getPosts()
+         dashboardStore.getAllDomainsPosts()
       } else {
          dashboardStore.createDomainModelObj(domainId)
       }
    }
    render() {
-      const { dashboardStore } = this.props
+      const { dashboardStore, match } = this.props
       const { domainModel, postsList } = dashboardStore
-      const { match } = this.props
       const { params } = match
       const { postId, domainId, domainType } = params
 

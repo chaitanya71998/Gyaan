@@ -28,11 +28,15 @@ class DashboardStore {
    init() {
       this.postsListAPIStatus = API_INITIAL
       this.domainsListAPIStatus = API_INITIAL
-      this.postListAPIError = null
-      this.domainsListAPIError = null
-      this.postsList = []
-      this.domainTagsList = []
-      this.domainTypes = {}
+      this.domainTagsListAPIStatus = API_INITIAL
+      this.domainTagsListAPIError = null;
+      this.postListAPIError = null;
+      this.domainsListAPIError = null;
+      this.postsList = [];
+      this.domainTagsList = [];
+      this.domainTypes = {};
+      this.domainModel={};
+      this.currentDomainId = "";
    }
    @action.bound
    getDomainTypes() {
@@ -59,7 +63,7 @@ class DashboardStore {
       this.domainsListAPIError = error
    }
    @action.bound
-   getPosts() {
+   getAllDomainsPosts() {
       const postServicePromise = this.dashboardService.getAllDomainsPostsAPI()
       return bindPromiseWithOnSuccess(postServicePromise)
          .to(this.setPostsListStatus, this.setPostsListResponse)
@@ -68,10 +72,7 @@ class DashboardStore {
 
    @action.bound
    setPostsListStatus(status) {
-      console.log(status);
-      this.postsListAPIStatus = status;
-      console.log(status);
-      
+    this.postsListAPIStatus = status;      
    }
 
    @action.bound
@@ -87,15 +88,8 @@ class DashboardStore {
       this.postListAPIError = error
    }
    @action.bound
-   createDomainModelObj(domainId) {
-      this.domainModel = new DomainModel(this.dashboardService, domainId)
-      this.currentDomainId = domainId
-   }
-   @action.bound
    createDomainTags(domainId) {
-      const createDomainTagsPromise = this.dashboardService.getDomainRelatedTags(
-         domainId
-      )
+      const createDomainTagsPromise = this.dashboardService.getDomainRelatedTags(domainId)
       return bindPromiseWithOnSuccess(createDomainTagsPromise)
          .to(this.setDomainTagsStatus, this.setDomainTagsResponse)
          .catch(this.setDomainTagsError)
@@ -104,56 +98,33 @@ class DashboardStore {
    @action.bound
    setDomainTagsStatus(status) {
       this.domainTagsListAPIStatus = status
-      console.log(status, ':status')
    }
 
    @action.bound
    setDomainTagsResponse(response) {
-      console.log(response, ':responseOFTags')
       this.domainTagsList = response.map(tag => {
          return {
             tagName: tag.tag_name,
             tagId: tag.tag_id
          }
       })
-      console.log(response, ':responseOFTags')
    }
    @action.bound
    setDomainTagsError(error) {
       this.domainTagsListAPIError = error
    }
-   @computed get postsListOnscreen() {
-      if (this.domainModel.domainPostsAPIStatus === API_SUCCESS) {
-         this.postsList = this.domainModel.domainPosts
-      }
-   }
-
-   setPostAndRequestListsFromDomains = reaction(
-      () => this.domainModel,
-      domainModel => {
-         if (domainModel.domainPostsAPIStatus === API_SUCCESS) {
-            this.postsList = []
-            this.postsList = this.domainModel.domainPosts
-         }
-      }
-   )
-
    @action.bound
-   getPostModel(id) {
-      return this.postsList.find(post => post.postId === id)
+   createDomainModelObj(domainId) {
+      this.domainModel = new DomainModel(this.dashboardService, domainId)
+      this.currentDomainId = domainId
    }
+   
+   
    @action.bound
-   clearCurrentDominId() {
+   clearCurrentDomainId() {
       this.currentDomainId = ''
    }
 
-   @computed get domainsPosts() {
-      let postsObjList = []
-      this.postsList.forEach(value => {
-         postsObjList.push(value)
-      })
-      return postsObjList
-   }
 
    @computed get followingDomains() {
       if (this.domainsListAPIStatus === API_SUCCESS) {
@@ -166,6 +137,7 @@ class DashboardStore {
       }
       return []
    }
+
    @computed get pendingForReview() {
       if (this.domainsListAPIStatus === API_SUCCESS) {
          return this.domainTypes.pending_for_review.map(domain => {
