@@ -12,7 +12,7 @@ class Dashboard extends Component {
       const { TimeLine, pendingRequests } = this.props
 
       return (
-         <DashboardBlock>
+         <DashboardBlock  >
             <MenuBlock>
                <Menu pendingRequests={pendingRequests} />
             </MenuBlock>

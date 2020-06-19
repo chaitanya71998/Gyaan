@@ -163,7 +163,7 @@ class PostDetails extends Component {
       const { title, dateAndTime, content } = postData
       if (postData) {
          return (
-            <PostContainer>
+            <PostContainer data-testid = "post-container">
                <PostDetailsBlock>
                   <PostTitle>
                      <Typo32BlackHKGrostek>{title}</Typo32BlackHKGrostek>

@@ -10,7 +10,7 @@ import {
 
 import { getAccessToken } from './StorageUtils'
 
-export const networkCallWithApisauce = async (
+export const networkCallWithApisauceWithAccessToken = async (
    api,
    url,
    requestObject,
@@ -21,6 +21,22 @@ export const networkCallWithApisauce = async (
    if (accessToken) {
       api.setHeader('Authorization', `Bearer ${accessToken}`)
    }
+   api.setHeader('Content-Type', 'application/json; charset=UTF-8')
+   try {
+      response = await getData(api, url, requestObject, type)
+   } catch (error) {
+      throw error
+   }
+   return response
+}
+export const networkCallWithApisauce = async (
+   api,
+   url,
+   requestObject,
+   type = apiMethods.get
+) => {
+   let response = null
+   
    api.setHeader('Content-Type', 'application/json; charset=UTF-8')
    try {
       response = await getData(api, url, requestObject, type)

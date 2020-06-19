@@ -5,7 +5,7 @@ import {
     API_INITIAL
 } from '@ib/api-constants'
 
-
+import React, { Component } from 'react'
 import Dashboardservice from "../../services/DashboardService/DashboardService.fixture";
 
 import { DashboardStore } from "./DashboardStore";

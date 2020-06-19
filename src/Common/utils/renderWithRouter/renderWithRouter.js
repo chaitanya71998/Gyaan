@@ -1,10 +1,10 @@
-export default function renderWithRouter(
+export const  renderWithRouter=(
     ui,
     {
       route = '/',
       history = createMemoryHistory({ initialEntries: [route] }),
     } = {}
-  ) {
+  ) =>{
     const Wrapper = ({ children }) => (
       <Router history={history}>{children}</Router>
     )

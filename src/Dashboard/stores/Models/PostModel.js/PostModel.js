@@ -1,8 +1,8 @@
-import { action, computed, observable } from 'mobx'
+import { API_SUCCESS, API_INITIAL } from '@ib/api-constants'
+import { action, observable } from 'mobx'
+
 import { CommentModel } from '../CommentModel'
 import { ApprovedCommentModel } from '../ApprovedCommentModel'
-import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import { API_SUCCESS, API_INITIAL } from '@ib/api-constants'
 
 class PostModel {
    @observable tags
@@ -56,13 +56,13 @@ class PostModel {
          this.comments.push(new CommentModel(comment,this.dashboardService))
       )
    }
-   @action.bound
-   userReactedToPost() {
-      this.userReactedToPost = !this.userReactedToPost
-      this.reactionsCount = this.userReactedToPost
-         ? this.reactionsCount++
-         : this.reactionsCount--
-   }
+   // @action.bound
+   // userReactedToPost() {
+   //    this.userReactedToPost = !this.userReactedToPost
+   //    this.reactionsCount = this.userReactedToPost
+   //       ? this.reactionsCount++
+   //       : this.reactionsCount--
+   // }
 
 
    @action.bound

@@ -1,6 +1,6 @@
 import { create } from 'apisauce'
 
-import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
+import { networkCallWithApisauceWithAccessToken } from '../../../Common/utils/APIUtils'
 import { apiMethods } from '../../../Common/constants/APIConstants'
 
 class DashboardAPIService {
@@ -12,7 +12,7 @@ class DashboardAPIService {
       })
    }
    domainTypesAPI(requestObject = {}) {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `/domains/v1/?offset_parameter=${1}&limit_parameter=${3}`,
          requestObject,
@@ -21,7 +21,7 @@ class DashboardAPIService {
    }
 
    getDomainRelatedTags(domainId) {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `/domain/${domainId}/tags/v1/`,
          requestObject,
@@ -30,7 +30,7 @@ class DashboardAPIService {
    }
 
    getAllDomainsPostsAPI() {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `/posts/v1/?offset_parameter=${1}&limit_parameter=${3}`,
          {},
@@ -38,7 +38,7 @@ class DashboardAPIService {
       )
    }
    followingDomainsAPI(id, requestObject) {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `domains/${id}`,
          {},
@@ -47,7 +47,7 @@ class DashboardAPIService {
    }
 
    domainDescriptionAPI(id, requestObject = {}) {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `domain/${id}/v1/`,
          requestObject,
@@ -56,7 +56,7 @@ class DashboardAPIService {
    }
 
    domainPostsAPI(domainId) {
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `domain/${domainId}/posts/v1/?offset_parameter=${1}&limit_parameter=${8}`,
          {},
@@ -65,7 +65,7 @@ class DashboardAPIService {
    }
 
    getPostReactionStatus(postId){
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `/entity/${id}/react/v1/`,
          requestObject,
@@ -73,7 +73,7 @@ class DashboardAPIService {
       )
    }
    getCommentReactionStatus(commentId){
-      return networkCallWithApisauce(
+      return networkCallWithApisauceWithAccessToken(
          this.api,
          `/entity/${id}/react/v1/`,
          requestObject,

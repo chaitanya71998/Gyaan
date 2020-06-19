@@ -114,18 +114,15 @@ class DashboardStore {
       this.domainTagsListAPIError = error
    }
    @action.bound
+   clearCurrentDomainId() {
+      this.currentDomainId = ''
+   }
+   @action.bound
    createDomainModelObj(domainId) {
       this.domainModel = new DomainModel(this.dashboardService, domainId)
       this.currentDomainId = domainId
    }
    
-   
-   @action.bound
-   clearCurrentDomainId() {
-      this.currentDomainId = ''
-   }
-
-
    @computed get followingDomains() {
       if (this.domainsListAPIStatus === API_SUCCESS) {
          return this.domainTypes.following_domains.map(domain => {
