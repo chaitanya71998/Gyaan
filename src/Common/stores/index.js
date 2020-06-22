@@ -1,6 +1,6 @@
 import { AuthStore } from '../../Authentication/stores/AuthStore'
-import AuthAPIService from '../../Authentication/services/AuthService/AuthService.api'
 import AuthFixtureService from '../../Authentication/services/AuthService/AuthService.fixture'
+import AuthAPIService from '../../Authentication/services/AuthService/AuthService.api'
 
 import { DashboardStore } from '../../Dashboard/stores/DashboardStore'
 import DashboardAPIService from '../../Dashboard/services/DashboardService/DashboardService.api'
