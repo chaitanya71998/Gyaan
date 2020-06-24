@@ -19,7 +19,7 @@ class AllDomains extends Component {
    }
    render() {
       return (
-         <Div> 
+         <Div>
             <DomainTypeButton onClick={this.onClickAllDomainsButton}>
                All Domains
             </DomainTypeButton>

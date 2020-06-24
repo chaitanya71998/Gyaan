@@ -132,7 +132,7 @@ class Posts extends Component {
                   isAnswerToPost={didPostHasAnswer}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
-                 handleCommentReaction = {handleReaction}
+                  handleCommentReaction={handleReaction}
                />
             </Div>
          )
@@ -162,7 +162,6 @@ class Posts extends Component {
             approvedUser,
             approvedUserDomain,
             handleReaction
-            
          } = comment
 
          return (
@@ -181,7 +180,7 @@ class Posts extends Component {
                   isAnswerToPost={false}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
-                   handleCommentReaction = {handleReaction}
+                  handleCommentReaction={handleReaction}
                />
             </Div>
          )
@@ -212,7 +211,7 @@ class Posts extends Component {
                   dateAndTime={dateAndTime}
                   domainName={domainName}
                />
-               <PostTitle  onClick={this.onClickPost}>
+               <PostTitle onClick={this.onClickPost}>
                   <Typo24DarkBlueGreyHKGroteskBold>
                      {title}
                   </Typo24DarkBlueGreyHKGroteskBold>
@@ -223,7 +222,7 @@ class Posts extends Component {
                      isUserReacted={isUserReacted}
                      reactionsCount={reactionsCount}
                      comments={comments}
-                     handleReaction = {handleReaction}
+                     handleReaction={handleReaction}
                   />
                </Footer>
             </PostDetails>

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 import { API_SUCCESS, API_INITIAL } from '@ib/api-constants'
-import { getLoadingStatus } from "@ib/api-utils";
+import { getLoadingStatus } from '@ib/api-utils'
 
 import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapperWithFailure'
 
@@ -28,8 +28,12 @@ class DomainRoute extends Component {
       const { domainId } = params
 
       if (domainModel) {
-
-         if (getLoadingStatus(domainModel.domainDescriptionAPIStatus, domainModel.domainPostsAPIStatus)) {
+         if (
+            getLoadingStatus(
+               domainModel.domainDescriptionAPIStatus,
+               domainModel.domainPostsAPIStatus
+            )
+         ) {
             const DomainDetailsWithIdAsParams = () => {
                return <DomainDetails domainModelObj={domainModel} />
             }

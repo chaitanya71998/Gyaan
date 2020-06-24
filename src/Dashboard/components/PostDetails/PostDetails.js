@@ -36,7 +36,6 @@ const { bright_blue } = colors
 
 @observer
 class PostDetails extends Component {
-
    displayTags = () => {
       const { postData } = this.props
       const { tags } = postData
@@ -107,7 +106,7 @@ class PostDetails extends Component {
                   isAnswerToPost={didPostHasAnswer}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
-                  handleCommentReaction = {handleReaction}
+                  handleCommentReaction={handleReaction}
                />
             </AnswerPost>
          )
@@ -151,7 +150,7 @@ class PostDetails extends Component {
                   isAnswerToPost={false}
                   approvedUser={approvedUser}
                   postDomain={approvedUserDomain}
-                  handleCommentReaction = {handleReaction}
+                  handleCommentReaction={handleReaction}
                />
             </Div>
          )
@@ -163,7 +162,7 @@ class PostDetails extends Component {
       const { title, dateAndTime, content } = postData
       if (postData) {
          return (
-            <PostContainer data-testid = "post-container">
+            <PostContainer data-testid='post-container'>
                <PostDetailsBlock>
                   <PostTitle>
                      <Typo32BlackHKGrostek>{title}</Typo32BlackHKGrostek>

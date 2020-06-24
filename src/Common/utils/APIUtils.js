@@ -1,5 +1,4 @@
-import getData from '@ib/api';
-
+import getData from '@ib/api'
 
 import {
    apiMethods,
@@ -36,7 +35,7 @@ export const networkCallWithApisauce = async (
    type = apiMethods.get
 ) => {
    let response = null
-   
+
    api.setHeader('Content-Type', 'application/json; charset=UTF-8')
    try {
       response = await getData(api, url, requestObject, type)

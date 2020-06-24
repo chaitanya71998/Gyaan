@@ -79,7 +79,11 @@ class Comment extends Component {
             <Footer isAnswerToPost={isAnswerToPost ? true : false}>
                {this.answerToPost()}
                <CommentReactions>
-                  {hasReacted ?<AiFillHeart onClick={handleCommentReaction} color="red"/>:<FiHeart onClick={handleCommentReaction} />}
+                  {hasReacted ? (
+                     <AiFillHeart onClick={handleCommentReaction} color='red' />
+                  ) : (
+                     <FiHeart onClick={handleCommentReaction} />
+                  )}
                   <Numbers>{reactionsCount} </Numbers>
                   <Thumbnail src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/e185f501-5dde-45ad-9f10-0cbeea737ee4.svg' />
                   <Numbers>

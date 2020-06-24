@@ -9,7 +9,6 @@ import { API_SUCCESS } from '@ib/api-constants'
 import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapperWithFailure'
 import { PostDetails } from '../../components/PostDetails'
 
-
 @inject('dashboardStore')
 @observer
 class PostRoute extends Component {
@@ -30,7 +29,7 @@ class PostRoute extends Component {
       const { domainModel, postsList } = dashboardStore
       const { params } = match
       const { postId, domainId, domainType } = params
-     
+
       switch (domainType) {
          case 'allDomainPosts': {
             if (dashboardStore.postsListAPIStatus === API_SUCCESS) {
@@ -49,8 +48,10 @@ class PostRoute extends Component {
             return <LoadingWrapperWithFailure />
          }
          default: {
-            if (domainModel.domainPostsAPIStatus===API_SUCCESS && domainModel.domainDescriptionAPIStatus === API_SUCCESS) {
-                 
+            if (
+               domainModel.domainPostsAPIStatus === API_SUCCESS &&
+               domainModel.domainDescriptionAPIStatus === API_SUCCESS
+            ) {
                const postObj = domainModel.domainPosts.find(
                   post => post.postId === Number(postId)
                )

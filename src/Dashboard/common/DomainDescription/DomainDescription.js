@@ -30,7 +30,6 @@ import { SecondaryButtonElement } from '../../../Common/components/ButtonElement
 
 const { domainExperts, leave } = strings
 
-
 @observer
 class DomainDescription extends Component {
    displayDomainExperts = () => {
