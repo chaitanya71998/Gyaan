@@ -26,12 +26,10 @@ import {
    DomainLogo,
    DomainStatsAndLeaveButton
 } from './styledComponent'
-import { SecondaryButton } from '../../../Common/components/ButtonElement/styledComponents'
+import { SecondaryButtonElement } from '../../../Common/components/ButtonElement'
 
 const { domainExperts, leave } = strings
-const LeaveText = (
-   <Type14NeonRedHKGroteskSemiBold>{leave}</Type14NeonRedHKGroteskSemiBold>
-)
+
 
 @observer
 class DomainDescription extends Component {
@@ -83,7 +81,7 @@ class DomainDescription extends Component {
                   domainFollowers={domainFollowers}
                   domainPosts={domainPosts}
                />
-               <SecondaryButton children={LeaveText} />
+               <SecondaryButtonElement text={leave} />
             </DomainStatsAndLeaveButton>
          </DomainDescriptionBlock>
       )

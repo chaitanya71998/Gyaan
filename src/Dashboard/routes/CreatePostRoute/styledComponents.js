@@ -112,7 +112,7 @@ export const SubmitButton = styled.button`
    ${tw`py-3 px-3 flex justify-center items-center`}
    border-radius:4px;
    background-color: ${props =>
-      props.isDisabled ? `${cool_grey}` : `${bright_blue}`};
+      props.disabled ? `${cool_grey}` : `${bright_blue}`};
    color: ${white};
 `
 

@@ -1,3 +1,3 @@
-import { ButtonElement } from './ButtonElement'
+import { ButtonElement,SecondaryButtonElement} from './ButtonElement'
 
-export { ButtonElement }
+export { ButtonElement, SecondaryButtonElement }
