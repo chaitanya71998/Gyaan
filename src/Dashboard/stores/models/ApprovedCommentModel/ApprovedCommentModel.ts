@@ -1,12 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import { CommentModel } from '../CommentModel'
+import { ApprovedBy } from "../../types"
 
-interface ApprovedBy{
-   name:string
-   user_id:number
-   domain_name:string
-   domain_id:number
-}
 class ApprovedCommentModel extends CommentModel {
    approvedUser!: string
    approvedUserId!: any

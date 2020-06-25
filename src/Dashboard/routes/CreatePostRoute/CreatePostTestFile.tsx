@@ -21,10 +21,14 @@ import {
 import { DashboardStore } from "../../stores/DashboardStore"
 
 
-
 interface CreatePostRouteProps {
+
+}
+
+interface InjectedProps extends CreatePostRouteProps {
    dashboardStore: DashboardStore
 }
+
 
 @inject('dashboardStore')
 @observer
@@ -41,6 +45,11 @@ class CreatePostTestFile extends Component<CreatePostRouteProps>{
       this.postTitle = ''
       this.postDescription = ''
    }
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
    onChangeDomainValue = (optionValue) => {
       this.selectedDomain = optionValue.label
       this.selectedDomainId = optionValue.value
@@ -52,8 +61,8 @@ class CreatePostTestFile extends Component<CreatePostRouteProps>{
       this.selectedTagId = optionValue.value
    }
    getTagsForTheDomain = async (domainId: string) => {
-      const { dashboardStore } = this.props
-      const { createDomainTags } = dashboardStore
+
+      const { createDomainTags } = this.getDashboardStore()
       await createDomainTags(Number(domainId))
    }
    onChangePostTitle = (event: { target: { value: string } }) => {
@@ -87,11 +96,11 @@ class CreatePostTestFile extends Component<CreatePostRouteProps>{
    }
 
    async componentDidMount() {
-      const { dashboardStore } = this.props
-      await dashboardStore.getDomainTypes()
+
+      await this.getDashboardStore().getDomainTypes()
    }
    render() {
-      const { dashboardStore } = this.props
+
       const {
          domainsListAPIStatus,
          domainsListAPIError,
@@ -99,7 +108,8 @@ class CreatePostTestFile extends Component<CreatePostRouteProps>{
          followingDomains,
          domainTagsList,
          domainTagsListAPIStatus
-      } = dashboardStore
+      } = this.getDashboardStore()
+
       if (domainsListAPIStatus === API_SUCCESS) {
          const followingDomainsList = followingDomains.map((domain: { domainName: string; domainId: number }) => {
             return {

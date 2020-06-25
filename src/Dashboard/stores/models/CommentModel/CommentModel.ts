@@ -1,23 +1,12 @@
 import { action, computed, observable } from 'mobx'
 import { API_SUCCESS } from "@ib/api-constants"
+import { CommentObject, user } from "../../types"
 
-interface CommentedBy {
-   user_id: number;
-   name: string;
-   profile_pic: string
-}
-interface CommentModelFixture {
-   comment_id: any;
-   commented_by:CommentedBy;
-   commented_at: any;
-   comment_content: any;
-   is_user_reacted: any;
-   replies_count: any;
-   reactions_count: any
-}
+
+
 class CommentModel {
    id: number
-   user: CommentedBy
+   user: user
    userId: number
    userName: string
    userProfilePic: string
@@ -31,7 +20,7 @@ class CommentModel {
    commentedContent: string
    reactionsCount: number
 
-   constructor(obj: CommentModelFixture, dashboardService: any) {
+   constructor(obj: CommentObject, dashboardService: any) {
       this.dashboardService = dashboardService;
       this.id = obj.comment_id
       this.user = obj.commented_by

@@ -3,28 +3,9 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { action, computed, observable } from 'mobx'
 import DomainModel from '../models/DomainModel/DomainModel'
 import PostModel from '../models/PostModel.js/index.js'
+import { TagModel, TagObject, FollowingDomain, PendingForReview, SuggestedDomains } from "../types"
+import { DashboardService } from "../../services/DashboardService"
 
-
-interface DomainTags {
-   tagName: string
-   tagId: number
-}
-export interface DomainTagsFixture {
-   tag_name: string
-   tag_id: number
-}
-interface FollowingDomain 
-{ 
-   domain_name: string;
-    domain_id: any
-    }
-
-interface PendingForReview{ 
-   domain_id: number; 
-   domain_name: string; 
-   count: number }
-
-interface SuggestedDomains { domain_id: number; domain_name: string; follow_requested: boolean }
 
 class DashboardStore {
    @observable postsList!: PostModel[]
@@ -33,13 +14,14 @@ class DashboardStore {
    @observable domainTypes!: { following_domains?: any; pending_for_review?: any; remaining_domains?: any }
    @observable domainsListAPIStatus!: number
    @observable domainsListAPIError: null
-   @observable domainModel!: DomainModel | {}
+   @observable domainModel!: DomainModel
    @observable currentDomainId!: string
-   @observable dashboardService: { domainTypesAPI: (arg0: {}) => any; getAllDomainsPostsAPI: () => any; getDomainRelatedTags: (arg0: any) => any }
-   @observable domainTagsList!: DomainTags[]
+   @observable domainTagsList!: TagModel[]
    @observable domainTagsListAPIStatus!: number
    @observable domainTagsListAPIError: null
-   constructor(dashboardService: import("../../services/DashboardService/DashboardService.fixture").default | import("../../services/DashboardService/DashboardService.api").default) {
+   dashboardService: DashboardService
+   
+   constructor(dashboardService: DashboardService) {
       this.dashboardService = dashboardService
       this.init()
    }
@@ -55,7 +37,6 @@ class DashboardStore {
       this.postsList = [];
       this.domainTagsList =  [];
       this.domainTypes = {}
-      this.domainModel = {};
       this.currentDomainId = "";
    }
    @action.bound
@@ -122,7 +103,7 @@ class DashboardStore {
 
    @action.bound
    setDomainTagsResponse(response:any) {
-      this.domainTagsList = response.map((tag: DomainTagsFixture) => {
+      this.domainTagsList = response.map((tag: TagObject) => {
          return {
             tagName: tag.tag_name,
             tagId: tag.tag_id

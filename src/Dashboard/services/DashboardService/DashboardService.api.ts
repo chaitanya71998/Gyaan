@@ -2,15 +2,16 @@ import { create, ApisauceInstance } from 'apisauce'
 
 import { networkCallWithApisauceWithAccessToken } from '../../../Common/utils/APIUtils'
 import { apiMethods } from '../../../Common/constants/APIConstants'
+import { DashboardService } from "."
 
-class DashboardAPIService {
+class DashboardAPIService implements DashboardService {
    api:ApisauceInstance
    constructor() {
       this.api = create({
          baseURL: 'https://dcf9663914c2.ngrok.io/api/gyaan'
       })
    }
-   domainTypesAPI(requestObject:object = {}) {
+   domainTypesAPI(requestObject:{} = {}) {
       return networkCallWithApisauceWithAccessToken(
          this.api,
          `/domains/v1/?offset_parameter=${1}&limit_parameter=${3}`,
@@ -36,14 +37,7 @@ class DashboardAPIService {
          apiMethods.get
       )
    }
-   followingDomainsAPI(id: number) {
-      return networkCallWithApisauceWithAccessToken(
-         this.api,
-         `domains/${id}`,
-         {},
-         apiMethods.get
-      )
-   }
+  
 
    domainDescriptionAPI(id: number) {
       return networkCallWithApisauceWithAccessToken(

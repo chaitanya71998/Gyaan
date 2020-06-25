@@ -11,9 +11,17 @@ import { TimeLine } from '../../components/TimeLine'
 import { testIds } from '../../constants/testIds'
 
 import { Div } from './styledComponents'
+import { DashboardStore } from "../../stores/DashboardStore"
 
 const { signInForm } = paths
 const { dashboardRouteBlockId } = testIds
+
+interface DashboardRouteProps{
+   
+}
+interface InjectedProps extends DashboardRouteProps {
+   dashboardStore: DashboardStore
+}
 
 @inject('dashboardStore')
 @observer
@@ -21,14 +29,21 @@ class DashboardRoute extends Component {
    componentDidMount() {
       this.setDashboardData()
    }
+
+
+getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+getDashboardStore = () => {
+   return this.getInjectedProps().dashboardStore
+}
    setDashboardData() {
-      const { dashboardStore } = this.props
-      dashboardStore.getDomainTypes()
-      dashboardStore.getAllDomainsPosts()
+      
+      this.getDashboardStore().getDomainTypes()
+      this.getDashboardStore().getAllDomainsPosts()
    }
    render() {
-      const { dashboardStore } = this.props
-      const { postsListAPIStatus, domainsListAPIStatus } = dashboardStore
+      
+      const { postsListAPIStatus, domainsListAPIStatus } = this.getDashboardStore();
 
       if (
          getLoadingStatus(postsListAPIStatus, domainsListAPIStatus) ===

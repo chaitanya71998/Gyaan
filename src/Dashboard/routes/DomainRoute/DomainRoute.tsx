@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 import { API_SUCCESS, API_INITIAL } from '@ib/api-constants'
@@ -9,25 +9,40 @@ import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapper
 
 import Dashboard from '../../components/Dashboard'
 import { DomainDetails } from '../../components/DomainDetails'
+import { DashboardStore } from "../../stores/DashboardStore"
+
+interface DomainRouteProps extends RouteComponentProps {
+match:any
+}
+
+interface InjectedProps extends DomainRouteProps {
+   dashboardStore: DashboardStore
+}
 
 @inject('dashboardStore')
 @observer
-class DomainRoute extends Component {
+class DomainRoute extends Component<DomainRouteProps>{
    componentDidMount() {
-      const { dashboardStore, match } = this.props
+      const { match } = this.props
       const { params } = match
       const { domainId } = params
-      dashboardStore.createDomainModelObj(domainId)
-      dashboardStore.getDomainTypes()
+      const { createDomainModelObj, getDomainTypes } = this.getDashboardStore();
+      createDomainModelObj(domainId)
+      getDomainTypes()
    }
 
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
    render() {
-      const { dashboardStore, match } = this.props
-      const { domainModel } = dashboardStore
+      const { match } = this.props
+      const { domainModel } = this.getDashboardStore();
       const { params } = match
       const { domainId } = params
 
-      if (domainModel) {
+      if (Object.keys(domainModel).length) {
          if (
             getLoadingStatus(
                domainModel.domainDescriptionAPIStatus,
@@ -54,6 +69,4 @@ class DomainRoute extends Component {
 }
 
 export default withRouter(DomainRoute)
-/**
- *  domainModel.domainPostsAPIStatus === API_SUCCESS &&
- */
+

@@ -1,36 +1,15 @@
 import { API_SUCCESS, API_INITIAL } from '@ib/api-constants'
 import { action, observable } from 'mobx'
 
+import { TagObject, TagModel, PostObject, CommentObject } from "../../types"
+
 import { CommentModel } from '../CommentModel'
 import { ApprovedCommentModel } from '../ApprovedCommentModel'
-import { DomainTagsFixture } from "../../DashboardStore/DashboardStore"
 
-
-interface PostFixture {
-   post_id: number
-   creater:PostCreater;
-   created_at: string;
-   title: string;
-   post_content: string;
-   domain: {
-      domain_name: string;
-      domain_id: number;
-   };
-   tags: DomainTagsFixture[];
-   reactions_count: number;
-   is_user_reacted: boolean;
-   comment_content: number;
-   answer: any;
-   comments: any
-}
-interface PostCreater {
-   name: string;
-   profile_pic: string;
-}
 
 class PostModel {
-   @observable tags: any
-   @observable postData: { comments: any[] }
+   @observable tags:TagModel[]
+   @observable postData: PostObject
    @observable answer!: ApprovedCommentModel
    @observable comments: CommentModel[]
    @observable commentsLimitToShow: number
@@ -51,7 +30,7 @@ class PostModel {
    userReactionAPIError: null
    postType: string
 
-   constructor(obj: PostFixture, dashboardService: { domainTypesAPI: (arg0: {}) => any; getAllDomainsPostsAPI: () => any; getDomainRelatedTags: (arg0: any) => any }) {
+   constructor(obj: PostObject, dashboardService: { domainTypesAPI: (arg0: {}) => any; getAllDomainsPostsAPI: () => any; getDomainRelatedTags: (arg0: any) => any }) {
       this.postData = obj
       this.dashboardService = dashboardService
       this.postId = obj.post_id
@@ -62,7 +41,7 @@ class PostModel {
          (this.content = obj.post_content),
          (this.domainName = obj.domain.domain_name),
          (this.domainId = obj.domain.domain_id),
-         (this.tags = obj.tags.map((tag:DomainTagsFixture) => {
+         (this.tags = obj.tags.map((tag: TagObject) => {
             return {
                tagName: tag.tag_name,
                tagId: tag.tag_id
@@ -70,7 +49,7 @@ class PostModel {
          }))
       this.reactionsCount = obj.reactions_count
       this.isUserReacted = obj.is_user_reacted
-      this.commentsCount = obj.comment_content
+      this.commentsCount = obj.comments_count
       this.didPostHasAnswer = Object.keys(obj.answer).length ? true : false
       this.userReactionAPIStatus = API_INITIAL
 
@@ -89,7 +68,7 @@ class PostModel {
    }
    @action.bound
    setComments() {
-      this.postData.comments.map((comment) =>
+      this.postData.comments.map((comment:CommentObject) =>
          this.comments.push(new CommentModel(comment, this.dashboardService))
       )
    }

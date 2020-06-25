@@ -39,13 +39,13 @@ class App extends React.Component {
                   <Route exact path={signInForm}>
                      {authenticationRoute}
                   </Route>
-                  {/*<Route exact path={dashboard}>
+                  /*
+                  <Route exact path={dashboard}>
                      <DashboardRoute />
                   </Route>
                   <Route exact path={createPostPath}>
                      <CreatePostTestFile />
                   </Route>
-
                   <Route exact path={followingDomainPath}>
                      <DomainRoute />
                   </Route>
@@ -54,12 +54,11 @@ class App extends React.Component {
                   </Route>
                   <Route exact path={allDomainsPostsPath}>
                      <PostsRoute />
-      </Route>*/}
-
+                  </Route>
+                  */
                   <Route path='/HomePage'>
                      <HomePage />
                   </Route>
-
                   <Route path='/'>
                      <HomePage />
                   </Route>

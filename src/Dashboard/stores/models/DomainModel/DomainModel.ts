@@ -2,24 +2,35 @@ import { observable, action, computed, reaction } from 'mobx'
 import PostModel from '../PostModel.js/index.js'
 import { API_INITIAL, API_SUCCESS } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
+import { DashboardService } from "../../../services/DashboardService/index.js"
 
-interface DomainRequestList 
-   {
-      username: string
-      userId: number
-   }
+interface DomainRequestList {
+   username: string
+   userId: number
+}
 class DomainModel {
    @observable domainPosts!: PostModel[]
    @observable domainPostsAPIStatus!: number
-   @observable domainPostsAPIError
-   @observable domainDescription
-   @observable domainDescriptionAPIStatus
-   @observable domainDescriptionAPIError
-   @observable dashboardService
-   @observable domainRequestsList!:DomainRequestList[]
+   @observable domainPostsAPIError: null
+   @observable domainDescription!: {
+      requests?: any
+      domain_name?: any
+      description?: any
+      domain_experts?: any
+      pending_for_review_count?: any
+      members?: any
+      total_posts_count?: any
+      stars_count?: any
+      total_requests_count?: any
+      is_user_following?: any
+   }
+   @observable domainDescriptionAPIStatus!: number
+   @observable domainDescriptionAPIError: null
+   @observable dashboardService:DashboardService
+   @observable domainRequestsList!: DomainRequestList[]
    domainName!: string
    domainId: number
-   constructor(dashboardService: { domainTypesAPI: (arg0: {}) => any; getAllDomainsPostsAPI: () => any; getDomainRelatedTags: (arg0: any) => any }, domainId: number) {
+   constructor(dashboardService:DashboardService, domainId: number) {
       this.dashboardService = dashboardService
       this.domainId = domainId
       this.init()
@@ -73,7 +84,7 @@ class DomainModel {
          .catch(this.setDomainPostsAPIError)
    }
    @action.bound
-   setDomainPostsAPIError(error) {
+   setDomainPostsAPIError(error: any) {
       this.domainPostsAPIError = error
    }
    @action.bound
@@ -83,14 +94,14 @@ class DomainModel {
       )
    }
    @action.bound
-   setDomainPostsAPIStatus(status) {
+   setDomainPostsAPIStatus(status: number) {
       this.domainPostsAPIStatus = status
    }
 
    setDomainRequests = reaction(() => this.domainDescriptionAPIStatus, status => {
       if (status === API_SUCCESS) {
          this.domainRequestsList = this.domainDescription.requests.map(
-            (            request: { name: string; user_id: number }) => {
+            (request: { name: string; user_id: number }) => {
                return {
                   username: request.name,
                   userId: request.user_id
@@ -98,7 +109,7 @@ class DomainModel {
             }
          )
       }
-   } 
+   }
    )
    @computed get posts() {
       return this.domainPosts
@@ -120,7 +131,7 @@ class DomainModel {
       return {
          domainName: domain_name,
          description,
-         domainExperts: domain_experts.map(expert => {
+         domainExperts: domain_experts.map((expert: { profile_pic: any; user_id: any; name: any }) => {
             return {
                profilePic: expert.profile_pic,
                userId: expert.user_id,
