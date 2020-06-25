@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
 
@@ -8,31 +8,51 @@ import Dashboard from '../../components/Dashboard'
 import { API_SUCCESS } from '@ib/api-constants'
 import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapperWithFailure'
 import { PostDetails } from '../../components/PostDetails'
+import { DashboardStore } from "../../stores/DashboardStore"
 
+
+interface PostRouteProps extends RouteComponentProps{}
+
+interface InjectedProps extends PostRouteProps {
+   dashboardStore: DashboardStore
+}
+interface ParamsTypes {
+   domainId:string
+   domainType:string
+   postId:string
+}
 @inject('dashboardStore')
 @observer
-class PostRoute extends Component {
-   @observable isAllDomainPage
+class PostRoute extends Component<PostRouteProps> {
+  
    componentDidMount() {
-      const { dashboardStore, match } = this.props
+      const {getDomainTypes,getAllDomainsPosts,createDomainModelObj } = this.getDashboardStore();
+      
+      const { match } = this.props
       const { params } = match
-      const { domainId, domainType } = params
-      dashboardStore.getDomainTypes()
+      const { domainId, domainType } = params as ParamsTypes
+      getDomainTypes()
       if (domainType === 'allDomainPosts') {
-         dashboardStore.getAllDomainsPosts()
+         getAllDomainsPosts()
       } else {
-         dashboardStore.createDomainModelObj(domainId)
+         createDomainModelObj(domainId)
       }
    }
+   
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
    render() {
-      const { dashboardStore, match } = this.props
-      const { domainModel, postsList } = dashboardStore
+      const {  match } = this.props
+      const { domainModel, postsList,postsListAPIStatus} = this.getDashboardStore();
       const { params } = match
-      const { postId, domainId, domainType } = params
+      const { postId, domainId, domainType } = params as ParamsTypes
 
       switch (domainType) {
          case 'allDomainPosts': {
-            if (dashboardStore.postsListAPIStatus === API_SUCCESS) {
+            if (postsListAPIStatus === API_SUCCESS) {
                const postObj = postsList.find(
                   post => post.postId === Number(postId)
                )

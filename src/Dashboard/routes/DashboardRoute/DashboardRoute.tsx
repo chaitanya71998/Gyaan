@@ -16,8 +16,8 @@ import { DashboardStore } from "../../stores/DashboardStore"
 const { signInForm } = paths
 const { dashboardRouteBlockId } = testIds
 
-interface DashboardRouteProps{
-   
+interface DashboardRouteProps {
+
 }
 interface InjectedProps extends DashboardRouteProps {
    dashboardStore: DashboardStore
@@ -31,18 +31,18 @@ class DashboardRoute extends Component {
    }
 
 
-getInjectedProps = (): InjectedProps => this.props as InjectedProps
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
-getDashboardStore = () => {
-   return this.getInjectedProps().dashboardStore
-}
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
    setDashboardData() {
-      
+
       this.getDashboardStore().getDomainTypes()
       this.getDashboardStore().getAllDomainsPosts()
    }
    render() {
-      
+
       const { postsListAPIStatus, domainsListAPIStatus } = this.getDashboardStore();
 
       if (

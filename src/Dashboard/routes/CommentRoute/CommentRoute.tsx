@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
-import { Div } from './styledComponents'
-import { Comment } from '../../common/Comment'
 
+import { Comment } from '../../common/Comment'
+import { ApprovedCommentModel } from "../../stores/models/ApprovedCommentModel"
+
+import { Div } from './styledComponents'
+
+interface CommentRouteProps{
+   commentData: ApprovedCommentModel
+   isAnswerToPost:boolean
+}
 @observer
-class CommentRoute extends Component {
+class CommentRoute extends Component <CommentRouteProps>{
    render() {
       const { commentData, isAnswerToPost } = this.props
 
@@ -16,7 +23,6 @@ class CommentRoute extends Component {
          replies,
          repliesCount,
          isUserReacted,
-         showAllReplies,
          reactionsCount,
          approvedUser,
          approvedUserDomain
