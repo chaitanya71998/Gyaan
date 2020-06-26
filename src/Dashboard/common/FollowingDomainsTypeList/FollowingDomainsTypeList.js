@@ -24,7 +24,6 @@ class FollowingDomainsTypeList extends Component {
       const { dashboardStore } = this.props
       dashboardStore.createDomainModelObj(event.target.id)
       // this.props.history.push(`/followingDomain/${event.target.id}`)
-      console.log(123)
       const path = `/followingDomain/${event.target.id}`
       goToSpecificPath(this.props.history, path)
    }

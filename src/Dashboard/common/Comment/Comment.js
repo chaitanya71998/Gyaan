@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { AiFillHeart } from 'react-icons/ai'
 
-import { ImageElement } from '../../../Common/components/ImageElement'
 import {
    Typo12DarkBlueGreyHKGroteskRegular,
    Typo16BrightBlueHKGroteskBold,
@@ -25,11 +24,18 @@ import {
 import { Thumbnail } from '../../../Common/components/Thumbnail'
 import { SmallThumbnail } from '../../../Common/components/Thumbnail/styledComponents'
 import { FiHeart } from 'react-icons/fi'
+import { CommentModel } from "../../stores/models/CommentModel"
+import { ApprovedCommentModel } from "../../stores/models/ApprovedCommentModel"
+
+
+// interface CommentProps {
+//  props:ApprovedCommentModel
+// }
 
 @observer
 class Comment extends Component {
    answerToPost = () => {
-      const { isAnswerToPost, approvedUser, postDomain } = this.props
+      const { isAnswerToPost, approvedUser, approvedUserDomain } = this.props
       if (isAnswerToPost) {
          return (
             <AnswerTypeComment>
@@ -39,7 +45,7 @@ class Comment extends Component {
                />
                <Typo12DarkBlueGreyHKGroteskRegular>
                   Approved by
-                  <Typo16BrightBlueHKGroteskBold>{`${approvedUser}(${postDomain})`}</Typo16BrightBlueHKGroteskBold>{' '}
+                  <Typo16BrightBlueHKGroteskBold>{`${approvedUser}(${approvedUserDomain})`}</Typo16BrightBlueHKGroteskBold>{' '}
                </Typo12DarkBlueGreyHKGroteskRegular>
             </AnswerTypeComment>
          )

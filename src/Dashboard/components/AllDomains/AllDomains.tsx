@@ -2,21 +2,35 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Div, Button } from './styledComponents'
 import { DomainTypeButton } from '../../common/styledComponents'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { paths } from '../../../Common/constants/NavigationConstants'
+import { DashboardStore } from "../../stores/DashboardStore"
 
 const { dashboard } = paths
 
+interface AllDomainsProps extends RouteComponentProps {
+
+}
+interface InjectedProps extends AllDomainsProps {
+   dashboardStore: DashboardStore
+}
+
 @inject('dashboardStore')
 @observer
-class AllDomains extends Component {
+class AllDomains extends Component <AllDomainsProps>{
    onClickAllDomainsButton = event => {
-      const { dashboardStore } = this.props
-      const { getAllDomainsPosts, clearCurrentDomainId } = dashboardStore
+      const { getAllDomainsPosts, clearCurrentDomainId } = this.getDashboardStore()
       getAllDomainsPosts()
       clearCurrentDomainId()
       this.props.history.push(dashboard)
    }
+
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
+
    render() {
       return (
          <Div>

@@ -21,7 +21,7 @@ class PendingRequestsTypeList extends Component {
       }
    }
    render() {
-      const { requestsList, onClickSeeAll, limit, shouldShowAll } = this.props
+      const { requestsList, limit } = this.props
 
       return (
          <Div>

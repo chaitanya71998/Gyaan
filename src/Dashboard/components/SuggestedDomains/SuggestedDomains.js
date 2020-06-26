@@ -12,9 +12,9 @@ import strings from '../../i18n/strings.json'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { observable } from 'mobx'
 
-const { suggestedDomains } = strings
+const { suggestedDomainsString } = strings
 
-@inject('dashboardStore')
+
 @observer
 class SuggestedDomains extends Component {
    @observable limit
@@ -24,29 +24,29 @@ class SuggestedDomains extends Component {
       this.shouldShowAll = false
       this.limit = 3
    }
-   dispalySeeAllLine = () => {
-      const { dashboardStore } = this.props
-      const { suggestedDomains } = dashboardStore
-      if (suggestedDomains.length > 3) {
-         return this.shouldShowAll ? (
-            <Button onClick={this.onClickSeeAll}>see less</Button>
-         ) : (
-            <Button onClick={this.onClickSeeAll}>see all</Button>
-         )
-      }
-   }
+  
    onClickSeeAll = event => {
-      const { dashboardStore } = this.props
-      const { suggestedDomains } = dashboardStore
+      const { suggestedDomains } = this.props
 
       this.shouldShowAll = !this.shouldShowAll
       const defaultLimit = 3
       this.limit = this.shouldShowAll ? suggestedDomains.length : defaultLimit
    }
 
+   dispalySeeAllLine = () => {
+      const { suggestedDomains } = this.props
+      if (suggestedDomains.length > 3) {
+         return this.shouldShowAll ? (
+            <Button onClick={this.onClickSeeAll}>see less</Button>
+         ) : (
+               <Button onClick={this.onClickSeeAll}>see all</Button>
+            )
+      }
+   }
+ 
+
    displayDomains = () => {
-      const { dashboardStore } = this.props
-      const { suggestedDomains } = dashboardStore
+      const { suggestedDomains } = this.props
 
       return (
          <>
@@ -59,12 +59,12 @@ class SuggestedDomains extends Component {
                      {isRequested ? (
                         <Cancel>Cancel</Cancel>
                      ) : (
-                        <Follow>Follow</Follow>
-                     )}
+                           <Follow>Follow</Follow>
+                        )}
                   </MenuButton>
                )
             })}
-            {this.dispalySeeAllLine()}
+            
          </>
       )
    }
@@ -74,16 +74,17 @@ class SuggestedDomains extends Component {
       return (
          <Div>
             <Button onClick={onToggle}>
-               {suggestedDomains}
+              <span>{suggestedDomainsString}</span> 
                <span>
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
                   ) : (
-                     <IoIosArrowUp onClick={onToggle} />
-                  )}
+                        <IoIosArrowUp onClick={onToggle} />
+                     )}
                </span>
             </Button>
             {toggleStatus ? <></> : this.displayDomains()}
+            {this.dispalySeeAllLine()}
          </Div>
       )
    }

@@ -10,7 +10,6 @@ import { authenticationRoute } from './Authentication/routes'
 import { DashboardRoute } from './Dashboard/routes/DashboardRoute'
 import DomainRoute from './Dashboard/routes/DomainRoute'
 
-import { FollowingDomains } from './Dashboard/components/FollowingDomains'
 import PostsRoute from './Dashboard/routes/PostsRoute'
 import { getAccessToken } from './Common/utils/StorageUtils'
 import Dashboard from './Dashboard/components/Dashboard'

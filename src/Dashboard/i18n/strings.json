@@ -3,7 +3,6 @@
      "logo":"logo",
      "profile":"Profilepic",
      "writePost":"Write Post",
-     "followingDomainsString":"FOllOWING DOMAINS",
      "enterComment" :"Write a comment...",
      "seeAllComments":"See all comments",
      "seeLessComments":"See less comments",
@@ -11,7 +10,8 @@
      "domainExperts" :"Domain Experts",
      "leave":"Leave",
      "requests":"REQUESTS",
+     "followingDomainsString":"FOllOWING DOMAINS",
      "pendingForReview":"PENDING FOR REVIEW",
-     "suggestedDomains":"SUGGESTED DOMAINS"
+     "suggestedDomainsString":"SUGGESTED DOMAINS"
 
 }

@@ -18,26 +18,46 @@ import {
    PostTitleBlock,
    DomainsDropDown
 } from './styledComponents'
+interface CreatePostProps{
+   onSubmitPostDetails:any
+   onChangeDomainValue:any
+   onChangePostTitle:any
+   onChangePostDescription:any
+   onChangeDomainTagsValue:any
+   hadAllFieldsEntered:any
 
-@inject('dashboardStore')
+   postTitle:any
+   postDescription:any
+
+   followingDomains:any
+
+   getDomainTypes:any
+   domainTagsList:any
+   domainTagsListAPIStatus:number
+   domainsListAPIError:any
+   domainsListAPIStatus:number
+}
+
 @observer
-class CreatePost extends Component {
+class CreatePost extends Component <CreatePostProps>{
    createPost = props => {
       const {
-         dashboardStore,
          onSubmitPostDetails,
-         hadAllFieldsEntered,
-         onChangePostDescription,
-         onChangePostTitle,
          onChangeDomainValue,
+         onChangePostTitle,
+         onChangePostDescription,
+         onChangeDomainTagsValue,
+
+         hadAllFieldsEntered,
+
          postTitle,
-         postDescription
-      } = this.props
-      const {
+         postDescription,
+
          followingDomains,
+
          domainTagsList,
          domainTagsListAPIStatus
-      } = dashboardStore
+      } = this.props
       const followingDomainsList = followingDomains.map(domain => {
          return {
             label: domain.domainName,
@@ -91,7 +111,7 @@ class CreatePost extends Component {
                      value={postDescription}
                      onChange={onChangePostDescription}
                      name='postDescription'
-                     rows='50'
+                     rows={50}
                      required
                   ></PostDescription>
                </PostDescriptionBlock>
@@ -100,7 +120,7 @@ class CreatePost extends Component {
                   <SubmitButton
                      type='submit'
                      onClick={onSubmitPostDetails}
-                     isDisabled={hadAllFieldsEntered}
+                    
                      disabled={hadAllFieldsEntered}
                      value='Submit'
                   >
@@ -112,13 +132,12 @@ class CreatePost extends Component {
       )
    }
    render() {
-      const { dashboardStore } = this.props
       const {
          domainsListAPIStatus,
          domainsListAPIError,
          getDomainTypes
-      } = dashboardStore
-      domainsListAPIStatus
+      } = this.props
+      
       return (
          <LoadingWrapperWithFailure
             renderSuccessUI={this.createPost}

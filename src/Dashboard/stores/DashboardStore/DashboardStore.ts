@@ -1,11 +1,12 @@
 import { API_INITIAL, API_SUCCESS } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { action, computed, observable } from 'mobx'
-import DomainModel from '../models/DomainModel/DomainModel'
-import PostModel from '../models/PostModel.js/index.js'
-import { TagModel, TagObject, FollowingDomain, PendingForReview, SuggestedDomains } from "../types"
+
 import { DashboardService } from "../../services/DashboardService"
 
+import DomainModel from '../models/DomainModel/DomainModel'
+import PostModel from "../models/PostModel"
+import { TagModel, TagObject, FollowingDomain, PendingForReview, SuggestedDomains } from "../types"
 
 class DashboardStore {
    @observable postsList!: PostModel[]
@@ -134,7 +135,7 @@ class DashboardStore {
       return []
    }
 
-   @computed get pendingForReview() {
+   @computed get pendingForReviewInDomains() {
       if (this.domainsListAPIStatus === API_SUCCESS) {
          return this.domainTypes.pending_for_review.map((domain: PendingForReview) => ({
                domainId: domain.domain_id,

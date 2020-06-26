@@ -35,13 +35,13 @@ class CommentRoute extends Component <CommentRouteProps>{
                authorName={userName}
                commentDateAndTime={commentedAt}
                comment={commentedContent}
-               hasReacted={isUserReacted}
+               isUserReacted={isUserReacted}
                reactionsCount={reactionsCount}
                repliesCount={repliesCount}
                replies={replies}
                isAnswerToPost={isAnswerToPost}
                approvedUser={approvedUser}
-               postDomain={approvedUserDomain}
+               approvedUserDomain={approvedUserDomain}
             />
          </Div>
       )

@@ -43,6 +43,10 @@ class CreatePostRoute extends Component<CreatePostRouteProps> {
    onChangePostDescription = (event: { target: { value: any } }) => {
       this.postDescription = event.target.value
    }
+
+   onChangeDomainTagsValue = (option: { value: string }) => {
+      this.selectedTag = option.value
+   }
    @computed get hadAllFieldsEntered() {
       if (
          this.postTitle != '' &&
@@ -64,6 +68,7 @@ class CreatePostRoute extends Component<CreatePostRouteProps> {
          domainsListAPIStatus,
          domainsListAPIError,
          getDomainTypes,
+         followingDomains,
          domainTagsList,
          domainTagsListAPIStatus
       } = dashboardStore
@@ -71,15 +76,23 @@ class CreatePostRoute extends Component<CreatePostRouteProps> {
          return (
 
             <CreatePost
+               onSubmitPostDetails={this.onSubmitPostDetails}
                onChangeDomainValue={this.onChangeDomainValue}
                onChangePostTitle={this.onChangePostTitle}
-               onSubmitPostDetails={this.onSubmitPostDetails}
                onChangePostDescription={this.onChangePostDescription}
-               domainTags={domainTagsList}
-               domainTagsStatus={domainTagsListAPIStatus}
-               hadAllFieldsFilled={this.hadAllFieldsEntered}
+               onChangeDomainTagsValue={this.onChangeDomainTagsValue}
+               hadAllFieldsEntered={this.hadAllFieldsEntered}
+
                postTitle={this.postTitle}
                postDescription={this.postDescription}
+
+               followingDomains={followingDomains}
+
+               getDomainTypes={getDomainTypes}
+               domainTagsList={domainTagsList}
+               domainTagsListAPIStatus={domainTagsListAPIStatus}
+               domainsListAPIStatus= {domainsListAPIStatus}
+               domainsListAPIError={domainsListAPIError}
             />
          )
       }

@@ -10,13 +10,11 @@ import { Button, Div } from './styledComponents'
 
 @observer
 class DomainType extends Component {
-   @observable domainsList
    @observable limit
    @observable shouldShowAll
    constructor(props) {
       super(props)
       this.shouldShowAll = false
-      this.domainsList = []
       this.limit = 3
    }
    onClickSeeAll = event => {

@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { observable } from 'mobx'
-import { Redirect } from 'react-router-dom'
 import { API_SUCCESS } from '@ib/api-constants'
 
 import LoadingWrapperWithFailure from '../../../Common/components/LoadingWrapperWithFailure'
-import { SecondaryButton } from '../../../Common/components/ButtonElement/styledComponents'
-import { paths } from '../../../Common/constants/NavigationConstants'
 import { withToggle } from '../../../Common/hoc/withToggle'
 
 import strings from '../../i18n/strings.json'
+
 import AllDomains from '../AllDomains'
 import { PendingRequests } from '../PendingRequests'
-import { FollowingDomains } from '../FollowingDomains'
+import  FollowingDomains from '../FollowingDomains'
 import { SuggestedDomains } from '../SuggestedDomains'
 import { PendingForReview } from '../PendingForReview'
 
 import { Div, Logo, LogoBlock } from './styledComponents'
+import { DashboardStore } from "../../stores/DashboardStore"
 
 const { comapanyName } = strings
 
@@ -24,23 +22,44 @@ const FollowingDomainsWithToogle = withToggle(FollowingDomains)
 const PendingRequestsWithToogle = withToggle(PendingRequests)
 const SuggestedDomainsWithToogle = withToggle(SuggestedDomains)
 const PendingForReviewWithToogle = withToggle(PendingForReview)
-const { signInForm } = paths
 
-@inject('authStore', 'dashboardStore')
+interface MenuProps{
+   pendingRequests?:any|undefined
+}
+
+
+interface InjectedProps extends MenuProps {
+   dashboardStore: DashboardStore
+}
+
+interface PendingForRequestProps extends MenuProps{
+   
+}
+
+@inject('dashboardStore')
 @observer
-class Menu extends Component {
+class Menu extends Component<MenuProps> {
+
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
+   getDashboardStore = () => {
+      return this.getInjectedProps().dashboardStore
+   }
+
    showPendingRequests = () => {
-      const { pendingRequests } = this.props
+      const { pendingRequests } = this.props as PendingForRequestProps
+      console.log(pendingRequests,":menu")
       if (pendingRequests) {
-         return <PendingRequestsWithToogle />
+         return <PendingRequestsWithToogle pendingRequests={pendingRequests}/>
       }
       return <></>
    }
 
    render() {
-      const { dashboardStore } = this.props
-      const { domainsListAPIStatus } = dashboardStore
+      
+      const { domainsListAPIStatus,followingDomains,pendingForReviewInDomains,suggestedDomains } = this.getDashboardStore();
       if (domainsListAPIStatus === API_SUCCESS) {
+    
          return (
             <Div>
                <LogoBlock>
@@ -51,9 +70,9 @@ class Menu extends Component {
                </LogoBlock>
 
                <AllDomains />
-               <FollowingDomainsWithToogle />
-               <SuggestedDomainsWithToogle />
-               <PendingForReviewWithToogle />
+               <FollowingDomainsWithToogle followingDomains={followingDomains} />
+               <SuggestedDomainsWithToogle suggestedDomains={suggestedDomains}/>
+               <PendingForReviewWithToogle pendingForReviewInDomains={pendingForReviewInDomains}/>
                {this.showPendingRequests()}
             </Div>
          )

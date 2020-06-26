@@ -15,9 +15,17 @@ import { observable } from 'mobx'
 
 const { pendingForReview } = strings
 
-@inject('dashboardStore')
+interface PendingForReviewProps{
+   pendingForReviewInDomains:any;
+   toggleStatus:boolean;
+   onToggle:any;
+}
+interface PendingForReviewState{
+   limit:number;
+   shouldShowAll:boolean;
+}
 @observer
-class PendingForReview extends Component {
+class PendingForReview extends Component<PendingForReviewProps,PendingForReviewState> {
    @observable limit
    @observable shouldShowAll
    constructor(props) {
@@ -26,32 +34,30 @@ class PendingForReview extends Component {
       this.limit = 3
    }
    dispalySeeAllLine = () => {
-      const { dashboardStore } = this.props
-      const { pendingForReview } = dashboardStore
-      if (pendingForReview.length > 3) {
-         return shouldShowAll ? (
-            <Button onClick={onClickSeeAll}>see less</Button>
+      const { pendingForReviewInDomains } = this.props
+      
+      if (pendingForReviewInDomains.length > 3) {
+         return this.shouldShowAll ? (
+            <Button onClick={this.onClickSeeAll}>see less</Button>
          ) : (
-            <Button onClick={onClickSeeAll}>see all</Button>
+            <Button onClick={this.onClickSeeAll}>see all</Button>
          )
       }
    }
    onClickSeeAll = event => {
-      const { dashboardStore } = this.props
-      const { pendingForReview } = dashboardStore
+      const { pendingForReviewInDomains } = this.props
 
       this.shouldShowAll = !this.shouldShowAll
       const defaultLimit = 3
-      this.limit = this.shouldShowAll ? pendingForReview.length : defaultLimit
+      this.limit = this.shouldShowAll ? pendingForReviewInDomains.length : defaultLimit
    }
 
    displayDomains = () => {
-      const { dashboardStore } = this.props
-      const { pendingForReview } = dashboardStore
+      const { pendingForReviewInDomains } = this.props
 
       return (
          <>
-            {pendingForReview.slice(0, this.limit).map(domain => {
+            {pendingForReviewInDomains.slice(0, this.limit).map(domain => {
                const { domainId, domainName, pendingCount } = domain
 
                return (
@@ -63,13 +69,13 @@ class PendingForReview extends Component {
                   </MenuButton>
                )
             })}
-            {this.dispalySeeAllLine()}}
+            {this.dispalySeeAllLine()}
          </>
       )
    }
 
    render() {
-      const { toggleStatus, dashboardStore, onToggle } = this.props
+      const { toggleStatus, onToggle } = this.props
       return (
          <Div>
             <Div>

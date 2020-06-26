@@ -18,6 +18,7 @@ export function withToggle(WrappedComponent) {
             <WrappedComponent
                onToggle={this.onToggle}
                toggleStatus={this.state.toggleStatus}
+              {...this.props}
             />
          )
       }

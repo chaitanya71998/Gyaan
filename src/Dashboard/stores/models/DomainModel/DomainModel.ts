@@ -1,5 +1,5 @@
 import { observable, action, computed, reaction } from 'mobx'
-import PostModel from '../PostModel.js/index.js'
+import PostModel from '../PostModel/index'
 import { API_INITIAL, API_SUCCESS } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { DashboardService } from "../../../services/DashboardService/index.js"
@@ -111,6 +111,7 @@ class DomainModel {
       }
    }
    )
+
    @computed get posts() {
       return this.domainPosts
    }

@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 
 import { paths } from '../../../Common/constants/NavigationConstants'
+import { SecondaryButton } from '../../../Common/components/ButtonElement/styledComponents'
 
 import strings from '../../i18n/strings.json'
 
@@ -15,15 +16,23 @@ import {
    Div,
    SearchInput
 } from './styledComponents'
-import { SecondaryButton } from '../../../Common/components/ButtonElement/styledComponents'
+import { AuthStore } from "../../../Authentication/stores/AuthStore"
 
 const { createPostPath, signInForm } = paths
 
 const { writePost, profile } = strings
 
+
+interface DashboardHeaderProps {
+  
+}
+interface InjectedProps extends DashboardHeaderProps {
+   authStore:AuthStore
+}
+
 @inject('authStore')
 @observer
-class DashboardHeader extends Component {
+class DashboardHeader extends Component<DashboardHeaderProps> {
    @observable redirectToCreatePostPage
    @observable isClickedSignOut
 
@@ -32,10 +41,14 @@ class DashboardHeader extends Component {
       this.isClickedSignOut = false
       this.redirectToCreatePostPage = false
    }
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
+   getAuthStore = () => {
+      return this.getInjectedProps().authStore
+   }
    onClickSignOut = event => {
-      const { authStore } = this.props
-      authStore.userSignOut()
+      const { userSignOut } = this.getAuthStore()
+      userSignOut()
       this.isClickedSignOut = true
    }
    navigateToCreatePost = event => {

@@ -36,19 +36,27 @@ class DomainRoute extends Component<DomainRouteProps>{
    getDashboardStore = () => {
       return this.getInjectedProps().dashboardStore
    }
+   isDomainModelExits=()=>{
+      const { domainModel } = this.getDashboardStore();
+ 
+     return domainModel?true:false
+   }
    render() {
       const { match } = this.props
       const { domainModel } = this.getDashboardStore();
       const { params } = match
       const { domainId } = params
+   
 
-      if (Object.keys(domainModel).length) {
+      if (this.isDomainModelExits()) {
+       
          if (
             getLoadingStatus(
                domainModel.domainDescriptionAPIStatus,
                domainModel.domainPostsAPIStatus
             )
          ) {
+           
             const DomainDetailsWithIdAsParams = () => {
                return <DomainDetails domainModelObj={domainModel} />
             }
