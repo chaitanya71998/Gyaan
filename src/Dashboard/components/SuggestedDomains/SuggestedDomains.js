@@ -14,7 +14,6 @@ import { observable } from 'mobx'
 
 const { suggestedDomainsString } = strings
 
-
 @observer
 class SuggestedDomains extends Component {
    @observable limit
@@ -24,7 +23,7 @@ class SuggestedDomains extends Component {
       this.shouldShowAll = false
       this.limit = 3
    }
-  
+
    onClickSeeAll = event => {
       const { suggestedDomains } = this.props
 
@@ -39,11 +38,10 @@ class SuggestedDomains extends Component {
          return this.shouldShowAll ? (
             <Button onClick={this.onClickSeeAll}>see less</Button>
          ) : (
-               <Button onClick={this.onClickSeeAll}>see all</Button>
-            )
+            <Button onClick={this.onClickSeeAll}>see all</Button>
+         )
       }
    }
- 
 
    displayDomains = () => {
       const { suggestedDomains } = this.props
@@ -59,12 +57,11 @@ class SuggestedDomains extends Component {
                      {isRequested ? (
                         <Cancel>Cancel</Cancel>
                      ) : (
-                           <Follow>Follow</Follow>
-                        )}
+                        <Follow>Follow</Follow>
+                     )}
                   </MenuButton>
                )
             })}
-            
          </>
       )
    }
@@ -74,13 +71,13 @@ class SuggestedDomains extends Component {
       return (
          <Div>
             <Button onClick={onToggle}>
-              <span>{suggestedDomainsString}</span> 
+               <span>{suggestedDomainsString}</span>
                <span>
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
                   ) : (
-                        <IoIosArrowUp onClick={onToggle} />
-                     )}
+                     <IoIosArrowUp onClick={onToggle} />
+                  )}
                </span>
             </Button>
             {toggleStatus ? <></> : this.displayDomains()}

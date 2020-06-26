@@ -162,16 +162,16 @@ export const Typo14DarkBlueGreyHKGroteskRegular = styled.p`
    letter-spacing: normal;
    color: ${dark_blue_grey};
 `
-export const Typo14yellowOrangeHKGroteskSemiBold=styled.p`
-${tw`mx-2`}
-font-family: HKGrotesk;
-font-size: 14px;
-font-weight: 600;
-font-stretch: normal;
-font-style: normal;
-line-height: 1.33;
-letter-spacing: 0.12px;
-color: ${yellow_orange};
+export const Typo14yellowOrangeHKGroteskSemiBold = styled.p`
+   ${tw`mx-2`}
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: 0.12px;
+   color: ${yellow_orange};
 `
 export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.p`
    font-family: HKGrotesk;

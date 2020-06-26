@@ -24,9 +24,8 @@ import {
 import { Thumbnail } from '../../../Common/components/Thumbnail'
 import { SmallThumbnail } from '../../../Common/components/Thumbnail/styledComponents'
 import { FiHeart } from 'react-icons/fi'
-import { CommentModel } from "../../stores/models/CommentModel"
-import { ApprovedCommentModel } from "../../stores/models/ApprovedCommentModel"
-
+import { CommentModel } from '../../stores/models/CommentModel'
+import { ApprovedCommentModel } from '../../stores/models/ApprovedCommentModel'
 
 // interface CommentProps {
 //  props:ApprovedCommentModel
