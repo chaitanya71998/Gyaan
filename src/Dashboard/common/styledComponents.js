@@ -31,3 +31,6 @@ export const TimelineDiv = styled.div`
    background-color: ${white_two};
    border-collapse: collapse;
 `
+export const ToggleButton = styled.span`
+   ${tw`m-2`}
+`

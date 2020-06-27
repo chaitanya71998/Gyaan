@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Div, Button } from './styledComponents'
+import strings from "../../i18n/strings.json"
 import { DomainTypeButton } from '../../common/styledComponents'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { paths } from '../../../Common/constants/NavigationConstants'
@@ -8,6 +9,7 @@ import { DashboardStore } from "../../stores/DashboardStore"
 
 const { dashboard } = paths
 
+const { allDomainsString } = strings
 interface AllDomainsProps extends RouteComponentProps {
 
 }
@@ -17,7 +19,7 @@ interface InjectedProps extends AllDomainsProps {
 
 @inject('dashboardStore')
 @observer
-class AllDomains extends Component <AllDomainsProps>{
+class AllDomains extends Component<AllDomainsProps>{
    onClickAllDomainsButton = event => {
       const { getAllDomainsPosts, clearCurrentDomainId } = this.getDashboardStore()
       getAllDomainsPosts()
@@ -35,7 +37,7 @@ class AllDomains extends Component <AllDomainsProps>{
       return (
          <Div>
             <DomainTypeButton onClick={this.onClickAllDomainsButton}>
-               All Domains
+               <span>{allDomainsString}</span>
             </DomainTypeButton>
          </Div>
       )

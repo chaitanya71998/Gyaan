@@ -8,6 +8,7 @@ import { SignInForm } from '../../components/SignInForm'
 import { paths } from '../../../Common/constants/NavigationConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 import { AuthStore } from "../../stores/AuthStore"
+import { validatePassword } from "../../../Common/utils/ValidationUtils"
 const { dashboard } = paths
 
 
@@ -56,7 +57,7 @@ class SignInRoute extends Component<SignInRouteProps>{
    }
    handleSubmit = (event: { preventDefault: () => void }) => {
       event.preventDefault()
-      this.handleErrorMessage()
+      // this.handleErrorMessage()
    }
    handlePasswordChange = (event: { target: { value: string } }) => {
       this.emptyErrorMessage()
@@ -70,17 +71,22 @@ class SignInRoute extends Component<SignInRouteProps>{
       if (this.username !== '' && this.password !== '') {
          this.handleSignIn()
       } else if (this.username === '' && this.password === '') {
-         this.errorMessage = 'Please enter username'
+         this.errorMessage = 'Please enter username and password'
       } else if (this.username !== '' && this.password === '') {
          this.errorMessage = 'Please enter password'
       } else if (this.username === '' && this.password !== '') {
-         this.errorMessage = 'Please enter username'
+         this.errorMessage = 'Please enter username '
       } else {
          this.emptyErrorMessage()
       }
    }
    emptyErrorMessage = () => {
       this.errorMessage = ''
+   }
+   getPassword=(event)=>{
+      const value = (event.target.value);
+     this.errorMessage =  validatePassword(value).errorMessage
+      
    }
 
    render() {
@@ -95,6 +101,7 @@ class SignInRoute extends Component<SignInRouteProps>{
             handleUsernameChange={this.handleUsernameChange}
             handlePasswordChange={this.handlePasswordChange}
             handleSubmit={this.handleSubmit}
+            validatePassword={this.getPassword}
          />
       )
    }

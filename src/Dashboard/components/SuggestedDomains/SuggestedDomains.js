@@ -11,6 +11,7 @@ import {
 import strings from '../../i18n/strings.json'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { observable } from 'mobx'
+import { ToggleButton } from '../../common/styledComponents'
 
 const { suggestedDomainsString } = strings
 
@@ -38,8 +39,8 @@ class SuggestedDomains extends Component {
          return this.shouldShowAll ? (
             <Button onClick={this.onClickSeeAll}>see less</Button>
          ) : (
-            <Button onClick={this.onClickSeeAll}>see all</Button>
-         )
+               <Button onClick={this.onClickSeeAll}>see all</Button>
+            )
       }
    }
 
@@ -57,11 +58,12 @@ class SuggestedDomains extends Component {
                      {isRequested ? (
                         <Cancel>Cancel</Cancel>
                      ) : (
-                        <Follow>Follow</Follow>
-                     )}
+                           <Follow>Follow</Follow>
+                        )}
                   </MenuButton>
                )
             })}
+            {this.dispalySeeAllLine()}
          </>
       )
    }
@@ -72,16 +74,16 @@ class SuggestedDomains extends Component {
          <Div>
             <Button onClick={onToggle}>
                <span>{suggestedDomainsString}</span>
-               <span>
+               <ToggleButton>
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
                   ) : (
-                     <IoIosArrowUp onClick={onToggle} />
-                  )}
-               </span>
+                        <IoIosArrowUp onClick={onToggle} />
+                     )}
+               </ToggleButton>
             </Button>
             {toggleStatus ? <></> : this.displayDomains()}
-            {this.dispalySeeAllLine()}
+
          </Div>
       )
    }

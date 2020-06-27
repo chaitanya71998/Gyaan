@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 import { colors } from '../../../Common/style_guide/themes/Colors'
+import { Typo12NeonRedHKGroteskRegular } from "../../../Common/style_guide/Typos"
 
 const { bright_blue, white, ice_blue } = colors
 
@@ -32,8 +33,12 @@ export const SignUpLink = styled.a`
 
 export const Form = styled.form`
    ${tw`flex flex-col justify-center  `}
+   width
 `
+export const ErrorMessage = styled(Typo12NeonRedHKGroteskRegular)`
+width:320px;
 
+`
 export const SignInBlock = styled.div`
 ${tw`flex h-screen justify-center items-center  `}
 background-color: ${ice_blue}`

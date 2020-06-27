@@ -10,6 +10,7 @@ import strings from '../../i18n/strings.json'
 import { RequestType } from "../../common/styledComponents.js"
 
 import { Div, Button, Span, ToggleButton, RequestApprovals, Icons } from './styledComponents'
+import BlueTick from "../../../Common/components/Icons/BlueTick/index.js"
 
 interface PendingRequestsProps {
    onToggle: any
@@ -50,9 +51,13 @@ class PendingRequests extends Component<PendingRequestsProps>{
    displayRequests = () => {
       const { pendingRequests } = this.props
 
-      return pendingRequests.slice(0, this.limit).map(request => {
+      return (
+         <>
+         {
+         pendingRequests.slice(0, this.limit).map(request => {
          const { userId, username } = request
          return (
+           
             <RequestType key={userId} id={userId}>
 
                <Typo14DarkBlueGreyHKGroteskRegular>
@@ -64,12 +69,14 @@ class PendingRequests extends Component<PendingRequestsProps>{
                      <IoIosCloseCircleOutline color={cool_grey} />{' '}
                   </Icons>
                   <Icons>
-                     <IoIosCheckmarkCircle color={bright_blue} />
+                     <BlueTick/>
                   </Icons>
                </RequestApprovals>
             </RequestType>
          )
-      })
+      })}
+       {this.dispalySeeAllLine()}
+      </>)
    }
 
 
@@ -85,7 +92,6 @@ class PendingRequests extends Component<PendingRequestsProps>{
             <Button onClick={onToggle}>
                <Span>
                   {requests}
-
                </Span>
                <Span>
                   <Typo12yellowOrangeHKGroteskSemiBold>
@@ -101,7 +107,7 @@ class PendingRequests extends Component<PendingRequestsProps>{
                </Span>
             </Button>
             {toggleStatus ? <></> : this.displayRequests()}
-            {this.dispalySeeAllLine()}
+           
          </Div>
       )
    }

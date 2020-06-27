@@ -131,7 +131,7 @@ class Posts extends Component {
                   replies={replies}
                   isAnswerToPost={didPostHasAnswer}
                   approvedUser={approvedUser}
-                  postDomain={approvedUserDomain}
+                  approvedUserDomain={approvedUserDomain}
                   handleCommentReaction={handleReaction}
                />
             </Div>

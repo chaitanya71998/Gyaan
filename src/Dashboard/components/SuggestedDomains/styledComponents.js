@@ -10,7 +10,7 @@ export const Div = styled.div`
 `
 
 export const Button = styled.button`
-${tw`flex justify-between items-center`}
+${tw`flex w-full justify-between items-center`}
 color:${steel};
 padding-left:20px;`
 

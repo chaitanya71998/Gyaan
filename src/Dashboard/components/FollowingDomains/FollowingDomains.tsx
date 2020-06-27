@@ -6,22 +6,23 @@ import { withRouter, RouteComponentProps } from "react-router-dom"
 
 import { goToSpecificPath } from "../../../Common/utils/NavigationUtils"
 
-import strings from '../../i18n/strings.json'
+import strings from "../../i18n/strings.json"
 
-import { Div,Button ,DomainTypeButton} from './styledComponents'
+import { Div, Button, DomainTypeButton } from './styledComponents'
+import { ToggleButton } from "../PendingRequests/styledComponents"
 
 interface FollowingDomainsProps extends RouteComponentProps {
    followingDomains: any
    onToggle: any
    toggleStatus: boolean
 }
-interface FollowingDomainsState{
-   limit:boolean;
-   shouldShowAll:any;
+interface FollowingDomainsState {
+   limit: boolean;
+   shouldShowAll: any;
 }
 
 @observer
-class FollowingDomains extends Component<FollowingDomainsProps,FollowingDomainsState>{
+class FollowingDomains extends Component<FollowingDomainsProps, FollowingDomainsState>{
    @observable limit: number
    @observable shouldShowAll: boolean
    constructor(props: Readonly<FollowingDomainsProps>) {
@@ -29,11 +30,11 @@ class FollowingDomains extends Component<FollowingDomainsProps,FollowingDomainsS
       this.shouldShowAll = false
       this.limit = 3
    }
-   
+
    onClickDomain = event => {
       const path = `/followingDomain/${event.target.id}`
-      
-      goToSpecificPath( this.props.history, path )
+
+      goToSpecificPath(this.props.history, path)
    }
    onClickSeeAll = event => {
       const { followingDomains } = this.props
@@ -42,7 +43,7 @@ class FollowingDomains extends Component<FollowingDomainsProps,FollowingDomainsS
       const defaultLimit = 3
       this.limit = this.shouldShowAll ? followingDomains.length : defaultLimit
    }
-   
+
    dispalySeeAllLine = () => {
       const { followingDomains } = this.props
       if (followingDomains.length > 3) {
@@ -71,34 +72,34 @@ class FollowingDomains extends Component<FollowingDomainsProps,FollowingDomainsS
                   </DomainTypeButton>
                )
             })}
-            
+            {this.dispalySeeAllLine()}
          </>
       )
    }
    render() {
       const { followingDomainsString } = strings
-      const {  onToggle, toggleStatus } = this.props
+      const { onToggle, toggleStatus } = this.props
 
 
-   
-         return (
-            <Div>
-             
-                <Button onClick={onToggle}>
+
+      return (
+         <Div>
+
+            <Button onClick={onToggle}>
                <span>{followingDomainsString}</span>
-               <span>
+               <ToggleButton>
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
                   ) : (
                         <IoIosArrowUp onClick={onToggle} />
                      )}
-               </span>
+               </ToggleButton>
             </Button>
             {toggleStatus ? <></> : this.displayDomains()}
-            {this.dispalySeeAllLine()}
-            </Div>
-         )
-    
+
+         </Div>
+      )
+
    }
 }
 

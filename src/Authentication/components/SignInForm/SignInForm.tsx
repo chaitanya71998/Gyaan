@@ -16,7 +16,8 @@ import {
    Div,
    SignUpLink,
    Form,
-   SignInBlock
+   SignInBlock,
+   ErrorMessage
 } from './styledComponents'
 import { ImageElement } from '../../../Common/components/ImageElement'
 
@@ -31,18 +32,19 @@ const {
    dontHaveAnAccount
 } = strings;
 
-interface SignInFormProps{
-   username:string
-   password:string
-   errorMessage:string
-   handleUsernameChange:any
-   handlePasswordChange:any
-   handleSubmit:any
-   
+interface SignInFormProps {
+   username: string
+   password: string
+   errorMessage: string
+   handleUsernameChange: any
+   handlePasswordChange: any
+   handleSubmit: any
+   validatePassword: any
+
 }
 
 @observer
-class SignInForm extends Component <SignInFormProps>{
+class SignInForm extends Component<SignInFormProps>{
    render() {
       const {
          username,
@@ -50,7 +52,8 @@ class SignInForm extends Component <SignInFormProps>{
          errorMessage,
          handleUsernameChange,
          handlePasswordChange,
-         handleSubmit
+         handleSubmit,
+         validatePassword
       } = this.props
 
       return (
@@ -86,14 +89,17 @@ class SignInForm extends Component <SignInFormProps>{
                      type={'password'}
                      value={password}
                      onChange={handlePasswordChange}
+                     validatingFunction={validatePassword}
                      isCorrect={errorMessage.includes('password')}
                   />
                   <SignInButton type={'button'} onClick={handleSubmit}>
                      {Login}
                   </SignInButton>
-                  <Typo12NeonRedHKGroteskRegular>
-                     {errorMessage}
-                  </Typo12NeonRedHKGroteskRegular>
+                 
+                  <ErrorMessage>
+                  {errorMessage}
+                  </ErrorMessage>
+              
                </Form>
                <SignUpText>
                   {dontHaveAnAccount}

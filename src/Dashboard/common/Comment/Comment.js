@@ -26,6 +26,7 @@ import { SmallThumbnail } from '../../../Common/components/Thumbnail/styledCompo
 import { FiHeart } from 'react-icons/fi'
 import { CommentModel } from '../../stores/models/CommentModel'
 import { ApprovedCommentModel } from '../../stores/models/ApprovedCommentModel'
+import GreenCheckCirele from '../../../Common/components/Icons/GreenCheckCircle'
 
 // interface CommentProps {
 //  props:ApprovedCommentModel
@@ -38,10 +39,7 @@ class Comment extends Component {
       if (isAnswerToPost) {
          return (
             <AnswerTypeComment>
-               <Thumbnail
-                  src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/aaee9464-2926-4c59-9a80-223974c0b6c7.svg'
-                  alt='tick'
-               />
+               <GreenCheckCirele/>
                <Typo12DarkBlueGreyHKGroteskRegular>
                   Approved by
                   <Typo16BrightBlueHKGroteskBold>{`${approvedUser}(${approvedUserDomain})`}</Typo16BrightBlueHKGroteskBold>{' '}
