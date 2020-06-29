@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
-import strings from '../../i18n/strings.json'
-
 import { InputElement } from '../../../Common/components/InputElement'
 import {
    Typo32DarkBlueGreyRubikRegular,
-   Typo12NeonRedHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../Common/style_guide/Typos'
+
+import strings from '../../i18n/strings.json'
 
 import {
    SignInButton,
@@ -30,7 +29,7 @@ const {
    passwordLabel,
    signUp,
    dontHaveAnAccount
-} = strings;
+} = strings
 
 interface SignInFormProps {
    username: string
@@ -40,11 +39,10 @@ interface SignInFormProps {
    handlePasswordChange: any
    handleSubmit: any
    validatePassword: any
-
 }
 
 @observer
-class SignInForm extends Component<SignInFormProps>{
+class SignInForm extends Component<SignInFormProps> {
    render() {
       const {
          username,
@@ -88,6 +86,7 @@ class SignInForm extends Component<SignInFormProps>{
                   <InputElement
                      type={'password'}
                      value={password}
+                     required={true}
                      onChange={handlePasswordChange}
                      validatingFunction={validatePassword}
                      isCorrect={errorMessage.includes('password')}
@@ -95,11 +94,8 @@ class SignInForm extends Component<SignInFormProps>{
                   <SignInButton type={'button'} onClick={handleSubmit}>
                      {Login}
                   </SignInButton>
-                 
-                  <ErrorMessage>
-                  {errorMessage}
-                  </ErrorMessage>
-              
+
+                  <ErrorMessage>{errorMessage}</ErrorMessage>
                </Form>
                <SignUpText>
                   {dontHaveAnAccount}

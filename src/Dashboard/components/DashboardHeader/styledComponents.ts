@@ -49,17 +49,15 @@ export const CreatePostButton = styled.button`
    border-radius: 4px;
    background-color: ${bright_blue};
    padding: 8px 20px;
-   ${tw`m-4`}
 `
 export const ButtonText = styled.span`
-   font-family: HKGrotesk;
-   font-size: 14px;
-   font-weight: 600;
-   font-stretch: normal;
-   font-style: normal;
-   line-height: 1.71;
-   letter-spacing: normal;
-   color: ${white};
+font-family: HKGrotesk;
+font-weight: 600;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.71;
+letter-spacing: normal;
+color: ${white};
 `
 
 export const HeaderBlock = styled.div`

@@ -3,13 +3,21 @@ import { Input } from './styledComponents'
 
 class InputElement extends Component {
    render() {
-      const { value, type, onChange, isCorrect,validatingFunction } = this.props
+      const {
+         value,
+         type,
+         required,
+         onChange,
+         isCorrect,
+         validatingFunction
+      } = this.props
       return (
          <Input
+            required={required}
             value={value}
             type={type}
             onChange={onChange}
-            onBlur ={validatingFunction}
+            onBlur={validatingFunction}
             error={isCorrect}
          />
       )
