@@ -185,7 +185,7 @@ export const Typo14DarkBlueGreyHKGroteskSemiBold = styled.p`
    margin: 0px;
    padding: 0px;
 `
-export const Typo12NeonRedHKGroteskRegular = styled.label`
+export const Typo12NeonRedHKGroteskRegular = styled.p`
    font-family: HKGrotesk;
    font-size: 12px;
    font-weight: normal;

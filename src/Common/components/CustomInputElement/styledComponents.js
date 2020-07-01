@@ -1,12 +1,16 @@
 import styled from '@emotion/styled'
-import tw from 'tailwind.macro';
+import tw from 'tailwind.macro'
 import { colors } from '../../../Common/style_guide/themes/Colors'
 import { Typo12NeonRedHKGroteskRegular } from '../../style_guide/Typos'
 
 const { neon_red_5, neon_red, steel, white } = colors
+
+export const InputContainer = styled.div`
+   width: 320px;
+`
 export const Input = styled.input`
    margin-top: 8px;
-   margin-bottom: 24px;
+
    width: 320px;
    height: 40px;
    border-radius: 2px;
@@ -15,6 +19,7 @@ export const Input = styled.input`
    padding-left: 4px;
 `
 
-export const Label = styled.(Typo12NeonRedHKGroteskRegular)`
-${tw`my-4`}
-width:320px;`
+export const Label = styled(Typo12NeonRedHKGroteskRegular)`
+   ${tw`mt-1 mb-5`}
+   width:320px;
+`
