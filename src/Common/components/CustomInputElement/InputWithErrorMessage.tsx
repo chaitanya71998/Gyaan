@@ -25,6 +25,7 @@ class InputWithErrorMessage extends Component<CustomInputElementProps> {
    @action.bound
    emptyErrorMessage() {
       this.errorMessage = ''
+      this.hasError = false
    }
    onChangeInputText = event => {
       const inputValue = event.target.value
@@ -33,8 +34,12 @@ class InputWithErrorMessage extends Component<CustomInputElementProps> {
       onChange(inputValue)
    }
    onBlurElement = event => {
-      const { validatingFunction } = this.props
       const inputValue = event.target.value
+      this.validateValue(inputValue)
+   }
+   validateValue = (inputValue: any) => {
+      const { validatingFunction } = this.props
+
       const { hasError, errorMessage } = validatingFunction(inputValue)
 
       this.hasError = hasError
@@ -48,9 +53,10 @@ class InputWithErrorMessage extends Component<CustomInputElementProps> {
                value={value}
                type={type}
                required={required}
-               onChange={this.onChangeInputText}
                placeholder={placeholder}
+               onChange={this.onChangeInputText}
                onBlur={this.onBlurElement}
+               error={this.hasError}
             />
             <Label>{this.errorMessage}</Label>
          </InputContainer>
@@ -58,3 +64,6 @@ class InputWithErrorMessage extends Component<CustomInputElementProps> {
    }
 }
 export { InputWithErrorMessage }
+// Type '{ value: any; type: any; required: any; placeholder: any; onChange: (event: any) => void; onBlur: (event: any) => void; error: false; }' is not assignable to type 'IntrinsicAttributes & ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & Pick<...> & { ...; } & { ...; }'.
+//   Property 'error' does not exist on type 'IntrinsicAttributes & ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & Pick<...> & { ...; } & { ...; }'.umn": 21
+// }

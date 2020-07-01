@@ -10,8 +10,8 @@ export const SignInButton = styled.button`
    height: 40px;
    border-radius: 4px;
    background-color: ${bright_blue};
-   margin-top: 24px;
-   margin-bottom: 24px;
+   margin-top: 12px;
+   margin-bottom: 12px;
    color: ${white};
 `
 export const Div = styled.div`

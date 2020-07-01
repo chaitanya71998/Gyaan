@@ -8,7 +8,11 @@ import { SignInForm } from '../../components/SignInForm'
 import { paths } from '../../../Common/constants/NavigationConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 import { AuthStore } from '../../stores/AuthStore'
-import { validatePassword } from '../../../Common/utils/ValidationUtils'
+import {
+   validatePassword,
+   validateUsername
+} from '../../../Common/utils/ValidationUtils'
+import { InputWithErrorMessage } from '../../../Common/components/CustomInputElement'
 const { dashboard } = paths
 
 export interface SignInRouteProps {
@@ -25,12 +29,15 @@ class SignInRoute extends Component<SignInRouteProps> {
    @observable password: string
    @observable errorMessage: string
    @observable hasToken: boolean | any
-
+   usernameRef: React.RefObject<InputWithErrorMessage>
+   passwordRef: React.RefObject<InputWithErrorMessage>
    constructor(props: any) {
       super(props)
       this.username = ''
       this.password = ''
       this.errorMessage = ''
+      this.usernameRef = React.createRef()
+      this.passwordRef = React.createRef()
    }
 
    gotoHomeScreen() {
@@ -56,32 +63,30 @@ class SignInRoute extends Component<SignInRouteProps> {
    handleSubmit = (event: { preventDefault: () => void }) => {
       event.preventDefault()
       this.handleErrorMessage()
+      this.usernameRef.current?.validateValue(this.username)
+      this.passwordRef.current?.validateValue(this.password)
    }
-   handlePasswordChange = (event: { target: { value: string } }) => {
+   handlePasswordChange = (value: string) => {
       this.emptyErrorMessage()
-      this.password = event.target.value
+      this.password = value
    }
-   handleUsernameChange = (event: { target: { value: string } }) => {
+   handleUsernameChange = (value: string) => {
       this.emptyErrorMessage()
-      this.username = event.target.value
+      this.username = value
    }
    handleErrorMessage = () => {
-      if (this.errorMessage === '') {
+      if (this.errorMessage === '' && this.didFormHasErrors()) {
          this.handleSignIn()
-      } else if (this.username === '' && this.password === '') {
-         this.errorMessage = 'Please enter username and password'
-      } else if (this.username !== '' && this.password === '') {
-         this.errorMessage = 'Please enter password'
-      } else if (this.username === '' && this.password !== '') {
-         this.errorMessage = 'Please enter username '
       }
+   }
+   didFormHasErrors = () => {
+      return (
+         this.usernameRef.current?.hasError === false &&
+         this.passwordRef.current?.hasError === false
+      )
    }
    emptyErrorMessage = () => {
       this.errorMessage = ''
-   }
-   getPassword = event => {
-      const value = event.target.value
-      this.errorMessage = validatePassword(value).errorMessage
    }
 
    render() {
@@ -90,13 +95,16 @@ class SignInRoute extends Component<SignInRouteProps> {
       }
       return (
          <SignInForm
+            usernameRef={this.usernameRef}
+            passwordRef={this.passwordRef}
             username={this.username}
             password={this.password}
             errorMessage={this.errorMessage}
             handleUsernameChange={this.handleUsernameChange}
             handlePasswordChange={this.handlePasswordChange}
             handleSubmit={this.handleSubmit}
-            validatePassword={this.getPassword}
+            validatePassword={validatePassword}
+            validateUsername={validateUsername}
          />
       )
    }

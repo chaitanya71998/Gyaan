@@ -2,12 +2,12 @@ export const validateUsername = username => {
    if (username === '') {
       return {
          hasError: true,
-         errorMessage: 'empty username'
+         errorMessage: 'please enter username'
       }
    } else {
       return {
-         hasError: true,
-         errorMessage: 'empty username'
+         hasError: false,
+         errorMessage: ''
       }
    }
 }
@@ -19,7 +19,7 @@ export const validatePassword = password => {
    if (password === '') {
       return {
          hasError: true,
-         errorMessage: 'empty password'
+         errorMessage: 'please enter password'
       }
    } else if (
       password.length < minNumberOfChars ||

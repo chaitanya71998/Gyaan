@@ -19,6 +19,7 @@ import {
    ErrorMessage
 } from './styledComponents'
 import { ImageElement } from '../../../Common/components/ImageElement'
+import { InputWithErrorMessage } from '../../../Common/components/CustomInputElement'
 
 const {
    iBhubs,
@@ -39,6 +40,9 @@ interface SignInFormProps {
    handlePasswordChange: any
    handleSubmit: any
    validatePassword: any
+   validateUsername: any
+   usernameRef: any
+   passwordRef: any
 }
 
 @observer
@@ -51,7 +55,10 @@ class SignInForm extends Component<SignInFormProps> {
          handleUsernameChange,
          handlePasswordChange,
          handleSubmit,
-         validatePassword
+         validatePassword,
+         validateUsername,
+         usernameRef,
+         passwordRef
       } = this.props
 
       return (
@@ -72,24 +79,28 @@ class SignInForm extends Component<SignInFormProps> {
                   <Typo12SteelHKGroteskSemiBold>
                      {usernameLabel}
                   </Typo12SteelHKGroteskSemiBold>
-                  <InputElement
-                     type={'text'}
+                  <InputWithErrorMessage
+                     ref={usernameRef}
                      value={username}
+                     type={'text'}
+                     required={true}
                      onChange={handleUsernameChange}
-                     isCorrect={errorMessage.includes('username')}
+                     validatingFunction={validateUsername}
+                     placeholder='Username'
                   />
 
                   <Typo12SteelHKGroteskSemiBold>
                      {passwordLabel}
                   </Typo12SteelHKGroteskSemiBold>
 
-                  <InputElement
-                     type={'password'}
+                  <InputWithErrorMessage
+                     ref={passwordRef}
                      value={password}
+                     type={'password'}
                      required={true}
                      onChange={handlePasswordChange}
                      validatingFunction={validatePassword}
-                     isCorrect={errorMessage.includes('password')}
+                     placeholder='Password'
                   />
                   <SignInButton type={'button'} onClick={handleSubmit}>
                      {Login}
