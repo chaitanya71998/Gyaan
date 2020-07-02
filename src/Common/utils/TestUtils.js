@@ -5,7 +5,7 @@ export const isTestEnvironment = () => {
    return false
 }
 export function resolveWithTimeout(response) {
-   const timeOut = isTestEnvironment?1000:0
+   const timeOut = isTestEnvironment ? 1000 : 0
    return new Promise(resolve => {
       setTimeout(() => resolve(response), timeOut)
    })

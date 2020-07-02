@@ -1,3 +1,3 @@
-import BlueTick from "./BlueTick";
+import BlueTick from './BlueTick'
 
 export default BlueTick

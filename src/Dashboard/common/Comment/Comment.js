@@ -39,7 +39,7 @@ class Comment extends Component {
       if (isAnswerToPost) {
          return (
             <AnswerTypeComment>
-               <GreenCheckCirele/>
+               <GreenCheckCirele />
                <Typo12DarkBlueGreyHKGroteskRegular>
                   Approved by
                   <Typo16BrightBlueHKGroteskBold>{`${approvedUser}(${approvedUserDomain})`}</Typo16BrightBlueHKGroteskBold>{' '}

@@ -39,8 +39,8 @@ class SuggestedDomains extends Component {
          return this.shouldShowAll ? (
             <Button onClick={this.onClickSeeAll}>see less</Button>
          ) : (
-               <Button onClick={this.onClickSeeAll}>see all</Button>
-            )
+            <Button onClick={this.onClickSeeAll}>see all</Button>
+         )
       }
    }
 
@@ -58,8 +58,8 @@ class SuggestedDomains extends Component {
                      {isRequested ? (
                         <Cancel>Cancel</Cancel>
                      ) : (
-                           <Follow>Follow</Follow>
-                        )}
+                        <Follow>Follow</Follow>
+                     )}
                   </MenuButton>
                )
             })}
@@ -78,12 +78,11 @@ class SuggestedDomains extends Component {
                   {toggleStatus ? (
                      <IoIosArrowDown onClick={onToggle} />
                   ) : (
-                        <IoIosArrowUp onClick={onToggle} />
-                     )}
+                     <IoIosArrowUp onClick={onToggle} />
+                  )}
                </ToggleButton>
             </Button>
             {toggleStatus ? <></> : this.displayDomains()}
-
          </Div>
       )
    }

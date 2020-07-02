@@ -1,3 +1,3 @@
-import GreenCheckCirele from "./GreenCheckCircle";
+import GreenCheckCirele from './GreenCheckCircle'
 
 export default GreenCheckCirele

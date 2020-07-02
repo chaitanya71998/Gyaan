@@ -10,5 +10,5 @@ export const Input = styled.input`
    border-radius: 2px;
    border: solid 1px ${props => (props.error ? neon_red : steel)};
    background-color: ${props => (props.error ? neon_red_5 : white)};
-   padding-left:4px;
+   padding-left: 4px;
 `
