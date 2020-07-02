@@ -1,3 +1,3 @@
 import { CreatePostTestFile } from './CreatePostTestFile'
 
-export { CreatePostTestFile }
+export { CreatePostTestFile as default }

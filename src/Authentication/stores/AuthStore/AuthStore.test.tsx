@@ -5,23 +5,28 @@ import {
    API_INITIAL
 } from '@ib/api-constants'
 
-import { mockRemoveCookie, mockSetCookie } from "../../../Common/utils/SetupTests"
+import {
+   mockRemoveCookie,
+   mockSetCookie
+} from '../../../Common/utils/SetupTests'
 
-import AuthAPI from '../../services/AuthService/AuthService.fixture';
-import userSignInResponse from '../../fixtures/userSignInResponse.json';
+import AuthAPI from '../../services/AuthService/AuthService.fixture'
+import userSignInResponse from '../../fixtures/userSignInResponse.json'
 
 import { AuthStore } from './index.js'
 
 describe('AuthStore Tests', () => {
-   let authAPI: AuthAPI | import("../../services/AuthService/AuthService.api").default
-   let authStore: AuthStore;
+   let authAPI:
+      | AuthAPI
+      | import('../../services/AuthService/AuthService.api').default
+   let authStore: AuthStore
 
    beforeEach(() => {
       authAPI = new AuthAPI()
       authStore = new AuthStore(authAPI)
    })
 
-   it('should test initialising auth store', () => {
+   it('should test initializing auth store', () => {
       expect(authStore.getUserSignInAPIStatus).toBe(API_INITIAL)
       expect(authStore.getUserSignInAPIError).toBe(null)
    })
@@ -32,7 +37,7 @@ describe('AuthStore Tests', () => {
          password: 'test-password'
       }
 
-      const mockLoadingPromise = new Promise(function (resolve, reject) { })
+      const mockLoadingPromise = new Promise(function(resolve, reject) {})
       const mockSignInAPI = jest.fn()
       mockSignInAPI.mockReturnValue(mockLoadingPromise)
       authAPI.getUserAPI = mockSignInAPI
@@ -58,7 +63,7 @@ describe('AuthStore Tests', () => {
          password: 'test-password'
       }
 
-      const mockFailurePromise = new Promise(function (resolve, reject) {
+      const mockFailurePromise = new Promise(function(resolve, reject) {
          reject(new Error('error'))
       })
 
