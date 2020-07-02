@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { observer, Provider } from 'mobx-react'
 
@@ -8,16 +8,8 @@ import HomePage from './Common/components/HomePage'
 import { paths } from './Common/constants/NavigationConstants'
 import { authenticationRoute } from './Authentication/routes'
 import { DashboardRoutes } from './Dashboard/routes'
-import ProtectedRoute from './Common/routes/ProtectedRoute/ProtectedRoute'
-const PostsRouteComponent = lazy(() => import('./Dashboard/routes/PostsRoute'))
-const {
-   signInForm,
-   dashboard,
-   createPostPath,
-   followingDomainPostPath,
-   followingDomainPath,
-   allDomainsPostsPath
-} = paths
+
+const { signInForm } = paths
 
 @observer
 class App extends React.Component {
@@ -30,20 +22,7 @@ class App extends React.Component {
                      <Route exact path={signInForm}>
                         {authenticationRoute}
                      </Route>
-                     {DashboardRoutes.map(route => (
-                        <ProtectedRoute
-                           key={route.path}
-                           exact
-                           path={route.path}
-                           component={route.component}
-                        />
-                     ))}
-                     <Route exact path={followingDomainPostPath}>
-                        <PostsRouteComponent />
-                     </Route>
-                     <Route exact path={allDomainsPostsPath}>
-                        <PostsRouteComponent />
-                     </Route>
+                     {DashboardRoutes}
 
                      <Route path='/HomePage'>
                         <HomePage />
