@@ -13,13 +13,3 @@ ${tw`px-6 py-2`}
 border-radius: 4px;
   background-color: ${neon_red_5}
 }`
-
-export const RoundButton = css`
-   border-radius: 50%;
-   background-color: ${neon_red_5};
-`
-
-export const Round = styled.button`
-   width: 100px;
-   padding: 8px 16px;
-`

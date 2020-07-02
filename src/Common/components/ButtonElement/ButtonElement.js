@@ -13,16 +13,4 @@ export function SecondaryButtonElement(props) {
          <Type14NeonRedHKGroteskSemiBold>{text}</Type14NeonRedHKGroteskSemiBold>
       </SecondaryButton>
    )
-
-   class RoundButtonComp extends Component {
-      render() {
-         return (
-            <div>
-               <Round>asdf</Round>
-            </div>
-         )
-      }
-   }
-
-   export default RoundButtonComp
 }
