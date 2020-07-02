@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { observer, Provider } from 'mobx-react'
 
@@ -7,18 +7,9 @@ import stores from './Common/stores'
 import HomePage from './Common/components/HomePage'
 import { paths } from './Common/constants/NavigationConstants'
 import { authenticationRoute } from './Authentication/routes'
-import { DashboardRoute } from './Dashboard/routes/DashboardRoute'
-import DomainRoute from './Dashboard/routes/DomainRoute'
-
-import PostsRoute from './Dashboard/routes/PostsRoute'
-import { getAccessToken } from './Common/utils/StorageUtils'
-import Dashboard from './Dashboard/components/Dashboard'
-import { CreatePost } from './Dashboard/components/CreatePost'
-import { CreatePostRoute } from './Dashboard/routes/CreatePostRoute/CreatePostRoute'
-import { CreatePostTestFile } from './Dashboard/routes/CreatePostRoute'
-import { AuthStore } from './Authentication/stores/AuthStore'
-import { SignInRouteProps } from './Authentication/routes/SignInRoute/SignInRoute'
-import { DashboardStore } from './Dashboard/stores/DashboardStore'
+import { DashboardRoutes } from './Dashboard/routes'
+import ProtectedRoute from './Common/routes/ProtectedRoute/ProtectedRoute'
+const PostsRouteComponent = lazy(() => import('./Dashboard/routes/PostsRoute'))
 const {
    signInForm,
    dashboard,
@@ -33,36 +24,36 @@ class App extends React.Component {
    render() {
       return (
          <Provider {...stores}>
-            <BrowserRouter>
-               <Switch>
-                  <Route exact path={signInForm}>
-                     {authenticationRoute}
-                  </Route>
-                  /*
-                  <Route exact path={dashboard}>
-                     <DashboardRoute />
-                  </Route>
-                  <Route exact path={createPostPath}>
-                     <CreatePostTestFile />
-                  </Route>
-                  <Route exact path={followingDomainPath}>
-                     <DomainRoute />
-                  </Route>
-                  <Route exact path={followingDomainPostPath}>
-                     <PostsRoute />
-                  </Route>
-                  <Route exact path={allDomainsPostsPath}>
-                     <PostsRoute />
-                  </Route>
-                  */
-                  <Route path='/HomePage'>
-                     <HomePage />
-                  </Route>
-                  <Route path='/'>
-                     <HomePage />
-                  </Route>
-               </Switch>
-            </BrowserRouter>
+            <Suspense fallback={<div>Loading...</div>}>
+               <BrowserRouter>
+                  <Switch>
+                     <Route exact path={signInForm}>
+                        {authenticationRoute}
+                     </Route>
+                     {DashboardRoutes.map(route => (
+                        <ProtectedRoute
+                           key={route.path}
+                           exact
+                           path={route.path}
+                           component={route.component}
+                        />
+                     ))}
+                     <Route exact path={followingDomainPostPath}>
+                        <PostsRouteComponent />
+                     </Route>
+                     <Route exact path={allDomainsPostsPath}>
+                        <PostsRouteComponent />
+                     </Route>
+
+                     <Route path='/HomePage'>
+                        <HomePage />
+                     </Route>
+                     <Route path='/'>
+                        <HomePage />
+                     </Route>
+                  </Switch>
+               </BrowserRouter>
+            </Suspense>
          </Provider>
       )
    }
