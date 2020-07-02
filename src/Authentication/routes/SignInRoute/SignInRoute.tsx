@@ -13,6 +13,7 @@ import {
    validateUsername
 } from '../../../Common/utils/ValidationUtils'
 import { InputWithErrorMessage } from '../../../Common/components/CustomInputElement'
+import { ErrorMessage } from '../../components/SignInForm/styledComponents'
 const { dashboard } = paths
 
 export interface SignInRouteProps {
@@ -75,14 +76,18 @@ class SignInRoute extends Component<SignInRouteProps> {
       this.username = value
    }
    handleErrorMessage = () => {
-      if (this.errorMessage === '' && this.didFormHasErrors()) {
+      if (
+         this.username !== '' &&
+         this.password != '' &&
+         this.didFormHasErrors()
+      ) {
          this.handleSignIn()
       }
    }
    didFormHasErrors = () => {
       return (
-         this.usernameRef.current?.hasError === false &&
-         this.passwordRef.current?.hasError === false
+         this.usernameRef.current?.errorMessage === '' &&
+         this.passwordRef.current?.errorMessage === ''
       )
    }
    emptyErrorMessage = () => {

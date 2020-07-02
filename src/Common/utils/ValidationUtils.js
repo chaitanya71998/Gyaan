@@ -29,11 +29,6 @@ export const validatePassword = password => {
          hasError: true,
          errorMessage: 'password length should be 6-16 letters'
       }
-   } else if (!passwordRegex.test(password)) {
-      return {
-         hasError: true,
-         errorMessage: 'password should contain atleast one number'
-      }
    } else
       return {
          hasError: false,
