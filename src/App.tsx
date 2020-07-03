@@ -4,10 +4,10 @@ import { observer, Provider } from 'mobx-react'
 
 import './App.css'
 import stores from './Common/stores'
-import HomePage from './Common/components/HomePage'
 import { paths } from './Common/constants/NavigationConstants'
 import { authenticationRoute } from './Authentication/routes'
 import { DashboardRoutes } from './Dashboard/routes'
+import ProtectedRoute from './Common/routes/ProtectedRoute/ProtectedRoute'
 
 const { signInForm } = paths
 
@@ -19,17 +19,8 @@ class App extends React.Component {
             <Suspense fallback={<div>Loading...</div>}>
                <BrowserRouter>
                   <Switch>
-                     <Route exact path={signInForm}>
-                        {authenticationRoute}
-                     </Route>
-                     {DashboardRoutes}
-
-                     <Route path='/HomePage'>
-                        <HomePage />
-                     </Route>
-                     <Route path='/'>
-                        <HomePage />
-                     </Route>
+                     {authenticationRoute}
+                     <ProtectedRoute routes={DashboardRoutes} />
                   </Switch>
                </BrowserRouter>
             </Suspense>

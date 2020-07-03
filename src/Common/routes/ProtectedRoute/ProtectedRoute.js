@@ -2,18 +2,14 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { getAccessToken } from '../../utils/StorageUtils'
 import { paths } from '../../constants/NavigationConstants'
-import { withRouter, Redirect, Route } from 'react-router-dom'
+import { withRouter, Redirect, Switch } from 'react-router-dom'
 
 const { signInForm } = paths
 @observer
 class ProtectedRoute extends Component {
    render() {
-      const { component: Component, path, ...props } = this.props
-      return getAccessToken() ? (
-         <Route component={Component} exact path={path} {...props} />
-      ) : (
-         <Redirect to={signInForm} />
-      )
+      const { routes } = this.props
+      return getAccessToken() ? <>{routes}</> : <Redirect to={signInForm} />
    }
 }
 

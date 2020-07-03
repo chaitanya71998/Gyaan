@@ -39,6 +39,7 @@ class SignInRoute extends Component<SignInRouteProps> {
       this.errorMessage = ''
       this.usernameRef = React.createRef()
       this.passwordRef = React.createRef()
+      this.hasToken = getAccessToken() ? true : false
    }
 
    gotoHomeScreen() {

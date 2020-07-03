@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import { paths } from '../../Common/constants/NavigationConstants'
-import ProtectedRoute from '../../Common/routes/ProtectedRoute/ProtectedRoute'
-
+import { Route } from 'react-router-dom'
+import HomePage from '../../Common/components/HomePage'
 const DashboardRouteComponent = lazy(() => import('./DashboardRoute'))
 const DomainRouteComponent = lazy(() => import('./DomainRoute'))
 const CreatePostTestFileComponent = lazy(() => import('./CreatePostRoute'))
@@ -14,34 +14,19 @@ const {
    allDomainsPostsPath
 } = paths
 
-const RoutePathsComponents = [
-   {
-      path: dashboard,
-      component: DashboardRouteComponent
-   },
-   {
-      path: createPostPath,
-      component: CreatePostTestFileComponent
-   },
-   {
-      path: followingDomainPath,
-      component: DomainRouteComponent
-   },
-   {
-      path: followingDomainPostPath,
-      component: PostsRouteComponent
-   },
-   {
-      path: allDomainsPostsPath,
-      component: PostsRouteComponent
-   }
-]
-
-export const DashboardRoutes = RoutePathsComponents.map(route => (
-   <ProtectedRoute
-      key={route.path}
+export const DashboardRoutes = [
+   <Route exact path={dashboard} component={DashboardRouteComponent} />,
+   <Route
       exact
-      path={route.path}
-      component={route.component}
-   />
-))
+      path={createPostPath}
+      component={CreatePostTestFileComponent}
+   />,
+   <Route exact path={followingDomainPath} component={DomainRouteComponent} />,
+   <Route
+      exact
+      path={followingDomainPostPath}
+      component={PostsRouteComponent}
+   />,
+   <Route exact path={allDomainsPostsPath} component={PostsRouteComponent} />,
+   <Route exact path='/' component={HomePage} />
+]
