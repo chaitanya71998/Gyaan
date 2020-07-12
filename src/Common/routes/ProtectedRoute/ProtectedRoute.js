@@ -8,6 +8,7 @@ const { signInForm } = paths
 @observer
 class ProtectedRoute extends Component {
    render() {
+      alert(1)
       const { routes } = this.props
       return getAccessToken() ? <>{routes}</> : <Redirect to={signInForm} />
    }

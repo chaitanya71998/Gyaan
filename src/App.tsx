@@ -14,6 +14,7 @@ const { signInForm } = paths
 @observer
 class App extends React.Component {
    render() {
+      alert(12)
       return (
          <Provider {...stores}>
             <Suspense fallback={<div>Loading...</div>}>
